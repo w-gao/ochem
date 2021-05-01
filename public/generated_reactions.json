@@ -1,0 +1,141 @@
+{
+    "nodes": [
+        {
+            "data": {
+                "id": "alcohol",
+                "label": "Alcohol"
+            },
+            "position": {
+                "x": -0.33545750141651,
+                "y": 49.98316771105976
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "pri-OH",
+                "parent": "alcohol",
+                "label": "1°-OH"
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "sec-OH",
+                "parent": "alcohol",
+                "label": "2°-OH"
+            },
+            "position": {
+                "x": 0,
+                "y": 49.64771020964325
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "tert-OH",
+                "parent": "alcohol",
+                "label": "3°-OH"
+            },
+            "position": {
+                "x": -0.6709150028330173,
+                "y": 99.96633542211951
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "d",
+                "label": "d"
+            },
+            "position": {
+                "x": -206.8221991273843,
+                "y": -135.68590133834763
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "e",
+                "label": "e"
+            },
+            "position": {
+                "x": -133.31242962993738,
+                "y": 204.5665811999631
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        }
+    ],
+    "edges": [
+        {
+            "data": {
+                "id": "test",
+                "source": "e",
+                "target": "d",
+                "label": "Br₂\nFeBr₃",
+                "position": {
+                    "x": 0,
+                    "y": 0
+                }
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "edges",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": true,
+            "classes": ""
+        }
+    ]
+}
