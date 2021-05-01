@@ -8,7 +8,8 @@ import getReactions from "../data/reactions";
 import "./home.scss";
 
 
-const DEBUG_MODE = true;
+const DEBUG_MODE = window.location.search.substring(1) === 'debug';
+console.log(`debug=${DEBUG_MODE}`);
 
 
 /**
@@ -21,6 +22,8 @@ const setUp = (ref: HTMLDivElement | null) => {
     const cy: any = cytoscape({
         container: ref,
         boxSelectionEnabled: false,
+        minZoom: 0.3,  // out
+        maxZoom: 5,
         style: [
             {
                 selector: "node",
@@ -28,6 +31,7 @@ const setUp = (ref: HTMLDivElement | null) => {
                     "content": "data(label)",
                     "text-valign": "center",
                     "text-halign": "center",
+                    "text-wrap": "wrap",
                     "shape": "round-rectangle",
                     "width": "120px",
                     "height": "40px",
@@ -60,7 +64,8 @@ const setUp = (ref: HTMLDivElement | null) => {
         layout: {
             name: "preset",
             // padding: 5,
-        }
+            // animate: true,
+        },
     });
 
     // Dev tools
@@ -72,10 +77,6 @@ const setUp = (ref: HTMLDivElement | null) => {
      * Reload canvas with the up-to-date data from reactions.ts.
      */
     let reload = () => {
-        if (!DEBUG_MODE) {
-            return;
-        }
-
         let results: any = {
             nodes: [],
             edges: [],
@@ -117,7 +118,7 @@ const setUp = (ref: HTMLDivElement | null) => {
         let setting_edges: any[] = elements.edges;
 
         let element;
-        setting_nodes.forEach((val, index, arr) => {
+        setting_nodes.forEach((val) => {
             element = current_nodes[val.id] || defaultNode(val.id);
 
             // update with new info
@@ -133,7 +134,7 @@ const setUp = (ref: HTMLDivElement | null) => {
             results.nodes.push(element);
         });
 
-        setting_edges.forEach((val, index, arr) => {
+        setting_edges.forEach((val) => {
             element = current_edges[val.id] || defaultEdge(val.id);
 
             // update with new info
@@ -164,9 +165,13 @@ const setUp = (ref: HTMLDivElement | null) => {
     };
 
     let win: any = window;
-    // win.cy = cy;
-    win.reload = reload;
+    win.cy = cy;
+    // win.reload = reload;
     win.save = save;
+
+    setTimeout(() => {
+        reload();
+    }, 100)
 }
 
 const HomeView = () => {

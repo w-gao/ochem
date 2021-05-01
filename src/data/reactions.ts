@@ -97,57 +97,68 @@ interface Reaction {
 }
 
 
-const new_compound = (id: string, label: string, parent?: string): Compound => {
-    return {
-        id: id,
-        label: label,
-        parent: parent
-    }
+const add_bromide_compounds = (list: Compound[]) => {
+    list.push(
+        {id: "bromide", label: "Bromides"},
+
+        {id: "pri-Br", label: `1${deg()}-Br`, parent: "bromide"},
+        {id: "sec-Br", label: `2${deg()}-Br`, parent: "bromide"},
+        {id: "tert-Br", label: `3${deg()}-Br`, parent: "bromide"},
+        {id: "aryl-Br", label: `R-Br (Aryl)`, parent: "bromide"},
+    );
 };
 
+const add_alkene_compounds = (list: Compound[]) => {
+    list.push(
+        {id: "alkene", label: "Alkenes"},
+        {id: "mono-alkene", label: "Mono-sub'd \nalkene", parent: "alkene"},
+        {id: "di-alkene", label: "Di-sub'd \nalkene", parent: "alkene"},
+        {id: "tri-alkene", label: "Tri-sub'd \nalkene", parent: "alkene"},
+    );
+};
 
 const add_alcohol_compounds = (list: Compound[]) => {
     list.push(
-        new_compound("alcohol", "Alcohols"),
-        new_compound("alcohol_nonaryl", "", "alcohol"),
+        {id: "alcohol", label: "Alcohols"},
+        {id: "alcohol_nonaryl", label: "", parent: "alcohol"},
 
-        new_compound("pri-OH", `1${deg()}-OH`, "alcohol_nonaryl"),
-        new_compound("sec-OH", `2${deg()}-OH`, "alcohol_nonaryl"),
-        new_compound("tert-OH", `3${deg()}-OH`, "alcohol_nonaryl"),
-        new_compound("aryl-OH", "R-OH (Aryl)", "alcohol"),
+        {id: "pri-OH", label: `1${deg()}-OH`, parent: "alcohol_nonaryl"},
+        {id: "sec-OH", label: `2${deg()}-OH`, parent: "alcohol_nonaryl"},
+        {id: "tert-OH", label: `3${deg()}-OH`, parent: "alcohol_nonaryl"},
+        {id: "aryl-OH", label: `R-OH (Aryl)`, parent: "alcohol"},
     );
 };
 
 const add_carbonyl_no_LG_compounds = (list: Compound[]) => {
     list.push(
-        new_compound("carbonyl_noLG", "Carbonyls (no LG)"),
-        new_compound("formaldehyde", "Formaldehyde", "carbonyl_noLG"),
-        new_compound("aldehyde", "Aldehyde", "carbonyl_noLG"),
-        new_compound("ketone", "Ketone", "carbonyl_noLG"),
+        {id: "carbonyl_noLG", label: "Carbonyls (no LG)"},
+        {id: "formaldehyde", label: "Formaldehyde", parent: "carbonyl_noLG"},
+        {id: "aldehyde", label: "Aldehyde", parent: "carbonyl_noLG"},
+        {id: "ketone", label: "Ketone", parent: "carbonyl_noLG"},
     );
-}
+};
 
 
 const add_reactions = (edges: Reaction[]) => {
     edges.push(
-        {id: randomId(), source: "pri-OH", target: "aldehyde", label: REAGENTS["NaBH4"]},
-        {id: randomId(), source: "aldehyde", target: "pri-OH", label: REAGENTS["PCC"],
-            cpd: "5em",
-        },
-        {id: randomId(), source: "formaldehyde", target: "pri-OH", label: REAGENTS["grignard"]},
-        {id: randomId(), source: "aldehyde", target: "sec-OH", label: REAGENTS["grignard"],
-            cpd: "-4em"
-        },
+        // carbonyls --[ reduction ]--> alcohols
+        {id: randomId(), source: "pri-OH", target: "aldehyde", label: REAGENTS["NaBH4"], cpd: "5em"},
+        {id: randomId(), source: "aldehyde", target: "pri-OH", label: REAGENTS["PCC"]},
+
+        // carbonyls + grignard => alcohols
+        {id: randomId(), source: "formaldehyde", target: "pri-OH", label: REAGENTS["grignard"], cpw: "0.2"},
+        {id: randomId(), source: "aldehyde", target: "sec-OH", label: REAGENTS["grignard"], cpd: "-8em"},
         {id: randomId(), source: "ketone", target: "tert-OH", label: REAGENTS["grignard"]},
     );
 };
 
 
 const getReactions = () => {
-
     let nodes: Compound[] = [];
     let edges: Reaction[] = [];
 
+    add_bromide_compounds(nodes);
+    add_alkene_compounds(nodes);
     add_alcohol_compounds(nodes);
     add_carbonyl_no_LG_compounds(nodes);
 
