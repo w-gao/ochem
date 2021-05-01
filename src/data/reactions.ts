@@ -4,6 +4,19 @@
 
 
 /**
+ * Get a somewhat random string with a fixed length.
+ *
+ * @param length length of the string.
+ */
+const randomId = (length: number = 8) => {
+    return Array(length)
+        .fill("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
+        .map(x => x[Math.floor(Math.random() * x.length)])
+        .join('');
+}
+
+
+/**
  * Return the subscript of the given number as an HTML unicode string.
  *
  * @param num Subscript number. Must be between 0 and 10.
@@ -69,51 +82,143 @@ const REAGENTS = {
 const COMPOUNDS = {
 
     // alcohols
-    "alcohol": "Alcohol",
     "pri-OH": `1${deg()}-OH`,
     "sec-OH": `2${deg()}-OH`,
     "tert-OH": `3${deg()}-OH`,
-    "aryl-OH": "Aryl alcohol",
+    "aryl-OH": "R-OH (Aryl)",
 
+    // carbonyls w/out LG
+    'formaldehyde': 'Formaldehyde',
+    'aldehyde': 'Aldehyde',
+    'ketone': 'Ketone',
 
 };
 
 
-export const reactions = {
-    nodes: [
+const add_alcohol_compounds = (list: any[]) => {
+    list.push(
         {
-            data: {id: "alcohol", label: COMPOUNDS["alcohol"]},
-            position: {x: -0.33545750141651, y: 49.98316771105976},
+            data: {id: "alcohol", label: "Alcohols"},
+            position: {x:389.45,y:-96.41},
         },
         {
-            data: {id: "pri-OH", parent: "alcohol", label: COMPOUNDS["pri-OH"]},
-            position: {x: 0, y: 0},
+            data: {id: "alcohol_nonaryl", parent: "alcohol", label: ""},
+            position: {x:304.5,y:-96.41},
         },
         {
-            data: {id: "sec-OH", parent: "alcohol", label: COMPOUNDS["sec-OH"]},
-            position: {x: 0, y: 49.64771020964325},
+            data: {id: "pri-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["pri-OH"]},
+            position: {x:312.55,y:-130.69},
         },
         {
-            data: {id: "tert-OH", parent: "alcohol", label: COMPOUNDS["tert-OH"]},
-            position: {x: -0.6709150028330173, y: 99.96633542211951},
+            data: {id: "sec-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["sec-OH"]},
+            position: {x:144.27,y:-62.22},
         },
         {
+            data: {id: "tert-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["tert-OH"]},
+            position: {x:464.72,y:-62.13},
+        },
+        {
+            data: {id: "aryl-OH", parent: "alcohol", label: COMPOUNDS["aryl-OH"]},
+            position: {x:646.14,y:-95.69},
+        });
+};
+
+const add_carbonyl_no_LG_compounds = (list: any[]) => {
+    list.push(
+        {
+            data: {id: "carbonyl_noLG", label: "Carbonyls (no LG)"},
+            position: {x: 367.85, y: 278.79},
+        },
+        {
+            data: {id: "formaldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["formaldehyde"]},
+            position: {x: 363.85, y: 278.73},
+        },
+        {
+            data: {id: "aldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["aldehyde"]},
+            position: {x: 214.18, y: 278.02},
+        },
+        {
+            data: {id: "ketone", parent: "carbonyl_noLG", label: COMPOUNDS["ketone"]},
+            position: {x: 521.53, y: 279.56},
+        },
+    );
+}
+
+// const add_carbonyl_no_LG_compounds = (list: any[]) => {
+//     list.push(
+//         {
+//             data: {id: "carbonyl_noLG", label: "Carbonyls (no LG)"},
+//             position: {},
+//         },
+//     );
+// }
+
+
+const add_reactions = (edges: any[]) => {
+    edges.push(
+        {
+            data: {
+                id: randomId(), source: "pri-OH", target: "aldehyde", label: REAGENTS["NaBH4"],
+                cpd: "4em",
+            }
+        },
+        {
+            data: {
+                id: randomId(), source: "aldehyde", target: "pri-OH", label: REAGENTS["PCC"],
+                cpw: "0.2",
+            }
+        },
+        {
+            data: {
+                id: randomId(), source: "formaldehyde", target: "pri-OH", label: REAGENTS["grignard"],
+            }
+        },
+        {
+            data: {
+                id: randomId(), source: "aldehyde", target: "sec-OH", label: REAGENTS["grignard"],
+                cpd: "-4em",
+            }
+        },
+        {
+            data: {
+                id: randomId(), source: "ketone", target: "tert-OH", label: REAGENTS["grignard"],
+            }
+        },
+    );
+};
+
+const getReactions = () => {
+
+    let nodes: any[] = [];
+    let edges: any[] = [];
+
+    add_alcohol_compounds(nodes);
+    add_carbonyl_no_LG_compounds(nodes);
+
+    add_reactions(edges);
+
+    // test data
+    nodes.push({
             data: {id: "d", label: "d"},
-            position: {x: -206.8221991273843, y: -135.68590133834763},
+            position: {x: -189.01, y: 0},
         },
         {
             data: {id: "e", label: "e"},
-            position: {x: -133.31242962993738, y: 204.5665811999631},
-        },
+            position: {x: -150.4, y: 99.62},
+        })
 
-    ],
-    edges: [
-        {
-            data: {
-                id: "test", source: "e", target: "d", label: REAGENTS["Br2/FeBr3"],
-                position: {x: 0, y: 0},
-            }
-        },
+    edges.push({
+        data: {
+            id: "test", source: "e", target: "d", label: REAGENTS["Br2/FeBr3"],
+            position: {x: 0, y: 0},
+        }
+    })
+    // end test data
 
-    ]
-};
+    return {
+        "nodes": nodes,
+        "edges": edges,
+    };
+}
+
+export default getReactions;
