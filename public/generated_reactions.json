@@ -192,7 +192,7 @@
     "edges": [
         {
             "data": {
-                "id": "6SEsC54y",
+                "id": "731cuYSB",
                 "source": "pri-OH",
                 "target": "aldehyde",
                 "label": "1. NaBH₄\n2. H₃O+"
@@ -212,7 +212,7 @@
         },
         {
             "data": {
-                "id": "xsrNGlsV",
+                "id": "VSSwrNit",
                 "source": "aldehyde",
                 "target": "pri-OH",
                 "label": "PCC\n  [o]",
@@ -233,7 +233,7 @@
         },
         {
             "data": {
-                "id": "M51ZH82A",
+                "id": "eNsesf5W",
                 "source": "formaldehyde",
                 "target": "pri-OH",
                 "label": "1. grignard\n2. H₃O+"
@@ -253,7 +253,7 @@
         },
         {
             "data": {
-                "id": "yyz9Fpac",
+                "id": "940Ng2cg",
                 "source": "aldehyde",
                 "target": "sec-OH",
                 "label": "1. grignard\n2. H₃O+",
@@ -274,7 +274,7 @@
         },
         {
             "data": {
-                "id": "RxuLA3BF",
+                "id": "AHBCfuwA",
                 "source": "ketone",
                 "target": "tert-OH",
                 "label": "1. grignard\n2. H₃O+"

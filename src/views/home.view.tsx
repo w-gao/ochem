@@ -127,6 +127,9 @@ const setUp = (ref: HTMLDivElement | null) => {
             element.position.x = parseFloat((element.position.x).toFixed(2));
             element.position.y = parseFloat((element.position.y).toFixed(2));
 
+            // element.selectable = false;
+            // element.grabbable = false;
+
             results.nodes.push(element);
         });
 
@@ -140,6 +143,9 @@ const setUp = (ref: HTMLDivElement | null) => {
 
             element.data.cpd = val.cpd || undefined;
             element.data.cpw = val.cpw || undefined;
+
+            // element.selectable = false;
+            // element.grabbable = false;
 
             results.edges.push(element);
         });

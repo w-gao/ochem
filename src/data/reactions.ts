@@ -79,22 +79,6 @@ const REAGENTS = {
 };
 
 
-const COMPOUNDS = {
-
-    // alcohols
-    "pri-OH": `1${deg()}-OH`,
-    "sec-OH": `2${deg()}-OH`,
-    "tert-OH": `3${deg()}-OH`,
-    "aryl-OH": "R-OH (Aryl)",
-
-    // carbonyls w/out LG
-    'formaldehyde': 'Formaldehyde',
-    'aldehyde': 'Aldehyde',
-    'ketone': 'Ketone',
-
-};
-
-
 interface Compound {
     id: string;
     label: string;
@@ -113,41 +97,40 @@ interface Reaction {
 }
 
 
+const new_compound = (id: string, label: string, parent?: string): Compound => {
+    return {
+        id: id,
+        label: label,
+        parent: parent
+    }
+};
+
+
 const add_alcohol_compounds = (list: Compound[]) => {
     list.push(
-        {id: "alcohol", label: "Alcohols"},
-        {id: "alcohol_nonaryl", parent: "alcohol", label: ""},
-        {id: "pri-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["pri-OH"]},
-        {id: "sec-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["sec-OH"]},
-        {id: "tert-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["tert-OH"]},
-        {id: "aryl-OH", parent: "alcohol", label: COMPOUNDS["aryl-OH"]}
+        new_compound("alcohol", "Alcohols"),
+        new_compound("alcohol_nonaryl", "", "alcohol"),
+
+        new_compound("pri-OH", `1${deg()}-OH`, "alcohol_nonaryl"),
+        new_compound("sec-OH", `2${deg()}-OH`, "alcohol_nonaryl"),
+        new_compound("tert-OH", `3${deg()}-OH`, "alcohol_nonaryl"),
+        new_compound("aryl-OH", "R-OH (Aryl)", "alcohol"),
     );
 };
 
 const add_carbonyl_no_LG_compounds = (list: Compound[]) => {
     list.push(
-        {id: "carbonyl_noLG", label: "Carbonyls (no LG)"},
-        {id: "formaldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["formaldehyde"]},
-        {id: "aldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["aldehyde"]},
-        {id: "ketone", parent: "carbonyl_noLG", label: COMPOUNDS["ketone"]},
+        new_compound("carbonyl_noLG", "Carbonyls (no LG)"),
+        new_compound("formaldehyde", "Formaldehyde", "carbonyl_noLG"),
+        new_compound("aldehyde", "Aldehyde", "carbonyl_noLG"),
+        new_compound("ketone", "Ketone", "carbonyl_noLG"),
     );
 }
-
-// const add_carbonyl_no_LG_compounds = (list: Compound[]) => {
-//     list.push(
-//         {id: "carbonyl_noLG", label: "Carbonyls (no LG)"},
-//         {id: "formaldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["formaldehyde"]},
-//         {id: "aldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["aldehyde"]},
-//         {id: "ketone", parent: "carbonyl_noLG", label: COMPOUNDS["ketone"]},
-//     );
-// }
 
 
 const add_reactions = (edges: Reaction[]) => {
     edges.push(
-        {id: randomId(), source: "pri-OH", target: "aldehyde", label: REAGENTS["NaBH4"],
-            // cpd: "4em"
-        },
+        {id: randomId(), source: "pri-OH", target: "aldehyde", label: REAGENTS["NaBH4"]},
         {id: randomId(), source: "aldehyde", target: "pri-OH", label: REAGENTS["PCC"],
             cpd: "5em",
         },
