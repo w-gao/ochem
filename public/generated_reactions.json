@@ -3,11 +3,30 @@
         {
             "data": {
                 "id": "alcohol",
-                "label": "Alcohol"
+                "label": "Alcohols"
             },
             "position": {
-                "x": -0.33545750141651,
-                "y": 49.98316771105976
+                "x": 86.58,
+                "y": -558.06
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "alcohol_nonaryl",
+                "parent": "alcohol",
+                "label": ""
+            },
+            "position": {
+                "x": 12.56,
+                "y": -558.06
             },
             "group": "nodes",
             "removed": false,
@@ -21,12 +40,12 @@
         {
             "data": {
                 "id": "pri-OH",
-                "parent": "alcohol",
+                "parent": "alcohol_nonaryl",
                 "label": "1°-OH"
             },
             "position": {
-                "x": 0,
-                "y": 0
+                "x": 23.3,
+                "y": -591.4
             },
             "group": "nodes",
             "removed": false,
@@ -40,12 +59,12 @@
         {
             "data": {
                 "id": "sec-OH",
-                "parent": "alcohol",
+                "parent": "alcohol_nonaryl",
                 "label": "2°-OH"
             },
             "position": {
-                "x": 0,
-                "y": 49.64771020964325
+                "x": -111.47,
+                "y": -524.71
             },
             "group": "nodes",
             "removed": false,
@@ -59,12 +78,12 @@
         {
             "data": {
                 "id": "tert-OH",
-                "parent": "alcohol",
+                "parent": "alcohol_nonaryl",
                 "label": "3°-OH"
             },
             "position": {
-                "x": -0.6709150028330173,
-                "y": 99.96633542211951
+                "x": 136.58,
+                "y": -525.49
             },
             "group": "nodes",
             "removed": false,
@@ -77,12 +96,13 @@
         },
         {
             "data": {
-                "id": "d",
-                "label": "d"
+                "id": "aryl-OH",
+                "parent": "alcohol",
+                "label": "R-OH (Aryl)"
             },
             "position": {
-                "x": -206.8221991273843,
-                "y": -135.68590133834763
+                "x": 296.13,
+                "y": -558.51
             },
             "group": "nodes",
             "removed": false,
@@ -95,12 +115,69 @@
         },
         {
             "data": {
-                "id": "e",
-                "label": "e"
+                "id": "carbonyl_noLG",
+                "label": "Carbonyls (no LG)"
             },
             "position": {
-                "x": -133.31242962993738,
-                "y": 204.5665811999631
+                "x": 88.48,
+                "y": -179.56
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": true,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "formaldehyde",
+                "parent": "carbonyl_noLG",
+                "label": "Formaldehyde"
+            },
+            "position": {
+                "x": 101.41,
+                "y": -207.31
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "aldehyde",
+                "parent": "carbonyl_noLG",
+                "label": "Aldehyde"
+            },
+            "position": {
+                "x": -87.77,
+                "y": -153.71
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "ketone",
+                "parent": "carbonyl_noLG",
+                "label": "Ketone"
+            },
+            "position": {
+                "x": 264.73,
+                "y": -151.81
             },
             "group": "nodes",
             "removed": false,
@@ -115,14 +192,92 @@
     "edges": [
         {
             "data": {
-                "id": "test",
-                "source": "e",
-                "target": "d",
-                "label": "Br₂\nFeBr₃",
-                "position": {
-                    "x": 0,
-                    "y": 0
-                }
+                "id": "6SEsC54y",
+                "source": "pri-OH",
+                "target": "aldehyde",
+                "label": "1. NaBH₄\n2. H₃O+"
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "edges",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": true,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "xsrNGlsV",
+                "source": "aldehyde",
+                "target": "pri-OH",
+                "label": "PCC\n  [o]",
+                "cpd": "5em"
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "edges",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": true,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "M51ZH82A",
+                "source": "formaldehyde",
+                "target": "pri-OH",
+                "label": "1. grignard\n2. H₃O+"
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "edges",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": true,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "yyz9Fpac",
+                "source": "aldehyde",
+                "target": "sec-OH",
+                "label": "1. grignard\n2. H₃O+",
+                "cpd": "-4em"
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "edges",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": true,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "RxuLA3BF",
+                "source": "ketone",
+                "target": "tert-OH",
+                "label": "1. grignard\n2. H₃O+"
             },
             "position": {
                 "x": 0,

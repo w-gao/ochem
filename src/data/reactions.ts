@@ -95,125 +95,80 @@ const COMPOUNDS = {
 };
 
 
-const add_alcohol_compounds = (list: any[]) => {
+interface Compound {
+    id: string;
+    label: string;
+    parent?: string;
+}
+
+
+interface Reaction {
+    id: string;
+    source: string;
+    target: string;
+    label: string;
+
+    cpd?: string;
+    cpw?: string;
+}
+
+
+const add_alcohol_compounds = (list: Compound[]) => {
     list.push(
-        {
-            data: {id: "alcohol", label: "Alcohols"},
-            position: {x:389.45,y:-96.41},
-        },
-        {
-            data: {id: "alcohol_nonaryl", parent: "alcohol", label: ""},
-            position: {x:304.5,y:-96.41},
-        },
-        {
-            data: {id: "pri-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["pri-OH"]},
-            position: {x:312.55,y:-130.69},
-        },
-        {
-            data: {id: "sec-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["sec-OH"]},
-            position: {x:144.27,y:-62.22},
-        },
-        {
-            data: {id: "tert-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["tert-OH"]},
-            position: {x:464.72,y:-62.13},
-        },
-        {
-            data: {id: "aryl-OH", parent: "alcohol", label: COMPOUNDS["aryl-OH"]},
-            position: {x:646.14,y:-95.69},
-        });
+        {id: "alcohol", label: "Alcohols"},
+        {id: "alcohol_nonaryl", parent: "alcohol", label: ""},
+        {id: "pri-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["pri-OH"]},
+        {id: "sec-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["sec-OH"]},
+        {id: "tert-OH", parent: "alcohol_nonaryl", label: COMPOUNDS["tert-OH"]},
+        {id: "aryl-OH", parent: "alcohol", label: COMPOUNDS["aryl-OH"]}
+    );
 };
 
-const add_carbonyl_no_LG_compounds = (list: any[]) => {
+const add_carbonyl_no_LG_compounds = (list: Compound[]) => {
     list.push(
-        {
-            data: {id: "carbonyl_noLG", label: "Carbonyls (no LG)"},
-            position: {x: 367.85, y: 278.79},
-        },
-        {
-            data: {id: "formaldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["formaldehyde"]},
-            position: {x: 363.85, y: 278.73},
-        },
-        {
-            data: {id: "aldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["aldehyde"]},
-            position: {x: 214.18, y: 278.02},
-        },
-        {
-            data: {id: "ketone", parent: "carbonyl_noLG", label: COMPOUNDS["ketone"]},
-            position: {x: 521.53, y: 279.56},
-        },
+        {id: "carbonyl_noLG", label: "Carbonyls (no LG)"},
+        {id: "formaldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["formaldehyde"]},
+        {id: "aldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["aldehyde"]},
+        {id: "ketone", parent: "carbonyl_noLG", label: COMPOUNDS["ketone"]},
     );
 }
 
-// const add_carbonyl_no_LG_compounds = (list: any[]) => {
+// const add_carbonyl_no_LG_compounds = (list: Compound[]) => {
 //     list.push(
-//         {
-//             data: {id: "carbonyl_noLG", label: "Carbonyls (no LG)"},
-//             position: {},
-//         },
+//         {id: "carbonyl_noLG", label: "Carbonyls (no LG)"},
+//         {id: "formaldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["formaldehyde"]},
+//         {id: "aldehyde", parent: "carbonyl_noLG", label: COMPOUNDS["aldehyde"]},
+//         {id: "ketone", parent: "carbonyl_noLG", label: COMPOUNDS["ketone"]},
 //     );
 // }
 
 
-const add_reactions = (edges: any[]) => {
+const add_reactions = (edges: Reaction[]) => {
     edges.push(
-        {
-            data: {
-                id: randomId(), source: "pri-OH", target: "aldehyde", label: REAGENTS["NaBH4"],
-                cpd: "4em",
-            }
+        {id: randomId(), source: "pri-OH", target: "aldehyde", label: REAGENTS["NaBH4"],
+            // cpd: "4em"
         },
-        {
-            data: {
-                id: randomId(), source: "aldehyde", target: "pri-OH", label: REAGENTS["PCC"],
-                cpw: "0.2",
-            }
+        {id: randomId(), source: "aldehyde", target: "pri-OH", label: REAGENTS["PCC"],
+            cpd: "5em",
         },
-        {
-            data: {
-                id: randomId(), source: "formaldehyde", target: "pri-OH", label: REAGENTS["grignard"],
-            }
+        {id: randomId(), source: "formaldehyde", target: "pri-OH", label: REAGENTS["grignard"]},
+        {id: randomId(), source: "aldehyde", target: "sec-OH", label: REAGENTS["grignard"],
+            cpd: "-4em"
         },
-        {
-            data: {
-                id: randomId(), source: "aldehyde", target: "sec-OH", label: REAGENTS["grignard"],
-                cpd: "-4em",
-            }
-        },
-        {
-            data: {
-                id: randomId(), source: "ketone", target: "tert-OH", label: REAGENTS["grignard"],
-            }
-        },
+        {id: randomId(), source: "ketone", target: "tert-OH", label: REAGENTS["grignard"]},
     );
 };
 
+
 const getReactions = () => {
 
-    let nodes: any[] = [];
-    let edges: any[] = [];
+    let nodes: Compound[] = [];
+    let edges: Reaction[] = [];
 
     add_alcohol_compounds(nodes);
     add_carbonyl_no_LG_compounds(nodes);
 
     add_reactions(edges);
-
-    // test data
-    nodes.push({
-            data: {id: "d", label: "d"},
-            position: {x: -189.01, y: 0},
-        },
-        {
-            data: {id: "e", label: "e"},
-            position: {x: -150.4, y: 99.62},
-        })
-
-    edges.push({
-        data: {
-            id: "test", source: "e", target: "d", label: REAGENTS["Br2/FeBr3"],
-            position: {x: 0, y: 0},
-        }
-    })
-    // end test data
 
     return {
         "nodes": nodes,
