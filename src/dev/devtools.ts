@@ -46,14 +46,13 @@ export const reload = (cy: any) => {
     let current_edges: any = list2obj(current.edges);
 
     let elements = getReactions();
-    let setting_nodes: any[] = elements.nodes;
-    let setting_edges: any[] = elements.edges;
+    let settings_nodes: any[] = elements.nodes;
+    let settings_edges: any[] = elements.edges;
 
     let element;
-    setting_nodes.forEach((val) => {
+    settings_nodes.forEach((val) => {
         element = current_nodes[val.id] || defaultNode(val.id);
 
-        // update with new info
         element.data.parent = val.parent;
         element.data.label = val.label;
 
@@ -66,14 +65,14 @@ export const reload = (cy: any) => {
         results.nodes.push(element);
     });
 
-    setting_edges.forEach((val) => {
+    settings_edges.forEach((val) => {
         element = current_edges[val.id] || defaultEdge(val.id);
 
-        // update with new info
         element.data.source = val.source;
         element.data.target = val.target;
         element.data.label = val.label;
 
+        // control point distances & weights
         element.data.cpd = val.cpd || undefined;
         element.data.cpw = val.cpw || undefined;
 
