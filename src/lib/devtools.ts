@@ -2,6 +2,8 @@
 // Copyright (c) 2020-2021 w-gao
 //
 
+// This file contains a bunch of developer tools. They are probably not that important for users.
+
 import getReactions from "../data/reactions";
 
 
@@ -16,12 +18,14 @@ const list2obj = (list: []) => {
     return list.reduce((obj, val: any) => ({...obj, [val.data.id]: val}), {})
 };
 
+
 /**
  * Create a default node with the given id.
  */
 const defaultNode = (id: number): any => {
     return {data: {id: id}, position: {x: 0, y: 0}};
 };
+
 
 /**
  * Create a default edge with the given id.
@@ -30,10 +34,12 @@ const defaultEdge = (id: number): any => {
     return {data: {id: id}};
 };
 
+
 /**
- * Reload canvas with the up-to-date data from reactions.ts.
+ * Reload canvas with the up-to-date data from reactions.ts while keeping
+ * metadata information such as positions.
  */
-export const reload = (cy: any) => {
+export const reload = (cy: any, lock: boolean = false) => {
     let results: any = {
         nodes: [],
         edges: [],
@@ -59,8 +65,8 @@ export const reload = (cy: any) => {
         element.position.x = parseFloat((element.position.x).toFixed(2));
         element.position.y = parseFloat((element.position.y).toFixed(2));
 
-        // element.selectable = false;
-        // element.grabbable = false;
+        element.selectable = !lock;
+        element.grabbable = !lock;
 
         results.nodes.push(element);
     });
@@ -76,8 +82,8 @@ export const reload = (cy: any) => {
         element.data.cpd = val.cpd || undefined;
         element.data.cpw = val.cpw || undefined;
 
-        // element.selectable = false;
-        // element.grabbable = false;
+        element.selectable = !lock;
+        element.grabbable = !lock;
 
         results.edges.push(element);
     });
@@ -88,9 +94,10 @@ export const reload = (cy: any) => {
 };
 
 /**
- * Save canvas positions to localStorage, so it can be re-imported back to our app.
+ * Save canvas positions to localStorage, so it can be re-imported
+ * back to our app.
  */
-export const save = (cy: any) => {
-    reload(cy);
+export const save = (cy: any, lock: boolean = false) => {
+    reload(cy, lock);
     window.localStorage.setItem("elements", JSON.stringify(cy.json()["elements"]));
 };

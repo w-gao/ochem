@@ -4,10 +4,9 @@
 
 import {useEffect, useRef, Fragment, useState} from "react";
 import cytoscape from "cytoscape";
-import {add_reactions, Reaction} from "../data/reactions";
 import {Popup} from "../components/popup";
 import {descriptions} from "../data/descriptions";
-import {reload, save} from "../dev/devtools";
+import {reload, save} from "../lib/devtools";
 import "./home.scss";
 
 
@@ -35,10 +34,10 @@ const setUp = (ref: HTMLDivElement | null) => {
                     "text-valign": "center",
                     "text-halign": "center",
                     "text-wrap": "wrap",
-                    "shape": "round-rectangle",
+                    "shape": "rectangle",
                     "width": "120px",
                     "height": "40px",
-                    "backgroundColor": "#ADD8E6",  // lightblue
+                    "backgroundColor": "#9EF4FF",  // lightblue
                 }
             },
             {
@@ -47,6 +46,7 @@ const setUp = (ref: HTMLDivElement | null) => {
                     "text-valign": "top",
                     "text-halign": "center",
                     "backgroundColor": "#FFFFFF",
+                    "shape": "round-rectangle",
                 }
             },
             {
@@ -77,9 +77,9 @@ const setUp = (ref: HTMLDivElement | null) => {
     }
 
     let win: any = window;
-    // win.cy = cy;
-    win.reload = () => reload(cy);
-    win.save = () => save(cy);
+    win.cy = cy;
+    win.reload = (lock: boolean = false) => reload(cy, lock);
+    win.save = (lock: boolean = false) => save(cy, lock);
 
     setTimeout(() => {
         win.reload();
@@ -93,8 +93,6 @@ const HomeView = () => {
     const [popup, setPopup] = useState<string | null>(null);
 
     useEffect(() => {
-        console.debug("component did mount");
-
         if (!cyRef.current) {
             console.error("target div is undefined");
             return;
@@ -102,28 +100,34 @@ const HomeView = () => {
 
         let cy = setUp(cyRef.current);
 
-        let reactions: Reaction[] = [];
-        add_reactions(reactions);
-
-        cy.on("tap", "edge", function (ev: any) {
+        // register events...
+        cy.on("tap", "edge,node", (ev: any) => {
             const edge = ev.target;
-            // console.log("tapped " + edge.id());
-
             const description = descriptions[edge.id()];
             if (description) {
                 setPopup(description);
             }
         });
 
+        // hide popup when escape is pressed
+        const keydownEvent = (ev: KeyboardEvent) => {
+            if (ev.key === "Escape") {
+                setPopup(null);
+            }
+        };
+        document.addEventListener("keydown", keydownEvent);
+
+        return () => {
+            document.removeEventListener("keydown", keydownEvent);
+        };
     }, []);
 
     return (
         <Fragment>
-            <div className="cy" ref={cyRef}>
-            </div>
+            <div className="cy" ref={cyRef}/>
             <Popup data={popup} hidePopup={() => setPopup(null)}/>
         </Fragment>
     );
-}
+};
 
 export default HomeView;
