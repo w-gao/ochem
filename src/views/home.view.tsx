@@ -2,13 +2,16 @@
 // Copyright (c) 2020-2021 w-gao
 //
 
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, Fragment, useState} from "react";
 import cytoscape from "cytoscape";
-import getReactions from "../data/reactions";
+import {add_reactions, Reaction} from "../data/reactions";
+import {Popup} from "../components/popup";
+import {descriptions} from "../data/descriptions";
+import {reload, save} from "../dev/devtools";
 import "./home.scss";
 
 
-const DEBUG_MODE = window.location.search.substring(1) === 'debug';
+const DEBUG_MODE = window.location.search.substring(1) === "debug";
 console.log(`debug=${DEBUG_MODE}`);
 
 
@@ -64,132 +67,62 @@ const setUp = (ref: HTMLDivElement | null) => {
         layout: {
             name: "preset",
             // padding: 5,
-            // animate: true,
+            animate: true,
         },
     });
 
     // Dev tools
     if (!DEBUG_MODE) {
-        return;
+        return cy;
     }
 
-    /**
-     * Reload canvas with the up-to-date data from reactions.ts.
-     */
-    let reload = () => {
-        let results: any = {
-            nodes: [],
-            edges: [],
-        }
-
-        let current = cy.json()['elements'];
-
-        /**
-         * Given a list of objects, return a key-value pair object where
-         * the obj.id is the key.
-         */
-        const list2obj = (list: []) => {
-            if (!list) {
-                return {};
-            }
-            return list.reduce((obj, val: any) => ({...obj, [val.data.id]: val}), {})
-        };
-
-        /**
-         * Create a default node with the given id.
-         */
-        const defaultNode = (id: number): any => {
-            return {data: {id: id}, position: {x: 0, y: 0}};
-        }
-
-        /**
-         * Create a default edge with the given id.
-         */
-        const defaultEdge = (id: number): any => {
-            return {data: {id: id}};
-        }
-
-        // live data
-        let current_nodes: any = list2obj(current.nodes);
-        let current_edges: any = list2obj(current.edges);
-
-        let elements = getReactions();
-        let setting_nodes: any[] = elements.nodes;
-        let setting_edges: any[] = elements.edges;
-
-        let element;
-        setting_nodes.forEach((val) => {
-            element = current_nodes[val.id] || defaultNode(val.id);
-
-            // update with new info
-            element.data.parent = val.parent;
-            element.data.label = val.label;
-
-            element.position.x = parseFloat((element.position.x).toFixed(2));
-            element.position.y = parseFloat((element.position.y).toFixed(2));
-
-            // element.selectable = false;
-            // element.grabbable = false;
-
-            results.nodes.push(element);
-        });
-
-        setting_edges.forEach((val) => {
-            element = current_edges[val.id] || defaultEdge(val.id);
-
-            // update with new info
-            element.data.source = val.source;
-            element.data.target = val.target;
-            element.data.label = val.label;
-
-            element.data.cpd = val.cpd || undefined;
-            element.data.cpw = val.cpw || undefined;
-
-            // element.selectable = false;
-            // element.grabbable = false;
-
-            results.edges.push(element);
-        });
-
-        // console.log(JSON.stringify(results, null, 4));
-        cy.elements().remove();
-        cy.add(results);
-    };
-
-    /**
-     * Save canvas positions to localStorage, so it can be re-imported back to our app.
-     */
-    let save = () => {
-        reload();
-        window.localStorage.setItem("elements", JSON.stringify(cy.json()['elements']));
-    };
-
     let win: any = window;
-    win.cy = cy;
-    // win.reload = reload;
-    win.save = save;
+    // win.cy = cy;
+    win.reload = () => reload(cy);
+    win.save = () => save(cy);
 
     setTimeout(() => {
-        reload();
-    }, 100)
+        win.reload();
+    }, 100);
+
+    return cy;
 }
 
 const HomeView = () => {
-    let cyRef = useRef(null);
+    const cyRef = useRef(null);
+    const [popup, setPopup] = useState<string | null>(null);
 
     useEffect(() => {
+        console.debug("component did mount");
+
         if (!cyRef.current) {
             console.error("target div is undefined");
             return;
         }
 
-        setUp(cyRef.current);
+        let cy = setUp(cyRef.current);
+
+        let reactions: Reaction[] = [];
+        add_reactions(reactions);
+
+        cy.on("tap", "edge", function (ev: any) {
+            const edge = ev.target;
+            // console.log("tapped " + edge.id());
+
+            const description = descriptions[edge.id()];
+            if (description) {
+                setPopup(description);
+            }
+        });
 
     }, []);
 
     return (
-        <div className="cy" ref={cyRef}>
-        </div>
+        <Fragment>
+            <div className="cy" ref={cyRef}>
+            </div>
+            <Popup data={popup} hidePopup={() => setPopup(null)}/>
+        </Fragment>
     );
 }
 

@@ -20,7 +20,7 @@
         },
         {
             "data": {
-                "id": "pri-Br",
+                "id": "priBr",
                 "parent": "bromide",
                 "label": "1°-Br"
             },
@@ -39,7 +39,7 @@
         },
         {
             "data": {
-                "id": "sec-Br",
+                "id": "secBr",
                 "parent": "bromide",
                 "label": "2°-Br"
             },
@@ -58,7 +58,7 @@
         },
         {
             "data": {
-                "id": "tert-Br",
+                "id": "tertBr",
                 "parent": "bromide",
                 "label": "3°-Br"
             },
@@ -77,7 +77,7 @@
         },
         {
             "data": {
-                "id": "aryl-Br",
+                "id": "arylBr",
                 "parent": "bromide",
                 "label": "R-Br (Aryl)"
             },
@@ -114,7 +114,7 @@
         },
         {
             "data": {
-                "id": "mono-alkene",
+                "id": "monoAlkene",
                 "parent": "alkene",
                 "label": "Mono-sub'd \nalkene"
             },
@@ -133,7 +133,7 @@
         },
         {
             "data": {
-                "id": "di-alkene",
+                "id": "diAlkene",
                 "parent": "alkene",
                 "label": "Di-sub'd \nalkene"
             },
@@ -152,7 +152,7 @@
         },
         {
             "data": {
-                "id": "tri-alkene",
+                "id": "triAlkene",
                 "parent": "alkene",
                 "label": "Tri-sub'd \nalkene"
             },
@@ -208,7 +208,7 @@
         },
         {
             "data": {
-                "id": "pri-OH",
+                "id": "priOH",
                 "parent": "alcohol_nonaryl",
                 "label": "1°-OH"
             },
@@ -227,7 +227,7 @@
         },
         {
             "data": {
-                "id": "sec-OH",
+                "id": "secOH",
                 "parent": "alcohol_nonaryl",
                 "label": "2°-OH"
             },
@@ -246,7 +246,7 @@
         },
         {
             "data": {
-                "id": "tert-OH",
+                "id": "tertOH",
                 "parent": "alcohol_nonaryl",
                 "label": "3°-OH"
             },
@@ -265,7 +265,7 @@
         },
         {
             "data": {
-                "id": "aryl-OH",
+                "id": "arylOH",
                 "parent": "alcohol",
                 "label": "R-OH (Aryl)"
             },
@@ -289,7 +289,7 @@
             },
             "position": {
                 "x": 100.35,
-                "y": -177.52
+                "y": -177.53
             },
             "group": "nodes",
             "removed": false,
@@ -361,8 +361,8 @@
     "edges": [
         {
             "data": {
-                "id": "MKxGICEv",
-                "source": "pri-OH",
+                "id": "priOH__aldehyde",
+                "source": "priOH",
                 "target": "aldehyde",
                 "label": "1. NaBH₄\n2. H₃O+",
                 "cpd": "5em"
@@ -382,9 +382,9 @@
         },
         {
             "data": {
-                "id": "fBI3a8St",
+                "id": "aldehyde__priOH",
                 "source": "aldehyde",
-                "target": "pri-OH",
+                "target": "priOH",
                 "label": "PCC\n  [o]"
             },
             "position": {
@@ -402,9 +402,9 @@
         },
         {
             "data": {
-                "id": "paVFFoFY",
+                "id": "formaldehyde__priOH",
                 "source": "formaldehyde",
-                "target": "pri-OH",
+                "target": "priOH",
                 "label": "1. grignard\n2. H₃O+",
                 "cpw": "0.2"
             },
@@ -423,9 +423,9 @@
         },
         {
             "data": {
-                "id": "WPq2DzG8",
+                "id": "aldehyde__secOH",
                 "source": "aldehyde",
-                "target": "sec-OH",
+                "target": "secOH",
                 "label": "1. grignard\n2. H₃O+",
                 "cpd": "-8em"
             },
@@ -444,9 +444,9 @@
         },
         {
             "data": {
-                "id": "JKv9J4R8",
+                "id": "ketone__tertOH",
                 "source": "ketone",
-                "target": "tert-OH",
+                "target": "tertOH",
                 "label": "1. grignard\n2. H₃O+"
             },
             "position": {
