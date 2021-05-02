@@ -6,8 +6,8 @@
                 "label": "Bromides"
             },
             "position": {
-                "x": 609.03,
-                "y": -312.93
+                "x": 777.92,
+                "y": -146.3
             },
             "group": "nodes",
             "removed": false,
@@ -25,8 +25,8 @@
                 "label": "1°-Br"
             },
             "position": {
-                "x": 611.23,
-                "y": -447.06
+                "x": 777.56,
+                "y": -313.09
             },
             "group": "nodes",
             "removed": false,
@@ -44,8 +44,8 @@
                 "label": "2°-Br"
             },
             "position": {
-                "x": 608.3,
-                "y": -364.98
+                "x": 777.89,
+                "y": -206.04
             },
             "group": "nodes",
             "removed": false,
@@ -63,8 +63,8 @@
                 "label": "3°-Br"
             },
             "position": {
-                "x": 606.83,
-                "y": -272.63
+                "x": 778.12,
+                "y": -95.33
             },
             "group": "nodes",
             "removed": false,
@@ -82,8 +82,8 @@
                 "label": "R-Br (Aryl)"
             },
             "position": {
-                "x": 609.82,
-                "y": -178.79
+                "x": 778.28,
+                "y": 20.49
             },
             "group": "nodes",
             "removed": false,
@@ -100,8 +100,8 @@
                 "label": "Alkenes"
             },
             "position": {
-                "x": 92.44,
-                "y": 68.19
+                "x": 44.97,
+                "y": 190.74
             },
             "group": "nodes",
             "removed": false,
@@ -119,8 +119,8 @@
                 "label": "Mono-sub'd \nalkene"
             },
             "position": {
-                "x": -101.89,
-                "y": 67.53
+                "x": 53.5,
+                "y": 146.47
             },
             "group": "nodes",
             "removed": false,
@@ -138,8 +138,8 @@
                 "label": "Di-sub'd \nalkene"
             },
             "position": {
-                "x": 94.31,
-                "y": 68
+                "x": -159.2,
+                "y": 233.95
             },
             "group": "nodes",
             "removed": false,
@@ -157,8 +157,8 @@
                 "label": "Tri-sub'd \nalkene"
             },
             "position": {
-                "x": 286.78,
-                "y": 68.86
+                "x": 249.14,
+                "y": 235.01
             },
             "group": "nodes",
             "removed": false,
@@ -175,8 +175,8 @@
                 "label": "Alcohols"
             },
             "position": {
-                "x": 100.67,
-                "y": -452.42
+                "x": 128.63,
+                "y": -449.52
             },
             "group": "nodes",
             "removed": false,
@@ -194,8 +194,8 @@
                 "label": ""
             },
             "position": {
-                "x": 14.78,
-                "y": -452.42
+                "x": 31.78,
+                "y": -449.52
             },
             "group": "nodes",
             "removed": false,
@@ -213,8 +213,8 @@
                 "label": "1°-OH"
             },
             "position": {
-                "x": 25.52,
-                "y": -485.77
+                "x": 46.17,
+                "y": -477.72
             },
             "group": "nodes",
             "removed": false,
@@ -232,8 +232,8 @@
                 "label": "2°-OH"
             },
             "position": {
-                "x": -109.25,
-                "y": -419.08
+                "x": -176.38,
+                "y": -421.32
             },
             "group": "nodes",
             "removed": false,
@@ -251,8 +251,8 @@
                 "label": "3°-OH"
             },
             "position": {
-                "x": 138.8,
-                "y": -419.86
+                "x": 239.94,
+                "y": -424.51
             },
             "group": "nodes",
             "removed": false,
@@ -270,8 +270,8 @@
                 "label": "R-OH (Aryl)"
             },
             "position": {
-                "x": 322.09,
-                "y": -452.88
+                "x": 445.15,
+                "y": -450.64
             },
             "group": "nodes",
             "removed": false,
@@ -288,8 +288,8 @@
                 "label": "Carbonyls (no LG)"
             },
             "position": {
-                "x": 100.35,
-                "y": -177.53
+                "x": 86.64,
+                "y": -146.14
             },
             "group": "nodes",
             "removed": false,
@@ -307,8 +307,8 @@
                 "label": "Formaldehyde"
             },
             "position": {
-                "x": 97.71,
-                "y": -204.72
+                "x": 90.69,
+                "y": -186.14
             },
             "group": "nodes",
             "removed": false,
@@ -326,8 +326,8 @@
                 "label": "Aldehyde"
             },
             "position": {
-                "x": -75.9,
-                "y": -152.23
+                "x": -152.08,
+                "y": -108.04
             },
             "group": "nodes",
             "removed": false,
@@ -345,8 +345,137 @@
                 "label": "Ketone"
             },
             "position": {
-                "x": 276.6,
-                "y": -150.33
+                "x": 325.36,
+                "y": -106.14
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "carboxylic_acid",
+                "label": "Carboxylic acid\nR-(COOH)"
+            },
+            "position": {
+                "x": -633.27,
+                "y": -497.32
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "acid_chloride",
+                "label": "Acid chloride\n[metro station]"
+            },
+            "position": {
+                "x": -792.89,
+                "y": -278.05
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "ester",
+                "label": "Esters"
+            },
+            "position": {
+                "x": -1157.07,
+                "y": -166.03
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "amide",
+                "label": "Amides"
+            },
+            "position": {
+                "x": -824.91,
+                "y": 92.46
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "priAmide",
+                "parent": "amide",
+                "label": "1°-amide"
+            },
+            "position": {
+                "x": -1066.79,
+                "y": 92.11
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "secAmide",
+                "parent": "amide",
+                "label": "2°-amide"
+            },
+            "position": {
+                "x": -824.96,
+                "y": 91.68
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "tertAmide",
+                "parent": "amide",
+                "label": "3°-amide"
+            },
+            "position": {
+                "x": -583.04,
+                "y": 93.24
             },
             "group": "nodes",
             "removed": false,
@@ -385,7 +514,7 @@
                 "id": "aldehyde__priOH",
                 "source": "aldehyde",
                 "target": "priOH",
-                "label": "PCC\n  [o]"
+                "label": "PCC\n[o]"
             },
             "position": {
                 "x": 0,
@@ -448,6 +577,86 @@
                 "source": "ketone",
                 "target": "tertOH",
                 "label": "1. grignard\n2. H₃O+"
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "edges",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": true,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "priOH__carboxylic_acid",
+                "source": "priOH",
+                "target": "carboxylic_acid",
+                "label": "CrO₃/H₃O+\n[o]"
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "edges",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": true,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "carboxylic_acid__acid_chloride",
+                "source": "carboxylic_acid",
+                "target": "acid_chloride",
+                "label": "SOCl₂\n- SO₂\n- HCl"
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "edges",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": true,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "acid_chloride__ester",
+                "source": "acid_chloride",
+                "target": "ester",
+                "label": "R-OH\npyr.\n- HCl"
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "edges",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": true,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "acid_chloride__priAmide",
+                "source": "acid_chloride",
+                "target": "priAmide",
+                "label": "xs NH₃\n- HCl"
             },
             "position": {
                 "x": 0,

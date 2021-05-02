@@ -7,6 +7,7 @@ import {Compound, Reaction, sub, deg, reagent} from "../lib/utils";
 
 // master list of CHEM 8B reagents!
 const REAGENTS = {
+    // alkenes -> R-OH
     "OM/DM": reagent("OM/DM"),
     "HB=": reagent("HB: / [o]"),  // hydroboration oxidation
 
@@ -20,7 +21,7 @@ const REAGENTS = {
     "E1": reagent("E1"),  // E1 reaction
 
     // oxidation
-    "PCC": reagent("PCC", "  [o]"),
+    "PCC": reagent("PCC", "[o]"),
     "CrO3": reagent(`CrO${sub(3)}/H${sub(3)}O+`, "[o]"),
 
     // reducing agents
@@ -30,6 +31,18 @@ const REAGENTS = {
     // acids
     "HA": reagent("HA"),
     "TsOH": reagent("TsOH"),
+
+    // carboxylic acid / acid chloride reactions
+    // thionyl chloride - turns carboxylic acid into acid chloride
+    "SOCl2": reagent(`SOCl${sub(2)}`, `- SO${sub(2)}`, "- HCl"),
+
+    "alcohol/pyr": reagent("R-OH", "pyr.", "- HCl"),  // to esters
+    "NH3": reagent(`xs NH${sub(3)}`, '- HCl'),  // to pri-amides
+
+    // grignard -> acid (w/ 1 extra c-atom)
+    "CO2": reagent(`1) CO${sub(2)}`, `2) H${sub(3)}O+`),
+    // bromide -> acid (w/ 1 extra c-atom)
+    "NaCN": reagent("NaCN", `2) 2H${sub(3)}O+`, `- NH${4}OH`),
 
 };
 
@@ -54,6 +67,18 @@ const add_alkene_compounds = (list: Compound[]) => {
     );
 };
 
+const add_benzylic_compounds = (list: Compound[]) => {
+    list.push(
+        // benzene
+        // w/ ketone
+        // w/ acid
+        // w/ carbon chain
+        // aryl Br
+        // aryl NO2
+        // aryl NH2
+    );
+};
+
 const add_alcohol_compounds = (list: Compound[]) => {
     list.push(
         {id: "alcohol", label: "Alcohols"},
@@ -75,6 +100,28 @@ const add_carbonyl_no_LG_compounds = (list: Compound[]) => {
     );
 };
 
+const add_carboxylic_acid_compounds = (list: Compound[]) => {
+    list.push(
+        {id: "carboxylic_acid", label: "Carboxylic acid\nR-(COOH)"},
+        {id: "acid_chloride", label: "Acid chloride\n[metro station]"},
+    );
+};
+
+const add_ester_compounds = (list: Compound[]) => {
+    list.push(
+        {id: "ester", label: "Esters"},
+    );
+};
+
+const add_amide_compounds = (list: Compound[]) => {
+    list.push(
+        {id: "amide", label: "Amides"},
+        {id: "priAmide", label: `1${deg()}-amide`, parent: "amide"},
+        {id: "secAmide", label: `2${deg()}-amide`, parent: "amide"},
+        {id: "tertAmide", label: `3${deg()}-amide`, parent: "amide"},
+    );
+};
+
 
 export const add_reactions = (edges: Reaction[]) => {
     edges.push(
@@ -86,6 +133,15 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"], cpw: "0.2"},
         {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"], cpd: "-8em"},
         {id: "ketone__tertOH", source: "ketone", target: "tertOH", label: REAGENTS["grignard"]},
+
+
+        // carboxylic acids
+        {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"]},
+        {id: "carboxylic_acid__acid_chloride", source: "carboxylic_acid", target: "acid_chloride", label: REAGENTS["SOCl2"]},
+        {id: "acid_chloride__ester", source: "acid_chloride", target: "ester", label: REAGENTS["alcohol/pyr"]},
+        {id: "acid_chloride__priAmide", source: "acid_chloride", target: "priAmide", label: REAGENTS["NH3"]},
+
+
     );
 };
 
@@ -96,8 +152,15 @@ const getReactions = () => {
 
     add_bromide_compounds(nodes);
     add_alkene_compounds(nodes);
+    add_benzylic_compounds(nodes);
     add_alcohol_compounds(nodes);
+    // add_ether_compounds(nodes);
     add_carbonyl_no_LG_compounds(nodes);
+    add_carboxylic_acid_compounds(nodes);
+
+    add_ester_compounds(nodes);
+    add_amide_compounds(nodes);
+    // add_amine_compounds(nodes);
 
     add_reactions(edges);
 

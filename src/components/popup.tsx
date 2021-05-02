@@ -11,7 +11,7 @@ export const Popup = (props: any) => {
     let hidePopup = props.hidePopup;
 
     if (!data) {
-        return <></>;
+        return <div/>;
     }
 
     return (

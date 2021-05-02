@@ -23,7 +23,7 @@ const setUp = (ref: HTMLDivElement | null) => {
 
     const cy: any = cytoscape({
         container: ref,
-        boxSelectionEnabled: false,
+        boxSelectionEnabled: true,
         minZoom: 0.3,  // out
         maxZoom: 5,
         style: [
@@ -35,9 +35,16 @@ const setUp = (ref: HTMLDivElement | null) => {
                     "text-halign": "center",
                     "text-wrap": "wrap",
                     "shape": "rectangle",
-                    "width": "120px",
-                    "height": "40px",
+                    "width": "140px",
+                    "height": "60px",
                     "backgroundColor": "#9EF4FF",  // lightblue
+                }
+            },
+            {
+                // when node is selected
+                selector: ":selected",
+                css: {
+                    "backgroundColor": "#7BC7D3",
                 }
             },
             {
@@ -104,9 +111,9 @@ const HomeView = () => {
         cy.on("tap", "edge,node", (ev: any) => {
             const edge = ev.target;
             const description = descriptions[edge.id()];
-            if (description) {
+            // if (description) {
                 setPopup(description);
-            }
+            // }
         });
 
         // hide popup when escape is pressed
