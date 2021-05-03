@@ -172,7 +172,8 @@
         {
             "data": {
                 "id": "benzene",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Benzene-Kekule-2D-skeletal.png/422px-Benzene-Kekule-2D-skeletal.png"
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Benzene-Kekule-2D-skeletal.png/422px-Benzene-Kekule-2D-skeletal.png",
+                "label": "Benzene"
             },
             "position": {
                 "x": -171.7,
@@ -190,7 +191,8 @@
         {
             "data": {
                 "id": "toluene",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Toluol.svg/800px-Toluol.svg.png"
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Toluol.svg/800px-Toluol.svg.png",
+                "label": "Toluene"
             },
             "position": {
                 "x": -943.96,
@@ -226,7 +228,8 @@
         {
             "data": {
                 "id": "benezolic_acid",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Benzoic_acid.svg"
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Benzoic_acid.svg",
+                "label": "Benezolic acid"
             },
             "position": {
                 "x": -96.68,
@@ -244,7 +247,8 @@
         {
             "data": {
                 "id": "bromobenzene",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Brombenzol_-_Bromobenzene.svg/800px-Brombenzol_-_Bromobenzene.svg.png"
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Brombenzol_-_Bromobenzene.svg/800px-Brombenzol_-_Bromobenzene.svg.png",
+                "label": "Bromobenzene"
             },
             "position": {
                 "x": 323.77,
@@ -262,7 +266,8 @@
         {
             "data": {
                 "id": "nitrobenzene",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png"
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png",
+                "label": "Nitrobenzene"
             },
             "position": {
                 "x": 664.21,
@@ -280,7 +285,8 @@
         {
             "data": {
                 "id": "aminobenzene",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png"
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png",
+                "label": "Aminobenzene"
             },
             "position": {
                 "x": -849.48,
@@ -298,7 +304,8 @@
         {
             "data": {
                 "id": "benzyl_alcohol",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Alkohol_benzylowy.svg/2560px-Alkohol_benzylowy.svg.png"
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Alkohol_benzylowy.svg/2560px-Alkohol_benzylowy.svg.png",
+                "label": "Benzyl alcohol"
             },
             "position": {
                 "x": -546.72,
@@ -522,11 +529,12 @@
         {
             "data": {
                 "id": "acid_chloride",
-                "label": "Acid chloride\n[metro station]"
+                "label": "Acid chloride\n[metro station]",
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/General_structural_formula_of_carboxylic_acid_chlorides.svg/1920px-General_structural_formula_of_carboxylic_acid_chlorides.svg.png"
             },
             "position": {
-                "x": -792.89,
-                "y": -278.05
+                "x": -850.18,
+                "y": -215.39
             },
             "group": "nodes",
             "removed": false,
@@ -543,8 +551,8 @@
                 "label": "Esters"
             },
             "position": {
-                "x": -1157.07,
-                "y": -166.03
+                "x": -1257.32,
+                "y": -176.77
             },
             "group": "nodes",
             "removed": false,
@@ -561,8 +569,8 @@
                 "label": "Amides"
             },
             "position": {
-                "x": -824.91,
-                "y": 92.46
+                "x": -950.74,
+                "y": 160.57
             },
             "group": "nodes",
             "removed": false,
@@ -580,8 +588,8 @@
                 "label": "1°-amide"
             },
             "position": {
-                "x": -1066.79,
-                "y": 92.11
+                "x": -1235.31,
+                "y": 160.14
             },
             "group": "nodes",
             "removed": false,
@@ -599,8 +607,8 @@
                 "label": "2°-amide"
             },
             "position": {
-                "x": -824.96,
-                "y": 91.68
+                "x": -968.93,
+                "y": 160.98
             },
             "group": "nodes",
             "removed": false,
@@ -618,8 +626,8 @@
                 "label": "3°-amide"
             },
             "position": {
-                "x": -583.04,
-                "y": 93.24
+                "x": -666.17,
+                "y": 161.01
             },
             "group": "nodes",
             "removed": false,

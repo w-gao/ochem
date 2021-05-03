@@ -59,12 +59,12 @@ export const reload = (cy: any, lock: boolean = false) => {
     settings_nodes.forEach((val) => {
         element = current_nodes[val.id] || defaultNode(val.id);
 
-        // override label if image is provided
+        if (!val.label.startsWith("_")) {
+            element.data.label = val.label;
+        }
+
         if (val.imgUrl) {
             element.data.imgUrl = val.imgUrl;
-            element.data.label = undefined;
-        } else if (val.label) {
-            element.data.label = val.label;
         }
 
         element.data.parent = val.parent;

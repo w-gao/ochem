@@ -73,7 +73,7 @@ const add_benzylic_compounds = (list: Compound[]) => {
 
         {id: "benzene", label: "Benzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Benzene-Kekule-2D-skeletal.png/422px-Benzene-Kekule-2D-skeletal.png"},
         {id: "toluene", label: "Toluene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Toluol.svg/800px-Toluol.svg.png"},
-        {id: "propiophenone", label: "Propiophenone", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png"},
+        {id: "propiophenone", label: "_Propiophenone", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png"},
         {id: "benezolic_acid", label: "Benezolic acid", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Benzoic_acid.svg"},
         {id: "bromobenzene", label: "Bromobenzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Brombenzol_-_Bromobenzene.svg/800px-Brombenzol_-_Bromobenzene.svg.png"},
         {id: "nitrobenzene", label: "Nitrobenzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png"},
@@ -106,7 +106,7 @@ const add_carbonyl_no_LG_compounds = (list: Compound[]) => {
 const add_carboxylic_acid_compounds = (list: Compound[]) => {
     list.push(
         {id: "carboxylic_acid", label: "Carboxylic acid\nR-(COOH)"},
-        {id: "acid_chloride", label: "Acid chloride\n[metro station]"},
+        {id: "acid_chloride", label: "Acid chloride\n[metro station]", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/General_structural_formula_of_carboxylic_acid_chlorides.svg/1920px-General_structural_formula_of_carboxylic_acid_chlorides.svg.png"},
     );
 };
 

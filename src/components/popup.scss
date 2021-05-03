@@ -55,6 +55,10 @@
             font-weight: normal;
         }
 
+        > img {
+            max-width: 480px;
+        }
+
         .note {
             &:before {
                 content: 'NOTE: ';

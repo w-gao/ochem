@@ -26,6 +26,8 @@ const setUp = (ref: HTMLDivElement | null) => {
         boxSelectionEnabled: true,
         minZoom: 0.3,  // out
         maxZoom: 5,
+        zoom: 0.8,
+        pan: {x: 363, y: 587},
         // the ordering of the styles implies the priority.
         style: [
             {
@@ -51,8 +53,9 @@ const setUp = (ref: HTMLDivElement | null) => {
             {
                 selector: "node[imgUrl]",
                 css: {
-                    "padding-top": "30px",
-                    "padding-bottom": "30px",
+                    "text-valign": "top",
+                    "padding-top": "20px",
+                    "padding-bottom": "20px",
                     // @ts-ignore: typings not up to date.
                     "background-width-relative-to": "inner",
                     "background-image": "data(imgUrl)",
@@ -92,8 +95,8 @@ const setUp = (ref: HTMLDivElement | null) => {
         elements: fetch("generated_reactions.json").then(res => res.json()),
         layout: {
             name: "preset",
-            // padding: 5,
-            animate: true,
+            // animate: true,
+            fit: false,
         },
     });
 
