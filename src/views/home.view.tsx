@@ -122,13 +122,13 @@ const HomeView = () => {
             const element = document.getElementById("graph");
             if (!element) return;
 
-            const factor = 20 * cy.zoom();
-            element.style.backgroundSize = `${factor}px ${factor}px`;
+            const factor = 60 * cy.zoom();
+            element.style.backgroundSize = `${factor}px ${factor}px, ${factor}px ${factor}px`;
 
             const pan = cy.pan();
             const x = pan.x;
             const y = pan.y;
-            element.style.backgroundPosition = `${x}px ${y}px`;
+            element.style.backgroundPosition = `${x}px ${y}px, ${x}px ${y}px`;
         });
 
 
