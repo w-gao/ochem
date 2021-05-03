@@ -15,7 +15,7 @@ export const Popup = (props: any) => {
     }
 
     return (
-        <div className="container">
+        <div className="popupContainer">
             <div className="overlay" onClick={hidePopup}/>
             <div className="popup">
                 <div className="closeButton" onClick={hidePopup}>{"\u2716"}</div>

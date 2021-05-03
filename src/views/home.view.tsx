@@ -2,7 +2,7 @@
 // Copyright (c) 2020-2021 w-gao
 //
 
-import {useEffect, useRef, Fragment, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import cytoscape from "cytoscape";
 import {Popup} from "../components/popup";
 import {descriptions} from "../data/descriptions";
@@ -37,14 +37,16 @@ const setUp = (ref: HTMLDivElement | null) => {
                     "shape": "rectangle",
                     "width": "140px",
                     "height": "60px",
-                    "backgroundColor": "#9EF4FF",  // lightblue
+                    "backgroundColor": "#d1f8ff",
+                    "border-width": "2px",
+                    "border-color": "#232323",
                 }
             },
             {
                 // when node is selected
                 selector: ":selected",
                 css: {
-                    "backgroundColor": "#7BC7D3",
+                    "backgroundColor": "#7abff7",
                 }
             },
             {
@@ -52,8 +54,8 @@ const setUp = (ref: HTMLDivElement | null) => {
                 css: {
                     "text-valign": "top",
                     "text-halign": "center",
-                    "backgroundColor": "#FFFFFF",
                     "shape": "round-rectangle",
+                    "backgroundColor": "#FFFFFF"
                 }
             },
             {
@@ -112,9 +114,23 @@ const HomeView = () => {
             const edge = ev.target;
             const description = descriptions[edge.id()];
             // if (description) {
-                setPopup(description);
+            setPopup(description);
             // }
         });
+
+        cy.on("zoom pan", () => {
+            const element = document.getElementById("graph");
+            if (!element) return;
+
+            const factor = 20 * cy.zoom();
+            element.style.backgroundSize = `${factor}px ${factor}px`;
+
+            const pan = cy.pan();
+            const x = pan.x;
+            const y = pan.y;
+            element.style.backgroundPosition = `${x}px ${y}px`;
+        });
+
 
         // hide popup when escape is pressed
         const keydownEvent = (ev: KeyboardEvent) => {
@@ -130,10 +146,10 @@ const HomeView = () => {
     }, []);
 
     return (
-        <Fragment>
+        <div id="graph">
             <div className="cy" ref={cyRef}/>
             <Popup data={popup} hidePopup={() => setPopup(null)}/>
-        </Fragment>
+        </div>
     );
 };
 

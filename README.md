@@ -6,4 +6,4 @@ Copyright (c) 2021 w-gao
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/20177171/116796609-98c61e80-aa92-11eb-8441-47fd8867c057.png)
+![image](https://user-images.githubusercontent.com/20177171/116925257-cedbdd80-ac0d-11eb-8bce-fb829221376a.png)
