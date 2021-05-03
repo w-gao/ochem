@@ -171,11 +171,155 @@
         },
         {
             "data": {
+                "id": "benzene",
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Benzene-Kekule-2D-skeletal.png/422px-Benzene-Kekule-2D-skeletal.png"
+            },
+            "position": {
+                "x": -171.7,
+                "y": -972.62
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": "imgHolder"
+        },
+        {
+            "data": {
+                "id": "toluene",
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Toluol.svg/800px-Toluol.svg.png"
+            },
+            "position": {
+                "x": -943.96,
+                "y": -1112.41
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "propiophenone",
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png"
+            },
+            "position": {
+                "x": 342.14,
+                "y": -1304.89
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "benezolic_acid",
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Benzoic_acid.svg"
+            },
+            "position": {
+                "x": -96.68,
+                "y": -1353.97
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "bromobenzene",
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Brombenzol_-_Bromobenzene.svg/800px-Brombenzol_-_Bromobenzene.svg.png"
+            },
+            "position": {
+                "x": 323.77,
+                "y": -742.07
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "nitrobenzene",
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png"
+            },
+            "position": {
+                "x": 664.21,
+                "y": -1025.31
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "aminobenzene",
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png"
+            },
+            "position": {
+                "x": -849.48,
+                "y": -806.63
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "benzyl_alcohol",
+                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Alkohol_benzylowy.svg/2560px-Alkohol_benzylowy.svg.png"
+            },
+            "position": {
+                "x": -546.72,
+                "y": -1339.6
+            },
+            "group": "nodes",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": false,
+            "classes": ""
+        },
+        {
+            "data": {
                 "id": "alcohol",
                 "label": "Alcohols"
             },
             "position": {
-                "x": 128.63,
+                "x": 128.38,
                 "y": -449.52
             },
             "group": "nodes",

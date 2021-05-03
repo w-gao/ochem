@@ -22,7 +22,7 @@ const list2obj = (list: []) => {
 /**
  * Create a default node with the given id.
  */
-const defaultNode = (id: number): any => {
+const defaultNode = (id: string): any => {
     return {data: {id: id}, position: {x: 0, y: 0}};
 };
 
@@ -30,7 +30,7 @@ const defaultNode = (id: number): any => {
 /**
  * Create a default edge with the given id.
  */
-const defaultEdge = (id: number): any => {
+const defaultEdge = (id: string): any => {
     return {data: {id: id}};
 };
 
@@ -59,9 +59,15 @@ export const reload = (cy: any, lock: boolean = false) => {
     settings_nodes.forEach((val) => {
         element = current_nodes[val.id] || defaultNode(val.id);
 
-        element.data.parent = val.parent;
-        element.data.label = val.label;
+        // override label if image is provided
+        if (val.imgUrl) {
+            element.data.imgUrl = val.imgUrl;
+            element.data.label = undefined;
+        } else if (val.label) {
+            element.data.label = val.label;
+        }
 
+        element.data.parent = val.parent;
         element.position.x = parseFloat((element.position.x).toFixed(2));
         element.position.y = parseFloat((element.position.y).toFixed(2));
 

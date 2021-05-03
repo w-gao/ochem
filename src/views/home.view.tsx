@@ -26,27 +26,43 @@ const setUp = (ref: HTMLDivElement | null) => {
         boxSelectionEnabled: true,
         minZoom: 0.3,  // out
         maxZoom: 5,
+        // the ordering of the styles implies the priority.
         style: [
             {
                 selector: "node",
                 css: {
-                    "content": "data(label)",
-                    "text-valign": "center",
-                    "text-halign": "center",
                     "text-wrap": "wrap",
                     "shape": "rectangle",
-                    "width": "140px",
-                    "height": "60px",
-                    "backgroundColor": "#d1f8ff",
+                    "background-color": "#D1F8FF",
                     "border-width": "2px",
-                    "border-color": "#232323",
+                    "border-color": "#4F4F4F",
+                    "width": "150px",
+                    "height": "65px",
                 }
             },
             {
-                // when node is selected
+                selector: "node[label]",
+                css: {
+                    "content": "data(label)",
+                    "text-valign": "center",
+                    "text-halign": "center",
+                }
+            },
+            {
+                selector: "node[imgUrl]",
+                css: {
+                    "padding-top": "30px",
+                    "padding-bottom": "30px",
+                    // @ts-ignore: typings not up to date.
+                    "background-width-relative-to": "inner",
+                    "background-image": "data(imgUrl)",
+                    "background-fit": "contain",
+                }
+            },
+            {
                 selector: ":selected",
                 css: {
-                    "backgroundColor": "#7abff7",
+                    "background-color": "#96CFFF",
                 }
             },
             {
@@ -55,7 +71,8 @@ const setUp = (ref: HTMLDivElement | null) => {
                     "text-valign": "top",
                     "text-halign": "center",
                     "shape": "round-rectangle",
-                    "backgroundColor": "#FFFFFF"
+                    "background-color": "#FFFFFF",
+                    "border-opacity": 0.8,
                 }
             },
             {

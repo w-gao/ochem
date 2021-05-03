@@ -10,6 +10,8 @@ export interface Compound {
     id: string;
     label: string;
     parent?: string;
+
+    imgUrl?: string;
 }
 
 
