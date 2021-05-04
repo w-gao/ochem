@@ -83,10 +83,11 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
                 css: {
                     "content": "data(label)",
                     "curve-style": "unbundled-bezier",
-                    "line-color": "#BFBFBF",
-                    "target-arrow-color": "#BFBFBF",
+                    "line-color": "#B2B2B2",
+                    "target-arrow-color": "#B2B2B2",
                     "text-wrap": "wrap",
                     "target-arrow-shape": "triangle",
+                    "arrow-scale": 2.5
                 }
             },
             {selector: "edge[cpd]", css: {"control-point-distances": "data(cpd)"}},
