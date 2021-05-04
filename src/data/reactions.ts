@@ -7,11 +7,15 @@ import {Compound, Reaction, sub, deg, reagent} from "../lib/utils";
 
 // master list of CHEM 8B reagents!
 const REAGENTS = {
+    // EAS
+    "Br2/FeBr3": reagent(`Br${sub(2)}`, `FeBr${sub(3)}`),
+    "CH3Cl/AlCl3": reagent(`CH${sub(3)}Cl`, `AlCl${sub(3)}`),  // FC-ALK
+    "R-COCl/AlCl3": reagent("R-COCl", `AlCl${sub(3)}`),  // FC-ACYL
+
     // alkenes -> R-OH
     "OM/DM": reagent("OM/DM"),
     "HB=": reagent("HB: / [o]"),  // hydroboration oxidation
 
-    "Br2/FeBr3": reagent(`Br${sub(2)}`, `FeBr${sub(3)}`),
     "PBr3": reagent(`PBr${sub(3)}`),
     "Mg": reagent("Mg", "ether"),
     "grignard": reagent("1. grignard", `2. H${sub(3)}O+`),
@@ -27,12 +31,17 @@ const REAGENTS = {
     // reducing reagents
     "NaBH4": reagent(`1. NaBH${sub(4)}`, `2. H${sub(3)}O+`),
     "LiAlH4": reagent(`1. LiAlH${sub(4)}`, `2. H${sub(3)}O+`),
+    // ketone -> alkane
+    "H2/Pd": reagent(`H${sub(2)}`, "Pd"),
 
     // acids
     "HA": reagent("HA"),
     "TsOH": reagent("TsOH"),
 
     // carboxylic acid / acid chloride reactions
+    "CO2": reagent(`1) CO${sub(2)}`, `2) H${sub(3)}O+`),
+    "NaCN": reagent("1) NaCN", `2) 2H${sub(3)}O+`, `- NH${4}OH`),
+
     // thionyl chloride - turns carboxylic acid into acid chloride
     "SOCl2": reagent(`SOCl${sub(2)}`, `- SO${sub(2)}`, "- HCl"),
 
@@ -41,10 +50,8 @@ const REAGENTS = {
     "H3CNH2": reagent(`xs CH${sub(3)}NH${sub(2)}`, '- HCl'),  // to sec-amides
     "(CH3)2NH": reagent(`xs (CH${sub(3)})${sub(2)}NH`, '- HCl'),  // to tert-amides
 
-    // grignard -> acid (w/ 1 extra c-atom)
-    "CO2": reagent(`1) CO${sub(2)}`, `2) H${sub(3)}O+`),
-    // bromide -> acid (w/ 1 extra c-atom)
-    "NaCN": reagent("NaCN", `2) 2H${sub(3)}O+`, `- NH${4}OH`),
+    // strong base - esters/amides -> carboxylic acids
+    "NaOH": reagent("NaOH"),
 
 };
 
@@ -77,9 +84,11 @@ const add_alkene_compounds = (list: Compound[]) => {
 const add_benzylic_compounds = (list: Compound[]) => {
     list.push(
         // {id: "benzylic", label: "Benzylic compounds"},
+        {id: "benzylic_carbon_chain", label: ""},
 
         {id: "benzene", label: "Benzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Benzene-Kekule-2D-skeletal.png/422px-Benzene-Kekule-2D-skeletal.png"},
-        {id: "toluene", label: "Toluene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Toluol.svg/800px-Toluol.svg.png"},
+        {id: "toluene", label: "Toluene", parent: "benzylic_carbon_chain", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Toluol.svg/800px-Toluol.svg.png"},
+        {id: "propylbenzene", label: "_Propylbenzene", parent: "benzylic_carbon_chain", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/1/10/Structural_formula_of_n-propylbenzene.svg"},
         {id: "propiophenone", label: "_Propiophenone", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png"},
         {id: "nitrobenzene", label: "Nitrobenzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png"},
         {id: "aminobenzene", label: "_Aminobenzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png"},
@@ -107,7 +116,7 @@ const add_ether_compounds = (list: Compound[]) => {
 
 const add_carbonyl_no_LG_compounds = (list: Compound[]) => {
     list.push(
-        {id: "carbonyl_noLG", label: "Carbonyls (no LG)"},
+        {id: "carbonyl_noLG", label: "Carbonyls (w/ no LG)"},
         {id: "formaldehyde", label: "Formaldehyde", parent: "carbonyl_noLG"},
         {id: "aldehyde", label: "Aldehyde", parent: "carbonyl_noLG"},
         {id: "ketone", label: "Ketone", parent: "carbonyl_noLG"},
@@ -145,8 +154,9 @@ export const add_reactions = (edges: Reaction[]) => {
     edges.push(
         // -- EAS --
         {id: "benzene__bromobenzene", source: "benzene", target: "bromobenzene", label: REAGENTS["Br2/FeBr3"]},
-        // FC-ALK
-        // FC-ACYL
+        {id: "benzene__toluene", source: "benzene", target: "toluene", label: REAGENTS["CH3Cl/AlCl3"]},  // FC-ALK
+        {id: "benzene__propiophenone", source: "benzene", target: "propiophenone", label: REAGENTS["R-COCl/AlCl3"]},  // FC-ACYL
+        {id: "propiophenone__propylbenzene", source: "propiophenone", target: "propylbenzene", label: REAGENTS["H2/Pd"]},
 
         // -- ALCOHOLS --
         // ~ alcohol synthesis
@@ -192,23 +202,30 @@ export const add_reactions = (edges: Reaction[]) => {
         //
 
         // ~carbonyl reactions
-        //
+        // carbonyls => alkenes (wittig)
 
         // -- CARBOXYLIC ACID --
         // ~ carboxylic acid synthesis
         {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"]},
         {id: "toluene__benzoic_acid", source: "toluene", target: "benzoic_acid", label: REAGENTS["CrO3"]},
-        // grignard --[ CO2 ]--> carboxylic acid
+        // grignard --[ CO2 ]--> carboxylic acid (w/ one extra c-atom)
         {id: "RMgBr__carboxylic_acid", source: "RMgBr", target: "carboxylic_acid", label: REAGENTS["CO2"]},
-        {id: "priBr__carboxylic_acid", source: "priBr", target: "carboxylic_acid", label: REAGENTS["NaCN"]},  // nitrile hydrolysis
+        {id: "priBr__carboxylic_acid", source: "priBr", target: "carboxylic_acid", label: REAGENTS["NaCN"]},  // nitrile hydrolysis (w/ one extra c-atom)
 
         // ~ carboxylic acid reactions
         {id: "carboxylic_acid__acid_chloride", source: "carboxylic_acid", target: "acid_chloride", label: REAGENTS["SOCl2"]},
         {id: "acid_chloride__ester", source: "acid_chloride", target: "ester", label: REAGENTS["alcohol/pyr"]},
+        // acid --[ amines ]--> amides
         {id: "acid_chloride__priAmide", source: "acid_chloride", target: "priAmide", label: REAGENTS["NH3"]},
         {id: "acid_chloride__secAmide", source: "acid_chloride", target: "secAmide", label: REAGENTS["H3CNH2"]},
         {id: "acid_chloride__tertAmide", source: "acid_chloride", target: "tertAmide", label: REAGENTS["(CH3)2NH"]},
 
+        // esters & amides --[ NaOH ]--> carboxylic acids
+        {id: "ester__carboxylic_acid", source: "ester", target: "carboxylic_acid", label: REAGENTS["NaOH"]},
+        {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH"], cpd: "-30em -5em", cpw: "0.7", sep: "-45% 0", tep: "-50% 0"},
+
+        // acyl substitution reactions (Nuc attacks & kicks out LG)
+        // strong Nuc adds twice; weak Nuc adds once
 
     );
 };

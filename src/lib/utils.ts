@@ -28,6 +28,10 @@ export interface Reaction {
     // control point distances & weights
     cpd?: string;
     cpw?: string;
+
+    // endpoints
+    sep?: string;
+    tep?: string;
 }
 
 

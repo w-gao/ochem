@@ -19,7 +19,7 @@ import "./home.scss";
  */
 const setUp = (ref: HTMLDivElement | null, settings: any) => {
     const debug = settings.debug;
-    console.log(`debug=${debug}`);
+    console.log(`debug=${debug ? 'true' : 'false'}`);
 
     const cy: any = cytoscape({
         container: ref,
@@ -89,11 +89,13 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
                     "target-arrow-color": "#B2B2B2",
                     "text-wrap": "wrap",
                     "target-arrow-shape": "triangle",
-                    "arrow-scale": 2.5
+                    "arrow-scale": 2.5,
                 }
             },
             {selector: "edge[cpd]", css: {"control-point-distances": "data(cpd)"}},
             {selector: "edge[cpw]", css: {"control-point-weights": "data(cpw)"}},
+            {selector: "edge[sep]", css: {"source-endpoint": "data(sep)"}},
+            {selector: "edge[tep]", css: {"target-endpoint": "data(tep)"}},
         ],
         elements: fetch("generated_reactions.json").then(res => res.json()),
         layout: {

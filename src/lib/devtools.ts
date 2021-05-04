@@ -68,8 +68,10 @@ export const reload = (cy: any, lock: boolean = false) => {
         }
 
         element.data.parent = val.parent;
-        element.position.x = parseFloat((element.position.x).toFixed(2));
-        element.position.y = parseFloat((element.position.y).toFixed(2));
+        // element.position.x = parseFloat((element.position.x).toFixed(0));
+        // element.position.y = parseFloat((element.position.y).toFixed(0));
+        element.position.x = Math.floor(element.position.x);
+        element.position.y = Math.floor(element.position.y);
 
         element.selectable = !lock;
         element.grabbable = !lock;
@@ -87,6 +89,10 @@ export const reload = (cy: any, lock: boolean = false) => {
         // control point distances & weights
         element.data.cpd = val.cpd || undefined;
         element.data.cpw = val.cpw || undefined;
+
+        // endpoints
+        element.data.sep = val.sep || undefined;
+        element.data.tep = val.tep || undefined;
 
         element.selectable = !lock;
         element.grabbable = !lock;
