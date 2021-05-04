@@ -77,3 +77,35 @@ export const deg = (): string => {
 export const reagent = (...args: string[]): string => {
     return args.join("\n");
 }
+
+
+/**
+ * Return an object containing the parsed URL of the current page.
+ */
+export const parseUrl = () => {
+    const url: any = {};
+
+    if (typeof (window) === undefined) {
+        return url;
+    }
+
+    const loc = window.location;
+    url.root = loc.origin + loc.pathname;
+    const query: any[] = loc.search.substring(1).split('&');
+    url.query = {};
+    for (let i = 0; i < query.length; i++) {
+        const args = query[i].split('=');
+        if (args[0]) {
+            if (args[1] === undefined) {
+                args[1] = true;
+            } else if (!isNaN(args[1])) {
+                args[1] = parseFloat(args[1]);
+            }
+            url.query[args[0]] = args[1];
+        }
+    }
+    url.hash = loc.hash ? loc.hash.substring(1) : undefined;
+    url.host = loc.host;
+
+    return url;
+};

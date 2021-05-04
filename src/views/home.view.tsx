@@ -7,24 +7,24 @@ import cytoscape from "cytoscape";
 import {Popup} from "../components/popup";
 import {descriptions} from "../data/descriptions";
 import {reload, save} from "../lib/devtools";
+import {parseUrl} from "../lib/utils";
 import "./home.scss";
-
-
-const DEBUG_MODE = window.location.search.substring(1) === "debug";
-console.log(`debug=${DEBUG_MODE}`);
 
 
 /**
  * Given an HTML div element reference, set up cytoscape.
  *
  * @param ref an HTML div element.  Can be null.
+ * @param settings user requested settings from the URL.
  */
-const setUp = (ref: HTMLDivElement | null) => {
+const setUp = (ref: HTMLDivElement | null, settings: any) => {
+    const debug = settings.debug;
+    console.log(`debug=${debug}`);
 
     const cy: any = cytoscape({
         container: ref,
         boxSelectionEnabled: true,
-        minZoom: 0.2,  // out
+        minZoom: 0.3,  // out
         maxZoom: 5,
         zoom: 0.8,
         pan: {x: 363, y: 587},
@@ -95,24 +95,24 @@ const setUp = (ref: HTMLDivElement | null) => {
         elements: fetch("generated_reactions.json").then(res => res.json()),
         layout: {
             name: "preset",
-            animate: !DEBUG_MODE,
+            animate: !debug,
             fit: true,
         },
     });
 
-    // Dev tools
-    if (!DEBUG_MODE) {
-        return cy;
+    // dev tools
+    if (debug) {
+        let win: any = window;
+        win.cy = cy;
+        win.reload = (lock: boolean = false) => reload(cy, lock);
+        win.save = (lock: boolean = false) => save(cy, lock);
     }
 
-    let win: any = window;
-    win.cy = cy;
-    win.reload = (lock: boolean = false) => reload(cy, lock);
-    win.save = (lock: boolean = false) => save(cy, lock);
-
-    setTimeout(() => {
-        win.reload();
-    }, 100);
+    if (debug || settings.lock) {
+        setTimeout(() => {
+            reload(cy, settings.lock);
+        }, 100);
+    }
 
     return cy;
 }
@@ -121,13 +121,16 @@ const HomeView = () => {
     const cyRef = useRef(null);
     const [popup, setPopup] = useState<string | null>(null);
 
+    const url = parseUrl();
+    const settings = url.query;
+
     useEffect(() => {
         if (!cyRef.current) {
             console.error("target div is undefined");
             return;
         }
 
-        let cy = setUp(cyRef.current);
+        let cy = setUp(cyRef.current, settings);
 
         // register events...
         cy.on("tap", "edge,node", (ev: any) => {
@@ -163,7 +166,7 @@ const HomeView = () => {
         return () => {
             document.removeEventListener("keydown", keydownEvent);
         };
-    }, []);
+    }, [settings]);
 
     return (
         <div id="graph">
