@@ -16,9 +16,9 @@ const REAGENTS = {
     "Mg": reagent("Mg", "ether"),
     "grignard": reagent("1. grignard", `2. H${sub(3)}O+`),
 
-    // 1/2-OH -> alkenes
+    // alcohol -> alkenes
     "POCl3": reagent(`1. POCl${sub(3)}`, "2. pyr."),
-    "E1": reagent("E1"),  // E1 reaction
+    "E1": reagent("E1"),  // tertiary -OH; E1 reaction
 
     // oxidizing reagents
     "PCC": reagent("PCC", "[o]"),
@@ -68,9 +68,9 @@ const add_bromide_compounds = (list: Compound[]) => {
 const add_alkene_compounds = (list: Compound[]) => {
     list.push(
         {id: "alkene", label: "Alkenes"},
-        {id: "monoAlkene", label: "Mono-sub'd \nalkene", parent: "alkene"},
-        {id: "diAlkene", label: "Di-sub'd \nalkene", parent: "alkene"},
-        {id: "triAlkene", label: "Tri-sub'd \nalkene", parent: "alkene"},
+        // {id: "monoAlkene", label: "Mono-sub'd \nalkene", parent: "alkene"},
+        // {id: "diAlkene", label: "Di-sub'd \nalkene", parent: "alkene"},
+        // {id: "triAlkene", label: "Tri-sub'd \nalkene", parent: "alkene"},
     );
 };
 
@@ -82,8 +82,8 @@ const add_benzylic_compounds = (list: Compound[]) => {
         {id: "toluene", label: "Toluene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Toluol.svg/800px-Toluol.svg.png"},
         {id: "propiophenone", label: "_Propiophenone", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png"},
         {id: "nitrobenzene", label: "Nitrobenzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png"},
-        {id: "aminobenzene", label: "Aminobenzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png"},
-        {id: "benzyl_alcohol", label: "Benzyl alcohol", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Alkohol_benzylowy.svg/2560px-Alkohol_benzylowy.svg.png"},
+        {id: "aminobenzene", label: "_Aminobenzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png"},
+        // {id: "benzyl_alcohol", label: "Benzyl alcohol", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Alkohol_benzylowy.svg/2560px-Alkohol_benzylowy.svg.png"},
     );
 };
 
@@ -95,7 +95,7 @@ const add_alcohol_compounds = (list: Compound[]) => {
         {id: "priOH", label: `1${deg()}-OH`, parent: "alcohol_nonaryl"},
         {id: "secOH", label: `2${deg()}-OH`, parent: "alcohol_nonaryl"},
         {id: "tertOH", label: `3${deg()}-OH`, parent: "alcohol_nonaryl"},
-        {id: "arylOH", label: `R-OH (Aryl)`, parent: "alcohol"},
+        {id: "arylOH", label: `Phenol`, parent: "alcohol"},
     );
 };
 
@@ -117,7 +117,8 @@ const add_carbonyl_no_LG_compounds = (list: Compound[]) => {
 const add_carboxylic_acid_compounds = (list: Compound[]) => {
     list.push(
         {id: "carboxylic_acid", label: "Carboxylic acids"},
-        {id: "carboxylic_acid_nonaryl", label: `1${deg()}/2${deg()}/3${deg()}-(COOH)`, parent: "carboxylic_acid"},
+        // formic acid / acetic acid    <- might be worth separating out, but not needed now.
+        {id: "carboxylic_acid_nonaryl", label: `R-COOH`, parent: "carboxylic_acid"},
         {id: "benzoic_acid", label: "Benzoic acid", parent: "carboxylic_acid", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Benzoic_acid.svg"},
 
         {id: "acid_chloride", label: "Acid chloride\n[metro station]", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/General_structural_formula_of_carboxylic_acid_chlorides.svg/1920px-General_structural_formula_of_carboxylic_acid_chlorides.svg.png"},
@@ -156,13 +157,16 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // grignard synthesis - very useful reagent, not just for alcohols
         {id: "alcohol_nonaryl__bromide_nonaryl", source: "alcohol_nonaryl", target: "bromide_nonaryl", label: REAGENTS["PBr3"]},
-        {id: "bromide_nonaryl__RMgBr", source: "bromide_nonaryl", target: "RMgBr", label: REAGENTS["Mg"]},
-        {id: "bromobenzene__RMgBr", source: "bromobenzene", target: "RMgBr", label: REAGENTS["Mg"], cpd: "15em", cpw: "0.7"},
+        // {id: "bromide_nonaryl__RMgBr", source: "bromide_nonaryl", target: "RMgBr", label: REAGENTS["Mg"]},
+        // {id: "bromobenzene__RMgBr", source: "bromobenzene", target: "RMgBr", label: REAGENTS["Mg"], cpd: "15em", cpw: "0.7"},
+        {id: "bromide__RMgBr", source: "bromide", target: "RMgBr", label: REAGENTS["Mg"]},
 
         // carbonyls + grignard => alcohols
         {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"], cpd: "-5em", cpw: "0.2"},
         {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"], cpd: "-3em", cpw: "0.8"},
         {id: "ketone__tertOH", source: "ketone", target: "tertOH", label: REAGENTS["grignard"]},
+        // same info but grignard can be written as the starting material
+        {id: "RMgBr__alcohol_nonaryl", source: "RMgBr", target: "alcohol", label: "Carbonyls (w/ no LG)"},
 
         // ~ alcohol reactions
         // 1/2-OH --[ POCl3 ]--> alkenes
@@ -192,7 +196,7 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // -- CARBOXYLIC ACID --
         // ~ carboxylic acid synthesis
-        {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"]},  // TODO: check the target
+        {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"]},
         {id: "toluene__benzoic_acid", source: "toluene", target: "benzoic_acid", label: REAGENTS["CrO3"]},
         // grignard --[ CO2 ]--> carboxylic acid
         {id: "RMgBr__carboxylic_acid", source: "RMgBr", target: "carboxylic_acid", label: REAGENTS["CO2"]},

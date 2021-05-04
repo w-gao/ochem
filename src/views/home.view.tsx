@@ -70,6 +70,8 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
                     "shape": "round-rectangle",
                     "background-color": "#FFFFFF",
                     "border-opacity": 0.8,
+                    // @ts-ignore
+                    "padding": "20px",
                 }
             },
             {
