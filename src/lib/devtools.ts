@@ -75,6 +75,7 @@ export const reload = (cy: any, lock: boolean = false) => {
 
         element.selectable = !lock;
         element.grabbable = !lock;
+        element.pannable = lock;  // allow pan if locked
 
         results.nodes.push(element);
     });
@@ -96,6 +97,7 @@ export const reload = (cy: any, lock: boolean = false) => {
 
         element.selectable = !lock;
         element.grabbable = !lock;
+        element.pannable = true;  // allow pan for all
 
         results.edges.push(element);
     });

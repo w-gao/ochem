@@ -589,7 +589,7 @@
             },
             "position": {
                 "x": -1029,
-                "y": 445
+                "y": 444
             },
             "group": "nodes",
             "removed": false,
@@ -1132,6 +1132,50 @@
                 "source": "acid_chloride",
                 "target": "tertAmide",
                 "label": "xs (CH₃)₂NH\n- HCl"
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "edges",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": true,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "ester__carboxylic_acid",
+                "source": "ester",
+                "target": "carboxylic_acid",
+                "label": "NaOH"
+            },
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "group": "edges",
+            "removed": false,
+            "selected": false,
+            "selectable": true,
+            "locked": false,
+            "grabbable": true,
+            "pannable": true,
+            "classes": ""
+        },
+        {
+            "data": {
+                "id": "amide__carboxylic_acid",
+                "source": "amide",
+                "target": "carboxylic_acid",
+                "label": "NaOH",
+                "cpd": "-30em -5em",
+                "cpw": "0.7",
+                "sep": "-45% 0",
+                "tep": "-50% 0"
             },
             "position": {
                 "x": 0,

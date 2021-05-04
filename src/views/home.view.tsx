@@ -75,12 +75,6 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
                 }
             },
             {
-                selector: ":selected",
-                css: {
-                    "background-color": "#d1eaff",
-                }
-            },
-            {
                 selector: "edge",
                 css: {
                     "content": "data(label)",
@@ -96,6 +90,14 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
             {selector: "edge[cpw]", css: {"control-point-weights": "data(cpw)"}},
             {selector: "edge[sep]", css: {"source-endpoint": "data(sep)"}},
             {selector: "edge[tep]", css: {"target-endpoint": "data(tep)"}},
+            {
+                selector: ":selected",
+                css: {
+                    "background-color": "#C5E2FF",
+                    "line-color": "#459EFF",
+                    "target-arrow-color": "#459EFF",
+                }
+            },
         ],
         elements: fetch("generated_reactions.json").then(res => res.json()),
         layout: {
