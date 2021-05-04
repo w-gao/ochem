@@ -24,7 +24,7 @@ const setUp = (ref: HTMLDivElement | null) => {
     const cy: any = cytoscape({
         container: ref,
         boxSelectionEnabled: true,
-        minZoom: 0.3,  // out
+        minZoom: 0.2,  // out
         maxZoom: 5,
         zoom: 0.8,
         pan: {x: 363, y: 587},
@@ -53,19 +53,13 @@ const setUp = (ref: HTMLDivElement | null) => {
             {
                 selector: "node[imgUrl]",
                 css: {
-                    "text-valign": "top",
+                    "text-valign": "bottom",
                     "padding-top": "20px",
                     "padding-bottom": "20px",
                     // @ts-ignore: typings not up to date.
                     "background-width-relative-to": "inner",
                     "background-image": "data(imgUrl)",
                     "background-fit": "contain",
-                }
-            },
-            {
-                selector: ":selected",
-                css: {
-                    "background-color": "#96CFFF",
                 }
             },
             {
@@ -76,6 +70,12 @@ const setUp = (ref: HTMLDivElement | null) => {
                     "shape": "round-rectangle",
                     "background-color": "#FFFFFF",
                     "border-opacity": 0.8,
+                }
+            },
+            {
+                selector: ":selected",
+                css: {
+                    "background-color": "#d1eaff",
                 }
             },
             {
@@ -95,8 +95,8 @@ const setUp = (ref: HTMLDivElement | null) => {
         elements: fetch("generated_reactions.json").then(res => res.json()),
         layout: {
             name: "preset",
-            // animate: true,
-            fit: false,
+            animate: !DEBUG_MODE,
+            fit: true,
         },
     });
 
