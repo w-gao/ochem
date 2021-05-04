@@ -122,14 +122,14 @@ const HomeView = () => {
     const cyRef = useRef(null);
     const [popup, setPopup] = useState<string | null>(null);
 
-    const url = parseUrl();
-    const settings = url.query;
-
     useEffect(() => {
         if (!cyRef.current) {
             console.error("target div is undefined");
             return;
         }
+
+        const url = parseUrl();
+        const settings = url.query;
 
         let cy = setUp(cyRef.current, settings);
 
@@ -167,7 +167,7 @@ const HomeView = () => {
         return () => {
             document.removeEventListener("keydown", keydownEvent);
         };
-    }, [settings]);
+    }, []);
 
     return (
         <div id="graph">
