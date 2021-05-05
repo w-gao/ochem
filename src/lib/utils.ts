@@ -128,14 +128,14 @@ export const addInfoNode = (cy: any) => {
         } else {
             const branch = res["BRANCH"];
             const ref = res["COMMIT_REF"].substr(0, 7);
-            const time = res["BUILD_DATE"] + " " + res["BUILD_TIME"];
+            const time = res["BUILD_TIME"];
 
             text += `Current build: ${branch}@${ref} (${time}).`;
         }
 
         cy.add({
             "data": {"id": "preset_information", "label": text},
-            "position": {"x": 500, "y": -1200},
+            "position": {"x": 0, "y": 0},
             "group": "nodes",
             "removed": false,
             "selected": false,

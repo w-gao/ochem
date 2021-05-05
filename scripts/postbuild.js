@@ -7,8 +7,7 @@ const date = new Date();
 
 const path = "build/env.json";
 const data = JSON.stringify({
-    BUILD_DATE: date.toLocaleDateString(),
-    BUILD_TIME: date.toLocaleTimeString(),
+    BUILD_TIME: date.toLocaleString('en-US', {timeZone: 'America/Los_Angeles'}),
     BRANCH: process.env.BRANCH,
     URL: process.env.URL,
     COMMIT_REF: process.env.COMMIT_REF,

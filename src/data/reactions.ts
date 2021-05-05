@@ -39,7 +39,7 @@ const REAGENTS = {
     "TsOH": reagent("TsOH"),
 
     // carboxylic acid / acid chloride reactions
-    "CO2": reagent(`1) CO${sub(2)}`, `2) H${sub(3)}O+`),
+    "Mg/CO2": reagent("1) Mg", "(grignard)", `2) CO${sub(2)}`, `3) H${sub(3)}O+`),
     "NaCN": reagent("1) NaCN", `2) 2H${sub(3)}O+`, `- NH${4}OH`),
 
     // thionyl chloride - turns carboxylic acid into acid chloride
@@ -156,14 +156,14 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "benzene__bromobenzene", source: "benzene", target: "bromobenzene", label: REAGENTS["Br2/FeBr3"]},
         {id: "benzene__toluene", source: "benzene", target: "toluene", label: REAGENTS["CH3Cl/AlCl3"]},  // FC-ALK
         {id: "benzene__propiophenone", source: "benzene", target: "propiophenone", label: REAGENTS["R-COCl/AlCl3"]},  // FC-ACYL
-        {id: "propiophenone__propylbenzene", source: "propiophenone", target: "propylbenzene", label: REAGENTS["H2/Pd"]},
+        {id: "propiophenone__propylbenzene", source: "propiophenone", target: "propylbenzene", label: REAGENTS["H2/Pd"], tep: "-50% 0", cpd:"12em"},
 
         // -- ALCOHOLS --
         // ~ alcohol synthesis
         // carbonyls --[ reduction ]--> alcohols
-        {id: "aldehyde__priOH", source: "aldehyde", target: "priOH", label: REAGENTS["NaBH4"]},
-        {id: "ether__priOH", source: "ether", target: "priOH", label: REAGENTS["LiAlH4"], cpd: "-22em"},
-        {id: "ketone__secOH", source: "ketone", target: "secOH", label: REAGENTS["NaBH4"]},
+        {id: "aldehyde__priOH", source: "aldehyde", target: "priOH", label: REAGENTS["NaBH4"], tep: "50% 0"},
+        {id: "ether__priOH", source: "ether", target: "priOH", label: REAGENTS["LiAlH4"]},
+        {id: "ketone__secOH", source: "ketone", target: "secOH", label: REAGENTS["NaBH4"], tep: "50% 0"},
 
         // grignard synthesis - very useful reagent, not just for alcohols
         {id: "alcohol_nonaryl__bromide_nonaryl", source: "alcohol_nonaryl", target: "bromide_nonaryl", label: REAGENTS["PBr3"]},
@@ -172,11 +172,9 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "bromide__RMgBr", source: "bromide", target: "RMgBr", label: REAGENTS["Mg"]},
 
         // carbonyls + grignard => alcohols
-        {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"], cpd: "-5em", cpw: "0.2"},
-        {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"], cpd: "-3em", cpw: "0.8"},
+        {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"]},
+        {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"]},
         {id: "ketone__tertOH", source: "ketone", target: "tertOH", label: REAGENTS["grignard"]},
-        // same info but grignard can be written as the starting material
-        {id: "RMgBr__alcohol_nonaryl", source: "RMgBr", target: "alcohol", label: "Carbonyls (w/ no LG)"},
 
         // ~ alcohol reactions
         // 1/2-OH --[ POCl3 ]--> alkenes
@@ -195,8 +193,8 @@ export const add_reactions = (edges: Reaction[]) => {
         // -- ALDEHYDES and KETONES (carbonyls with no leaving group) --
         // ~ carbonyl synthesis
         // alcohols --[ oxidation ]--> carbonyls
-        {id: "priOH__aldehyde", source: "priOH", target: "aldehyde", label: REAGENTS["PCC"], cpd: "12em"},  // mild! CrO3 gives carboxylic acid below
-        {id: "secOH__ketone", source: "secOH", target: "ketone", label: REAGENTS["CrO3"], cpd: "8em"},
+        {id: "priOH__aldehyde", source: "priOH", target: "aldehyde", label: REAGENTS["PCC"], tep: "-50% 0"},  // mild! CrO3 gives carboxylic acid below
+        {id: "secOH__ketone", source: "secOH", target: "ketone", label: REAGENTS["CrO3"], tep: "-50% 0"},
 
         // alkenes => carbonyls (ozonolysis)
         //
@@ -209,7 +207,7 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"]},
         {id: "benzylic_carbon_chain__benzoic_acid", source: "benzylic_carbon_chain", target: "benzoic_acid", label: REAGENTS["CrO3"]},
         // grignard --[ CO2 ]--> carboxylic acid (w/ one extra c-atom)
-        {id: "RMgBr__carboxylic_acid", source: "RMgBr", target: "carboxylic_acid", label: REAGENTS["CO2"]},
+        {id: "bromide__carboxylic_acid", source: "bromide", target: "carboxylic_acid", label: REAGENTS["Mg/CO2"]},
         {id: "priBr__carboxylic_acid", source: "priBr", target: "carboxylic_acid", label: REAGENTS["NaCN"]},  // nitrile hydrolysis (w/ one extra c-atom)
 
         // ~ carboxylic acid reactions
@@ -222,10 +220,15 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // esters & amides --[ NaOH ]--> carboxylic acids
         {id: "ester__carboxylic_acid", source: "ester", target: "carboxylic_acid", label: REAGENTS["NaOH"]},
-        {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH"], cpd: "-30em -5em", cpw: "0.7", sep: "-45% 0", tep: "-50% 0"},
+        {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH"], sep: "-45% 0", tep: "-50% 50%", cpd: "-10em"},
 
         // acyl substitution reactions (Nuc attacks & kicks out LG)
         // strong Nuc adds twice; weak Nuc adds once
+
+
+        // grignard as a starting material - too cluttered to put in main graph; create different nodes instead
+        // {id: "RMgBr__carboxylic_acid", source: "RMgBr", target: "carboxylic_acid", label: REAGENTS["CO2"]},
+        // {id: "RMgBr__alcohol_nonaryl", source: "RMgBr", target: "alcohol", label: "Carbonyls (w/ no LG)"},
 
     );
 };

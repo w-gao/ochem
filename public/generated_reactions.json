@@ -1,1194 +1,1169 @@
 {
-    "nodes": [
-        {
-            "data": {
-                "id": "bromide",
-                "label": "Bromides"
-            },
-            "position": {
-                "x": -612,
-                "y": -999
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "bromide_nonaryl",
-                "label": "",
-                "parent": "bromide"
-            },
-            "position": {
-                "x": -612,
-                "y": -916
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "priBr",
-                "parent": "bromide_nonaryl",
-                "label": "1°-Br"
-            },
-            "position": {
-                "x": -974,
-                "y": -916
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "secBr",
-                "parent": "bromide_nonaryl",
-                "label": "2°-Br"
-            },
-            "position": {
-                "x": -611,
-                "y": -916
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "tertBr",
-                "parent": "bromide_nonaryl",
-                "label": "3°-Br"
-            },
-            "position": {
-                "x": -249,
-                "y": -916
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "bromobenzene",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Brombenzol_-_Bromobenzene.svg/800px-Brombenzol_-_Bromobenzene.svg.png",
-                "label": "Bromobenzene",
-                "parent": "bromide"
-            },
-            "position": {
-                "x": -611,
-                "y": -1083
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "RMgBr",
-                "label": "RMgBr\n(grignard)"
-            },
-            "position": {
-                "x": -713,
-                "y": -669
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "alkene",
-                "label": "Alkenes"
-            },
-            "position": {
-                "x": 850,
-                "y": -610
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "benzylic_carbon_chain",
-                "label": ""
-            },
-            "position": {
-                "x": -1435,
-                "y": -1184
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "benzene",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Benzene-Kekule-2D-skeletal.png/422px-Benzene-Kekule-2D-skeletal.png",
-                "label": "Benzene"
-            },
-            "position": {
-                "x": -891,
-                "y": -1373
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": "imgHolder"
-        },
-        {
-            "data": {
-                "id": "toluene",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Toluol.svg/800px-Toluol.svg.png",
-                "label": "Toluene",
-                "parent": "benzylic_carbon_chain"
-            },
-            "position": {
-                "x": -1435,
-                "y": -1110
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "propylbenzene",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/Structural_formula_of_n-propylbenzene.svg",
-                "parent": "benzylic_carbon_chain"
-            },
-            "position": {
-                "x": -1434,
-                "y": -1273
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "propiophenone",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png"
-            },
-            "position": {
-                "x": -1395,
-                "y": -1615
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "nitrobenzene",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png",
-                "label": "Nitrobenzene"
-            },
-            "position": {
-                "x": -443,
-                "y": -1432
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "aminobenzene",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png",
-                "label": "Aminobenzene"
-            },
-            "position": {
-                "x": -79,
-                "y": -1552
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "alcohol",
-                "label": "Alcohols"
-            },
-            "position": {
-                "x": 100,
-                "y": -506
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "alcohol_nonaryl",
-                "parent": "alcohol",
-                "label": ""
-            },
-            "position": {
-                "x": 100,
-                "y": -448
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "priOH",
-                "parent": "alcohol_nonaryl",
-                "label": "1°-OH"
-            },
-            "position": {
-                "x": -250,
-                "y": -448
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "secOH",
-                "parent": "alcohol_nonaryl",
-                "label": "2°-OH"
-            },
-            "position": {
-                "x": 100,
-                "y": -448
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "tertOH",
-                "parent": "alcohol_nonaryl",
-                "label": "3°-OH"
-            },
-            "position": {
-                "x": 450,
-                "y": -448
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "arylOH",
-                "parent": "alcohol",
-                "label": "Phenol"
-            },
-            "position": {
-                "x": 99,
-                "y": -586
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "ether",
-                "label": "Ethers"
-            },
-            "position": {
-                "x": -303,
-                "y": 146
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "carbonyl_noLG",
-                "label": "Carbonyls (w/ no LG)"
-            },
-            "position": {
-                "x": 100,
-                "y": -111
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "formaldehyde",
-                "parent": "carbonyl_noLG",
-                "label": "Formaldehyde"
-            },
-            "position": {
-                "x": -250,
-                "y": -111
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "aldehyde",
-                "parent": "carbonyl_noLG",
-                "label": "Aldehyde"
-            },
-            "position": {
-                "x": 100,
-                "y": -111
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "ketone",
-                "parent": "carbonyl_noLG",
-                "label": "Ketone"
-            },
-            "position": {
-                "x": 450,
-                "y": -111
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "carboxylic_acid",
-                "label": "Carboxylic acids"
-            },
-            "position": {
-                "x": -1150,
-                "y": -381
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "carboxylic_acid_nonaryl",
-                "label": "R-COOH",
-                "parent": "carboxylic_acid"
-            },
-            "position": {
-                "x": -1148,
-                "y": -285
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "benzoic_acid",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Benzoic_acid.svg",
-                "label": "Benzoic acid",
-                "parent": "carboxylic_acid"
-            },
-            "position": {
-                "x": -1150,
-                "y": -457
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "acid_chloride",
-                "label": "Acid chloride\n[metro station]",
-                "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/General_structural_formula_of_carboxylic_acid_chlorides.svg/1920px-General_structural_formula_of_carboxylic_acid_chlorides.svg.png"
-            },
-            "position": {
-                "x": -1162,
-                "y": 82
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "ester",
-                "label": "Esters"
-            },
-            "position": {
-                "x": -687,
-                "y": 146
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "amide",
-                "label": "Amides"
-            },
-            "position": {
-                "x": -1029,
-                "y": 444
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "priAmide",
-                "parent": "amide",
-                "label": "1°-amide"
-            },
-            "position": {
-                "x": -1457,
-                "y": 445
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "secAmide",
-                "parent": "amide",
-                "label": "2°-amide"
-            },
-            "position": {
-                "x": -1020,
-                "y": 445
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "tertAmide",
-                "parent": "amide",
-                "label": "3°-amide"
-            },
-            "position": {
-                "x": -600,
-                "y": 444
-            },
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": false,
-            "classes": ""
-        }
-    ],
-    "edges": [
-        {
-            "data": {
-                "id": "benzene__bromobenzene",
-                "source": "benzene",
-                "target": "bromobenzene",
-                "label": "Br₂\nFeBr₃"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "benzene__toluene",
-                "source": "benzene",
-                "target": "toluene",
-                "label": "CH₃Cl\nAlCl₃"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "benzene__propiophenone",
-                "source": "benzene",
-                "target": "propiophenone",
-                "label": "R-COCl\nAlCl₃"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "propiophenone__propylbenzene",
-                "source": "propiophenone",
-                "target": "propylbenzene",
-                "label": "H₂\nPd"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "aldehyde__priOH",
-                "source": "aldehyde",
-                "target": "priOH",
-                "label": "1. NaBH₄\n2. H₃O+"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "ether__priOH",
-                "source": "ether",
-                "target": "priOH",
-                "label": "1. LiAlH₄\n2. H₃O+",
-                "cpd": "-22em"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "ketone__secOH",
-                "source": "ketone",
-                "target": "secOH",
-                "label": "1. NaBH₄\n2. H₃O+"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "alcohol_nonaryl__bromide_nonaryl",
-                "source": "alcohol_nonaryl",
-                "target": "bromide_nonaryl",
-                "label": "PBr₃"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "bromide__RMgBr",
-                "source": "bromide",
-                "target": "RMgBr",
-                "label": "Mg\nether"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "formaldehyde__priOH",
-                "source": "formaldehyde",
-                "target": "priOH",
-                "label": "1. grignard\n2. H₃O+",
-                "cpw": "0.2",
-                "cpd": "-5em"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "aldehyde__secOH",
-                "source": "aldehyde",
-                "target": "secOH",
-                "label": "1. grignard\n2. H₃O+",
-                "cpd": "-3em",
-                "cpw": "0.8"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "ketone__tertOH",
-                "source": "ketone",
-                "target": "tertOH",
-                "label": "1. grignard\n2. H₃O+"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "RMgBr__alcohol_nonaryl",
-                "source": "RMgBr",
-                "target": "alcohol",
-                "label": "Carbonyls (w/ no LG)"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "priOH__aldehyde",
-                "source": "priOH",
-                "target": "aldehyde",
-                "label": "PCC\n[o]",
-                "cpd": "12em"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "secOH__ketone",
-                "source": "secOH",
-                "target": "ketone",
-                "label": "CrO₃/H₃O+\n[o]",
-                "cpd": "8em"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "priOH__carboxylic_acid",
-                "source": "priOH",
-                "target": "carboxylic_acid",
-                "label": "CrO₃/H₃O+\n[o]"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "benzylic_carbon_chain__benzoic_acid",
-                "source": "benzylic_carbon_chain",
-                "target": "benzoic_acid",
-                "label": "CrO₃/H₃O+\n[o]"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "RMgBr__carboxylic_acid",
-                "source": "RMgBr",
-                "target": "carboxylic_acid",
-                "label": "1) CO₂\n2) H₃O+"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "priBr__carboxylic_acid",
-                "source": "priBr",
-                "target": "carboxylic_acid",
-                "label": "1) NaCN\n2) 2H₃O+\n- NH4OH"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "carboxylic_acid__acid_chloride",
-                "source": "carboxylic_acid",
-                "target": "acid_chloride",
-                "label": "SOCl₂\n- SO₂\n- HCl"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "acid_chloride__ester",
-                "source": "acid_chloride",
-                "target": "ester",
-                "label": "R-OH\npyr.\n- HCl"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "acid_chloride__priAmide",
-                "source": "acid_chloride",
-                "target": "priAmide",
-                "label": "xs NH₃\n- HCl"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "acid_chloride__secAmide",
-                "source": "acid_chloride",
-                "target": "secAmide",
-                "label": "xs CH₃NH₂\n- HCl"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "acid_chloride__tertAmide",
-                "source": "acid_chloride",
-                "target": "tertAmide",
-                "label": "xs (CH₃)₂NH\n- HCl"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "ester__carboxylic_acid",
-                "source": "ester",
-                "target": "carboxylic_acid",
-                "label": "NaOH"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        },
-        {
-            "data": {
-                "id": "amide__carboxylic_acid",
-                "source": "amide",
-                "target": "carboxylic_acid",
-                "label": "NaOH",
-                "cpd": "-30em -5em",
-                "cpw": "0.7",
-                "sep": "-45% 0",
-                "tep": "-50% 0"
-            },
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "group": "edges",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": true,
-            "pannable": true,
-            "classes": ""
-        }
-    ]
+  "nodes": [
+    {
+      "data": {
+        "id": "bromide",
+        "label": "Bromides"
+      },
+      "position": {
+        "x": 438,
+        "y": 555
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "bromide_nonaryl",
+        "label": "",
+        "parent": "bromide"
+      },
+      "position": {
+        "x": 438,
+        "y": 636
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "priBr",
+        "label": "1°-Br",
+        "parent": "bromide_nonaryl"
+      },
+      "position": {
+        "x": 250,
+        "y": 634
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "secBr",
+        "label": "2°-Br",
+        "parent": "bromide_nonaryl"
+      },
+      "position": {
+        "x": 440,
+        "y": 631
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "tertBr",
+        "label": "3°-Br",
+        "parent": "bromide_nonaryl"
+      },
+      "position": {
+        "x": 626,
+        "y": 641
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "bromobenzene",
+        "label": "Bromobenzene",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Brombenzol_-_Bromobenzene.svg/800px-Brombenzol_-_Bromobenzene.svg.png",
+        "parent": "bromide"
+      },
+      "position": {
+        "x": 434,
+        "y": 468
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "RMgBr",
+        "label": "RMgBr\n(grignard)"
+      },
+      "position": {
+        "x": 448,
+        "y": -79
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "alkene",
+        "label": "Alkenes"
+      },
+      "position": {
+        "x": 1564,
+        "y": 612
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "benzylic_carbon_chain",
+        "label": ""
+      },
+      "position": {
+        "x": -160,
+        "y": 710
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "benzene",
+        "label": "Benzene",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Benzene-Kekule-2D-skeletal.png/422px-Benzene-Kekule-2D-skeletal.png"
+      },
+      "position": {
+        "x": -31,
+        "y": 377
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "toluene",
+        "label": "Toluene",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Toluol.svg/800px-Toluol.svg.png",
+        "parent": "benzylic_carbon_chain"
+      },
+      "position": {
+        "x": -160,
+        "y": 634
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "propylbenzene",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/Structural_formula_of_n-propylbenzene.svg",
+        "parent": "benzylic_carbon_chain"
+      },
+      "position": {
+        "x": -160,
+        "y": 787
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "propiophenone",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png"
+      },
+      "position": {
+        "x": -411,
+        "y": 439
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "nitrobenzene",
+        "label": "Nitrobenzene",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png"
+      },
+      "position": {
+        "x": -503,
+        "y": 62
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "aminobenzene",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png"
+      },
+      "position": {
+        "x": -860,
+        "y": -138
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "alcohol",
+        "label": "Alcohols"
+      },
+      "position": {
+        "x": 1406,
+        "y": 974
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "alcohol_nonaryl",
+        "label": "",
+        "parent": "alcohol"
+      },
+      "position": {
+        "x": 1278,
+        "y": 974
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "priOH",
+        "label": "1°-OH",
+        "parent": "alcohol_nonaryl"
+      },
+      "position": {
+        "x": 939,
+        "y": 976
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "secOH",
+        "label": "2°-OH",
+        "parent": "alcohol_nonaryl"
+      },
+      "position": {
+        "x": 1271,
+        "y": 972
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "tertOH",
+        "label": "3°-OH",
+        "parent": "alcohol_nonaryl"
+      },
+      "position": {
+        "x": 1617,
+        "y": 973
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "arylOH",
+        "label": "Phenol",
+        "parent": "alcohol"
+      },
+      "position": {
+        "x": 1896,
+        "y": 977
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "ether",
+        "label": "Ethers"
+      },
+      "position": {
+        "x": 682,
+        "y": 1344
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "carbonyl_noLG",
+        "label": "Carbonyls (w/ no LG)"
+      },
+      "position": {
+        "x": 1288,
+        "y": 1346
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "formaldehyde",
+        "label": "Formaldehyde",
+        "parent": "carbonyl_noLG"
+      },
+      "position": {
+        "x": 944,
+        "y": 1347
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "aldehyde",
+        "label": "Aldehyde",
+        "parent": "carbonyl_noLG"
+      },
+      "position": {
+        "x": 1289,
+        "y": 1345
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "ketone",
+        "label": "Ketone",
+        "parent": "carbonyl_noLG"
+      },
+      "position": {
+        "x": 1633,
+        "y": 1346
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "carboxylic_acid",
+        "label": "Carboxylic acids"
+      },
+      "position": {
+        "x": 93,
+        "y": 1153
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "carboxylic_acid_nonaryl",
+        "label": "R-COOH",
+        "parent": "carboxylic_acid"
+      },
+      "position": {
+        "x": 93,
+        "y": 1074
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "benzoic_acid",
+        "label": "Benzoic acid",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Benzoic_acid.svg",
+        "parent": "carboxylic_acid"
+      },
+      "position": {
+        "x": 93,
+        "y": 1197
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "acid_chloride",
+        "label": "Acid chloride\n[metro station]",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/General_structural_formula_of_carboxylic_acid_chlorides.svg/1920px-General_structural_formula_of_carboxylic_acid_chlorides.svg.png"
+      },
+      "position": {
+        "x": 83,
+        "y": 1538
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "ester",
+        "label": "Esters"
+      },
+      "position": {
+        "x": 414,
+        "y": 1535
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "amide",
+        "label": "Amides"
+      },
+      "position": {
+        "x": -147,
+        "y": 1823
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "priAmide",
+        "label": "1°-amide",
+        "parent": "amide"
+      },
+      "position": {
+        "x": -350,
+        "y": 1824
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "secAmide",
+        "label": "2°-amide",
+        "parent": "amide"
+      },
+      "position": {
+        "x": -150,
+        "y": 1822
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "tertAmide",
+        "label": "3°-amide",
+        "parent": "amide"
+      },
+      "position": {
+        "x": 55,
+        "y": 1821
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "benzene__bromobenzene",
+        "source": "benzene",
+        "target": "bromobenzene",
+        "label": "Br₂\nFeBr₃"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "benzene__toluene",
+        "source": "benzene",
+        "target": "toluene",
+        "label": "CH₃Cl\nAlCl₃"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "benzene__propiophenone",
+        "source": "benzene",
+        "target": "propiophenone",
+        "label": "R-COCl\nAlCl₃"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "propiophenone__propylbenzene",
+        "source": "propiophenone",
+        "target": "propylbenzene",
+        "label": "H₂\nPd",
+        "cpd": "12em",
+        "tep": "-50% 0"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "aldehyde__priOH",
+        "source": "aldehyde",
+        "target": "priOH",
+        "label": "1. NaBH₄\n2. H₃O+",
+        "tep": "50% 0"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "ether__priOH",
+        "source": "ether",
+        "target": "priOH",
+        "label": "1. LiAlH₄\n2. H₃O+"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "ketone__secOH",
+        "source": "ketone",
+        "target": "secOH",
+        "label": "1. NaBH₄\n2. H₃O+",
+        "tep": "50% 0"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "alcohol_nonaryl__bromide_nonaryl",
+        "source": "alcohol_nonaryl",
+        "target": "bromide_nonaryl",
+        "label": "PBr₃"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "bromide__RMgBr",
+        "source": "bromide",
+        "target": "RMgBr",
+        "label": "Mg\nether"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "formaldehyde__priOH",
+        "source": "formaldehyde",
+        "target": "priOH",
+        "label": "1. grignard\n2. H₃O+"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "aldehyde__secOH",
+        "source": "aldehyde",
+        "target": "secOH",
+        "label": "1. grignard\n2. H₃O+"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "ketone__tertOH",
+        "source": "ketone",
+        "target": "tertOH",
+        "label": "1. grignard\n2. H₃O+"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "priOH__aldehyde",
+        "source": "priOH",
+        "target": "aldehyde",
+        "label": "PCC\n[o]",
+        "tep": "-50% 0"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "secOH__ketone",
+        "source": "secOH",
+        "target": "ketone",
+        "label": "CrO₃/H₃O+\n[o]",
+        "tep": "-50% 0"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "priOH__carboxylic_acid",
+        "source": "priOH",
+        "target": "carboxylic_acid",
+        "label": "CrO₃/H₃O+\n[o]"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "benzylic_carbon_chain__benzoic_acid",
+        "source": "benzylic_carbon_chain",
+        "target": "benzoic_acid",
+        "label": "CrO₃/H₃O+\n[o]"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "bromide__carboxylic_acid",
+        "source": "bromide",
+        "target": "carboxylic_acid",
+        "label": "1) Mg\n(grignard)\n2) CO₂\n3) H₃O+"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "priBr__carboxylic_acid",
+        "source": "priBr",
+        "target": "carboxylic_acid",
+        "label": "1) NaCN\n2) 2H₃O+\n- NH4OH"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "carboxylic_acid__acid_chloride",
+        "source": "carboxylic_acid",
+        "target": "acid_chloride",
+        "label": "SOCl₂\n- SO₂\n- HCl"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "acid_chloride__ester",
+        "source": "acid_chloride",
+        "target": "ester",
+        "label": "R-OH\npyr.\n- HCl"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "acid_chloride__priAmide",
+        "source": "acid_chloride",
+        "target": "priAmide",
+        "label": "xs NH₃\n- HCl"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "acid_chloride__secAmide",
+        "source": "acid_chloride",
+        "target": "secAmide",
+        "label": "xs CH₃NH₂\n- HCl"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "acid_chloride__tertAmide",
+        "source": "acid_chloride",
+        "target": "tertAmide",
+        "label": "xs (CH₃)₂NH\n- HCl"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "ester__carboxylic_acid",
+        "source": "ester",
+        "target": "carboxylic_acid",
+        "label": "NaOH"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "amide__carboxylic_acid",
+        "source": "amide",
+        "target": "carboxylic_acid",
+        "label": "NaOH",
+        "sep": "-40% 0"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    }
+  ]
 }

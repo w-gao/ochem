@@ -78,7 +78,8 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
                 selector: "edge",
                 css: {
                     "content": "data(label)",
-                    "curve-style": "unbundled-bezier",
+                    // "curve-style": "unbundled-bezier",
+                    "curve-style": "straight",
                     "line-color": "#B2B2B2",
                     "target-arrow-color": "#B2B2B2",
                     "text-wrap": "wrap",
@@ -86,8 +87,8 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
                     "arrow-scale": 2.5,
                 }
             },
-            {selector: "edge[cpd]", css: {"control-point-distances": "data(cpd)"}},
-            {selector: "edge[cpw]", css: {"control-point-weights": "data(cpw)"}},
+            {selector: "edge[cpd]", css: {"curve-style": "unbundled-bezier", "control-point-distances": "data(cpd)"}},
+            {selector: "edge[cpw]", css: {"curve-style": "unbundled-bezier", "control-point-weights": "data(cpw)"}},
             {selector: "edge[sep]", css: {"source-endpoint": "data(sep)"}},
             {selector: "edge[tep]", css: {"target-endpoint": "data(tep)"}},
             {
