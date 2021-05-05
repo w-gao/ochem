@@ -35,21 +35,15 @@ const defaultEdge = (id: string): any => {
 };
 
 
-/**
- * Reload canvas with the up-to-date data from reactions.ts while keeping
- * metadata information such as positions.
- */
-export const reload = (cy: any, lock: boolean = false) => {
+const regenerate = (data: any, lock: boolean = false) => {
     let results: any = {
         nodes: [],
         edges: [],
     }
 
-    let current = cy.json()["elements"];
-
-    // live data
-    let current_nodes: any = list2obj(current.nodes);
-    let current_edges: any = list2obj(current.edges);
+    // data from cytoscape
+    let current_nodes: any = list2obj(data.nodes);
+    let current_edges: any = list2obj(data.edges);
 
     let elements = getReactions();
     let settings_nodes: any[] = elements.nodes;
@@ -68,8 +62,8 @@ export const reload = (cy: any, lock: boolean = false) => {
         }
 
         element.data.parent = val.parent;
-        // element.position.x = parseFloat((element.position.x).toFixed(0));
-        // element.position.y = parseFloat((element.position.y).toFixed(0));
+        // element.position.x = parseFloat((element.position.x).toFixed(2));
+        // element.position.y = parseFloat((element.position.y).toFixed(2));
         element.position.x = Math.floor(element.position.x);
         element.position.y = Math.floor(element.position.y);
 
@@ -103,8 +97,31 @@ export const reload = (cy: any, lock: boolean = false) => {
     });
 
     // console.log(JSON.stringify(results, null, 4));
+    return results;
+};
+
+
+/**
+ * Load cytoscape data.
+ */
+export const load = async (lock: boolean = false, regen: boolean = false) => {
+    let data = await fetch("generated_reactions.json").then(res => res.json());
+    if (regen) {
+        return regenerate(data, lock);
+    }
+    return data;
+};
+
+
+/**
+ * Reload canvas with the up-to-date data from reactions.ts while keeping
+ * metadata information such as positions.
+ */
+export const reload = (cy: any, lock: boolean = false) => {
+    const current = cy.json()["elements"];
+
     cy.elements().remove();
-    cy.add(results);
+    cy.add(regenerate(current, lock));
 };
 
 /**

@@ -6,8 +6,8 @@ import {useEffect, useRef, useState} from "react";
 import cytoscape from "cytoscape";
 import {Popup} from "../components/popup";
 import {descriptions} from "../data/descriptions";
-import {reload, save} from "../lib/devtools";
-import {parseUrl} from "../lib/utils";
+import {load, reload, save} from "../lib/devtools";
+import {parseUrl, addInfoNode} from "../lib/utils";
 import "./home.scss";
 
 
@@ -98,8 +98,17 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
                     "target-arrow-color": "#459EFF",
                 }
             },
+            {
+                selector: ".preset_information",
+                css: {
+                    "shape": "barrel",
+                    "background-opacity": 0,
+                    "width": "400px",
+                    "height": "120px",
+                }
+            }
         ],
-        elements: fetch("generated_reactions.json").then(res => res.json()),
+        elements: load(settings.lock, settings.debug || settings.lock),
         layout: {
             name: "preset",
             animate: !debug,
@@ -113,12 +122,6 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
         win.cy = cy;
         win.reload = (lock: boolean = false) => reload(cy, lock);
         win.save = (lock: boolean = false) => save(cy, lock);
-    }
-
-    if (debug || settings.lock) {
-        setTimeout(() => {
-            reload(cy, settings.lock);
-        }, 100);
     }
 
     return cy;
@@ -141,6 +144,8 @@ const HomeView = () => {
         let cy = setUp(cyRef.current, settings);
 
         // register events...
+        cy.on("layoutstop", () => addInfoNode(cy));
+
         cy.on("tap", "edge,node", (ev: any) => {
             const edge = ev.target;
             const description = descriptions[edge.id()];
