@@ -6,8 +6,8 @@
         "label": "Bromides"
       },
       "position": {
-        "x": 438,
-        "y": 555
+        "x": 347,
+        "y": 275
       },
       "group": "nodes",
       "removed": false,
@@ -25,8 +25,8 @@
         "parent": "bromide"
       },
       "position": {
-        "x": 438,
-        "y": 636
+        "x": 347,
+        "y": 355
       },
       "group": "nodes",
       "removed": false,
@@ -44,8 +44,8 @@
         "parent": "bromide_nonaryl"
       },
       "position": {
-        "x": 250,
-        "y": 634
+        "x": 138,
+        "y": 355
       },
       "group": "nodes",
       "removed": false,
@@ -63,8 +63,8 @@
         "parent": "bromide_nonaryl"
       },
       "position": {
-        "x": 440,
-        "y": 631
+        "x": 342,
+        "y": 355
       },
       "group": "nodes",
       "removed": false,
@@ -82,8 +82,8 @@
         "parent": "bromide_nonaryl"
       },
       "position": {
-        "x": 626,
-        "y": 641
+        "x": 557,
+        "y": 356
       },
       "group": "nodes",
       "removed": false,
@@ -102,8 +102,8 @@
         "parent": "bromide"
       },
       "position": {
-        "x": 434,
-        "y": 468
+        "x": 335,
+        "y": 193
       },
       "group": "nodes",
       "removed": false,
@@ -120,8 +120,8 @@
         "label": "RMgBr\n(grignard)"
       },
       "position": {
-        "x": 448,
-        "y": -79
+        "x": 796,
+        "y": -275
       },
       "group": "nodes",
       "removed": false,
@@ -138,8 +138,26 @@
         "label": "Alkenes"
       },
       "position": {
-        "x": 1564,
-        "y": 612
+        "x": 1675,
+        "y": 701
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "benzylic",
+        "label": "Benzylic compounds"
+      },
+      "position": {
+        "x": -583,
+        "y": 415
       },
       "group": "nodes",
       "removed": false,
@@ -153,11 +171,12 @@
     {
       "data": {
         "id": "benzylic_carbon_chain",
-        "label": ""
+        "label": "",
+        "parent": "benzylic"
       },
       "position": {
-        "x": -160,
-        "y": 710
+        "x": -326,
+        "y": 522
       },
       "group": "nodes",
       "removed": false,
@@ -172,11 +191,12 @@
       "data": {
         "id": "benzene",
         "label": "Benzene",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Benzene-Kekule-2D-skeletal.png/422px-Benzene-Kekule-2D-skeletal.png"
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Benzene-Kekule-2D-skeletal.png/422px-Benzene-Kekule-2D-skeletal.png",
+        "parent": "benzylic"
       },
       "position": {
-        "x": -31,
-        "y": 377
+        "x": -377,
+        "y": 210
       },
       "group": "nodes",
       "removed": false,
@@ -195,8 +215,8 @@
         "parent": "benzylic_carbon_chain"
       },
       "position": {
-        "x": -160,
-        "y": 634
+        "x": -326,
+        "y": 446
       },
       "group": "nodes",
       "removed": false,
@@ -214,8 +234,8 @@
         "parent": "benzylic_carbon_chain"
       },
       "position": {
-        "x": -160,
-        "y": 787
+        "x": -326,
+        "y": 599
       },
       "group": "nodes",
       "removed": false,
@@ -229,11 +249,12 @@
     {
       "data": {
         "id": "propiophenone",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png"
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png",
+        "parent": "benzylic"
       },
       "position": {
-        "x": -411,
-        "y": 439
+        "x": -591,
+        "y": 447
       },
       "group": "nodes",
       "removed": false,
@@ -248,11 +269,12 @@
       "data": {
         "id": "nitrobenzene",
         "label": "Nitrobenzene",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png"
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png",
+        "parent": "benzylic"
       },
       "position": {
-        "x": -503,
-        "y": 62
+        "x": -813,
+        "y": 318
       },
       "group": "nodes",
       "removed": false,
@@ -266,11 +288,12 @@
     {
       "data": {
         "id": "aminobenzene",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png"
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png",
+        "parent": "benzylic"
       },
       "position": {
-        "x": -860,
-        "y": -138
+        "x": -862,
+        "y": 618
       },
       "group": "nodes",
       "removed": false,
@@ -287,8 +310,8 @@
         "label": "Alcohols"
       },
       "position": {
-        "x": 1406,
-        "y": 974
+        "x": 857,
+        "y": 641
       },
       "group": "nodes",
       "removed": false,
@@ -306,8 +329,8 @@
         "parent": "alcohol"
       },
       "position": {
-        "x": 1278,
-        "y": 974
+        "x": 857,
+        "y": 693
       },
       "group": "nodes",
       "removed": false,
@@ -325,8 +348,8 @@
         "parent": "alcohol_nonaryl"
       },
       "position": {
-        "x": 939,
-        "y": 976
+        "x": 518,
+        "y": 695
       },
       "group": "nodes",
       "removed": false,
@@ -344,8 +367,8 @@
         "parent": "alcohol_nonaryl"
       },
       "position": {
-        "x": 1271,
-        "y": 972
+        "x": 850,
+        "y": 691
       },
       "group": "nodes",
       "removed": false,
@@ -363,8 +386,8 @@
         "parent": "alcohol_nonaryl"
       },
       "position": {
-        "x": 1617,
-        "y": 973
+        "x": 1196,
+        "y": 692
       },
       "group": "nodes",
       "removed": false,
@@ -382,8 +405,8 @@
         "parent": "alcohol"
       },
       "position": {
-        "x": 1896,
-        "y": 977
+        "x": 851,
+        "y": 565
       },
       "group": "nodes",
       "removed": false,
@@ -400,8 +423,8 @@
         "label": "Ethers"
       },
       "position": {
-        "x": 682,
-        "y": 1344
+        "x": 696,
+        "y": 1242
       },
       "group": "nodes",
       "removed": false,
@@ -418,8 +441,8 @@
         "label": "Carbonyls (w/ no LG)"
       },
       "position": {
-        "x": 1288,
-        "y": 1346
+        "x": 867,
+        "y": 1065
       },
       "group": "nodes",
       "removed": false,
@@ -437,8 +460,8 @@
         "parent": "carbonyl_noLG"
       },
       "position": {
-        "x": 944,
-        "y": 1347
+        "x": 523,
+        "y": 1066
       },
       "group": "nodes",
       "removed": false,
@@ -456,8 +479,8 @@
         "parent": "carbonyl_noLG"
       },
       "position": {
-        "x": 1289,
-        "y": 1345
+        "x": 868,
+        "y": 1064
       },
       "group": "nodes",
       "removed": false,
@@ -475,8 +498,8 @@
         "parent": "carbonyl_noLG"
       },
       "position": {
-        "x": 1633,
-        "y": 1346
+        "x": 1212,
+        "y": 1065
       },
       "group": "nodes",
       "removed": false,
@@ -493,12 +516,12 @@
         "label": "Carboxylic acids"
       },
       "position": {
-        "x": 93,
-        "y": 1153
+        "x": -1,
+        "y": 832
       },
       "group": "nodes",
       "removed": false,
-      "selected": false,
+      "selected": true,
       "selectable": true,
       "locked": false,
       "grabbable": true,
@@ -512,8 +535,8 @@
         "parent": "carboxylic_acid"
       },
       "position": {
-        "x": 93,
-        "y": 1074
+        "x": -2,
+        "y": 750
       },
       "group": "nodes",
       "removed": false,
@@ -532,8 +555,26 @@
         "parent": "carboxylic_acid"
       },
       "position": {
-        "x": 93,
-        "y": 1197
+        "x": -1,
+        "y": 879
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "carbonyl_wLG",
+        "label": "Carbonyls (w/ LG)"
+      },
+      "position": {
+        "x": 19,
+        "y": 1397
       },
       "group": "nodes",
       "removed": false,
@@ -547,12 +588,13 @@
     {
       "data": {
         "id": "acid_chloride",
-        "label": "Acid chloride\n[metro station]",
-        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/General_structural_formula_of_carboxylic_acid_chlorides.svg/1920px-General_structural_formula_of_carboxylic_acid_chlorides.svg.png"
+        "label": "Acid chloride",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/General_structural_formula_of_carboxylic_acid_chlorides.svg/1920px-General_structural_formula_of_carboxylic_acid_chlorides.svg.png",
+        "parent": "carbonyl_wLG"
       },
       "position": {
-        "x": 83,
-        "y": 1538
+        "x": -10,
+        "y": 1251
       },
       "group": "nodes",
       "removed": false,
@@ -566,11 +608,12 @@
     {
       "data": {
         "id": "ester",
-        "label": "Esters"
+        "label": "Esters",
+        "parent": "carbonyl_wLG"
       },
       "position": {
-        "x": 414,
-        "y": 1535
+        "x": 321,
+        "y": 1248
       },
       "group": "nodes",
       "removed": false,
@@ -584,11 +627,12 @@
     {
       "data": {
         "id": "amide",
-        "label": "Amides"
+        "label": "Amides",
+        "parent": "carbonyl_wLG"
       },
       "position": {
-        "x": -147,
-        "y": 1823
+        "x": -58,
+        "y": 1540
       },
       "group": "nodes",
       "removed": false,
@@ -606,8 +650,8 @@
         "parent": "amide"
       },
       "position": {
-        "x": -350,
-        "y": 1824
+        "x": -260,
+        "y": 1542
       },
       "group": "nodes",
       "removed": false,
@@ -625,8 +669,8 @@
         "parent": "amide"
       },
       "position": {
-        "x": -150,
-        "y": 1822
+        "x": -60,
+        "y": 1540
       },
       "group": "nodes",
       "removed": false,
@@ -644,8 +688,8 @@
         "parent": "amide"
       },
       "position": {
-        "x": 55,
-        "y": 1821
+        "x": 145,
+        "y": 1539
       },
       "group": "nodes",
       "removed": false,
@@ -724,7 +768,7 @@
         "source": "propiophenone",
         "target": "propylbenzene",
         "label": "H₂\nPd",
-        "cpd": "12em",
+        "cpd": "3em",
         "tep": "-50% 0"
       },
       "position": {
@@ -847,7 +891,8 @@
         "id": "formaldehyde__priOH",
         "source": "formaldehyde",
         "target": "priOH",
-        "label": "1. grignard\n2. H₃O+"
+        "label": "1. grignard\n2. H₃O+",
+        "tep": "-15% 50%"
       },
       "position": {
         "x": 0,
@@ -929,7 +974,8 @@
         "source": "secOH",
         "target": "ketone",
         "label": "CrO₃/H₃O+\n[o]",
-        "tep": "-50% 0"
+        "tep": "-50% 0",
+        "cpw": "0.7"
       },
       "position": {
         "x": 0,
@@ -949,7 +995,9 @@
         "id": "priOH__carboxylic_acid",
         "source": "priOH",
         "target": "carboxylic_acid",
-        "label": "CrO₃/H₃O+\n[o]"
+        "label": "CrO₃/H₃O+\n[o]",
+        "sep": "-50% -40%",
+        "tep": "50% -35%"
       },
       "position": {
         "x": 0,
@@ -969,7 +1017,10 @@
         "id": "benzylic_carbon_chain__benzoic_acid",
         "source": "benzylic_carbon_chain",
         "target": "benzoic_acid",
-        "label": "CrO₃/H₃O+\n[o]"
+        "label": "CrO₃/H₃O+\n[o]",
+        "cpd": "6em",
+        "sep": "0 50%",
+        "tep": "-50% 0"
       },
       "position": {
         "x": 0,
@@ -1029,7 +1080,31 @@
         "id": "carboxylic_acid__acid_chloride",
         "source": "carboxylic_acid",
         "target": "acid_chloride",
-        "label": "SOCl₂\n- SO₂\n- HCl"
+        "label": "SOCl₂\n- SO₂\n- HCl",
+        "sep": "15% 50%",
+        "tep": "15% -50%"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "acid_chloride__carboxylic_acid",
+        "source": "acid_chloride",
+        "target": "carboxylic_acid",
+        "label": "H₂O",
+        "sep": "-15% -50%",
+        "tep": "-15% 50%"
       },
       "position": {
         "x": 0,
@@ -1150,7 +1225,52 @@
         "source": "amide",
         "target": "carboxylic_acid",
         "label": "NaOH",
-        "sep": "-40% 0"
+        "sep": "-45% 0",
+        "cpd": "-10em",
+        "tep": "-50% 50%"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "carboxylic_acid__priOH",
+        "source": "carboxylic_acid",
+        "target": "priOH",
+        "label": "1. LiAlH₄\n2. H₃O+",
+        "tep": "-50% 0"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "carboxylic_acid__priOH_2",
+        "source": "carboxylic_acid",
+        "target": "priOH",
+        "label": "1) BH₃ • THF\n2) H₃O+",
+        "sep": "50% 20%",
+        "tep": "-50% 50%"
       },
       "position": {
         "x": 0,

@@ -2,7 +2,7 @@
 // Copyright (c) 2020-2021 w-gao
 //
 
-import {Compound, Reaction, sub, deg, reagent} from "../lib/utils";
+import {Compound, Reaction, sub, deg, bull, reagent} from "../lib/utils";
 
 
 // master list of CHEM 8B reagents!
@@ -31,6 +31,8 @@ const REAGENTS = {
     // reducing reagents
     "NaBH4": reagent(`1. NaBH${sub(4)}`, `2. H${sub(3)}O+`),
     "LiAlH4": reagent(`1. LiAlH${sub(4)}`, `2. H${sub(3)}O+`),
+    "BH3 THF": reagent(`1) BH${sub(3)} ${bull()} THF`, `2) H${sub(3)}O+`),
+
     // ketone -> alkane
     "H2/Pd": reagent(`H${sub(2)}`, "Pd"),
 
@@ -52,6 +54,8 @@ const REAGENTS = {
 
     // strong base - esters/amides -> carboxylic acids
     "NaOH": reagent("NaOH"),
+
+    "H2O": reagent(`H${sub(2)}O`),
 
 };
 
@@ -83,16 +87,16 @@ const add_alkene_compounds = (list: Compound[]) => {
 
 const add_benzylic_compounds = (list: Compound[]) => {
     list.push(
-        // {id: "benzylic", label: "Benzylic compounds"},
-        {id: "benzylic_carbon_chain", label: ""},
+        {id: "benzylic", label: "Benzylic compounds"},
+        {id: "benzylic_carbon_chain", label: "", parent: "benzylic"},
 
-        {id: "benzene", label: "Benzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Benzene-Kekule-2D-skeletal.png/422px-Benzene-Kekule-2D-skeletal.png"},
+        {id: "benzene", label: "Benzene", parent: "benzylic", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Benzene-Kekule-2D-skeletal.png/422px-Benzene-Kekule-2D-skeletal.png"},
         {id: "toluene", label: "Toluene", parent: "benzylic_carbon_chain", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Toluol.svg/800px-Toluol.svg.png"},
         {id: "propylbenzene", label: "_Propylbenzene", parent: "benzylic_carbon_chain", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/1/10/Structural_formula_of_n-propylbenzene.svg"},
-        {id: "propiophenone", label: "_Propiophenone", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png"},
-        {id: "nitrobenzene", label: "Nitrobenzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png"},
-        {id: "aminobenzene", label: "_Aminobenzene", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png"},
-        // {id: "benzyl_alcohol", label: "Benzyl alcohol", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Alkohol_benzylowy.svg/2560px-Alkohol_benzylowy.svg.png"},
+        {id: "propiophenone", label: "_Propiophenone", parent: "benzylic", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png"},
+        {id: "nitrobenzene", label: "Nitrobenzene", parent: "benzylic", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png"},
+        {id: "aminobenzene", label: "_Aminobenzene", parent: "benzylic", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png"},
+        // {id: "benzyl_alcohol", label: "Benzyl alcohol", parent: "benzylic", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Alkohol_benzylowy.svg/2560px-Alkohol_benzylowy.svg.png"},
     );
 };
 
@@ -130,19 +134,20 @@ const add_carboxylic_acid_compounds = (list: Compound[]) => {
         {id: "carboxylic_acid_nonaryl", label: `R-COOH`, parent: "carboxylic_acid"},
         {id: "benzoic_acid", label: "Benzoic acid", parent: "carboxylic_acid", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Benzoic_acid.svg"},
 
-        {id: "acid_chloride", label: "Acid chloride\n[metro station]", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/General_structural_formula_of_carboxylic_acid_chlorides.svg/1920px-General_structural_formula_of_carboxylic_acid_chlorides.svg.png"},
+        {id: "carbonyl_wLG", label: "Carbonyls (w/ LG)"},
+        {id: "acid_chloride", label: "Acid chloride", parent: "carbonyl_wLG", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/General_structural_formula_of_carboxylic_acid_chlorides.svg/1920px-General_structural_formula_of_carboxylic_acid_chlorides.svg.png"},
     );
 };
 
 const add_ester_compounds = (list: Compound[]) => {
     list.push(
-        {id: "ester", label: "Esters"},
+        {id: "ester", label: "Esters", parent: "carbonyl_wLG"},
     );
 };
 
 const add_amide_compounds = (list: Compound[]) => {
     list.push(
-        {id: "amide", label: "Amides"},
+        {id: "amide", label: "Amides", parent: "carbonyl_wLG"},
         {id: "priAmide", label: `1${deg()}-amide`, parent: "amide"},
         {id: "secAmide", label: `2${deg()}-amide`, parent: "amide"},
         {id: "tertAmide", label: `3${deg()}-amide`, parent: "amide"},
@@ -156,7 +161,7 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "benzene__bromobenzene", source: "benzene", target: "bromobenzene", label: REAGENTS["Br2/FeBr3"]},
         {id: "benzene__toluene", source: "benzene", target: "toluene", label: REAGENTS["CH3Cl/AlCl3"]},  // FC-ALK
         {id: "benzene__propiophenone", source: "benzene", target: "propiophenone", label: REAGENTS["R-COCl/AlCl3"]},  // FC-ACYL
-        {id: "propiophenone__propylbenzene", source: "propiophenone", target: "propylbenzene", label: REAGENTS["H2/Pd"], tep: "-50% 0", cpd:"12em"},
+        {id: "propiophenone__propylbenzene", source: "propiophenone", target: "propylbenzene", label: REAGENTS["H2/Pd"], tep: "-50% 0", cpd:"3em"},
 
         // -- ALCOHOLS --
         // ~ alcohol synthesis
@@ -172,7 +177,7 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "bromide__RMgBr", source: "bromide", target: "RMgBr", label: REAGENTS["Mg"]},
 
         // carbonyls + grignard => alcohols
-        {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"]},
+        {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"], tep: "-15% 50%"},
         {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"]},
         {id: "ketone__tertOH", source: "ketone", target: "tertOH", label: REAGENTS["grignard"]},
 
@@ -194,7 +199,7 @@ export const add_reactions = (edges: Reaction[]) => {
         // ~ carbonyl synthesis
         // alcohols --[ oxidation ]--> carbonyls
         {id: "priOH__aldehyde", source: "priOH", target: "aldehyde", label: REAGENTS["PCC"], tep: "-50% 0"},  // mild! CrO3 gives carboxylic acid below
-        {id: "secOH__ketone", source: "secOH", target: "ketone", label: REAGENTS["CrO3"], tep: "-50% 0"},
+        {id: "secOH__ketone", source: "secOH", target: "ketone", label: REAGENTS["CrO3"], tep: "-50% 0", cpw: "0.7"},
 
         // alkenes => carbonyls (ozonolysis)
         //
@@ -204,14 +209,18 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // -- CARBOXYLIC ACID --
         // ~ carboxylic acid synthesis
-        {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"]},
-        {id: "benzylic_carbon_chain__benzoic_acid", source: "benzylic_carbon_chain", target: "benzoic_acid", label: REAGENTS["CrO3"]},
+        {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"], sep: "-50% -40%", tep: "50% -35%"},
+        {id: "benzylic_carbon_chain__benzoic_acid", source: "benzylic_carbon_chain", target: "benzoic_acid", label: REAGENTS["CrO3"], sep: "0 50%", tep: "-50% 0", cpd: "6em"},
         // grignard --[ CO2 ]--> carboxylic acid (w/ one extra c-atom)
         {id: "bromide__carboxylic_acid", source: "bromide", target: "carboxylic_acid", label: REAGENTS["Mg/CO2"]},
         {id: "priBr__carboxylic_acid", source: "priBr", target: "carboxylic_acid", label: REAGENTS["NaCN"]},  // nitrile hydrolysis (w/ one extra c-atom)
 
         // ~ carboxylic acid reactions
-        {id: "carboxylic_acid__acid_chloride", source: "carboxylic_acid", target: "acid_chloride", label: REAGENTS["SOCl2"]},
+        // carboxylic acid <--> acid chloride
+        {id: "carboxylic_acid__acid_chloride", source: "carboxylic_acid", target: "acid_chloride", label: REAGENTS["SOCl2"], sep: "15% 50%", tep: "15% -50%"},
+        {id: "acid_chloride__carboxylic_acid", source: "acid_chloride", target: "carboxylic_acid", label: REAGENTS["H2O"], sep: "-15% -50%", tep: "-15% 50%"},  // reverse
+
+        // acid --[ R-OH ]--> esters
         {id: "acid_chloride__ester", source: "acid_chloride", target: "ester", label: REAGENTS["alcohol/pyr"]},
         // acid --[ amines ]--> amides
         {id: "acid_chloride__priAmide", source: "acid_chloride", target: "priAmide", label: REAGENTS["NH3"]},
@@ -222,8 +231,15 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "ester__carboxylic_acid", source: "ester", target: "carboxylic_acid", label: REAGENTS["NaOH"]},
         {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH"], sep: "-45% 0", tep: "-50% 50%", cpd: "-10em"},
 
-        // acyl substitution reactions (Nuc attacks & kicks out LG)
+        // ~~ acyl substitution reactions (Nuc attacks & kicks out LG)
         // strong Nuc adds twice; weak Nuc adds once
+        {id: "carboxylic_acid__priOH", source: "carboxylic_acid", target: "priOH", label: REAGENTS["LiAlH4"], tep: "-50% 0"},  // LiAlH4 -> strong hydride add twice
+        {id: "carboxylic_acid__priOH_2", source: "carboxylic_acid", target: "priOH", label: REAGENTS["BH3 THF"], sep: "50% 20%", tep: "-50% 50%"},
+
+        // (more) acid chloride reactions
+        // acid chloride --[ grignard ]--> tertiary alcohol (strong Nuc adds twice)
+
+        // acid chloride --[ cuparte ]--> ketone (weak Nuc adds once)
 
 
         // grignard as a starting material - too cluttered to put in main graph; create different nodes instead
@@ -244,10 +260,12 @@ const getReactions = () => {
     add_alcohol_compounds(nodes);
     add_ether_compounds(nodes);
     add_carbonyl_no_LG_compounds(nodes);
-    add_carboxylic_acid_compounds(nodes);
 
+    // w/ LG
+    add_carboxylic_acid_compounds(nodes);
     add_ester_compounds(nodes);
     add_amide_compounds(nodes);
+
     // add_amine_compounds(nodes);
 
     add_reactions(edges);

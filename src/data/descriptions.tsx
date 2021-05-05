@@ -4,6 +4,7 @@
 
 export const descriptions: any = {
     "propiophenone": `<p class="note">This is a ketone!</p>`,
+    "aminobenzene": `<p class="note">This is an amine!</p>`,
 
     "benzene__toluene": `<p class="note">Usually work well with 1 or 2 carbons. Rearrangement may occur with > 2 carbons.</p><p>If you want to attach more than 2 carbons, do a FC-ACYL first, then reduce the ketone with H2/Pd.</p>`,
     "benzene__propiophenone": `<p class="note">Works well with any carbon chain.</p>`,
@@ -15,5 +16,7 @@ export const descriptions: any = {
     "benzylic_carbon_chain__benzoic_acid": `<p class="note">Any carbon chain will be turned into benzoic acid upon treatment with CrO3.</p>`,
     "bromide__carboxylic_acid": `Lecture 7, page 5. Can be primary/secondary/tertiary/aromatic. <p class="note">Product has one extra C-atom (from CO<sub>2</sub>).</p>`,
     "priBr__carboxylic_acid": `Lecture 7, page 6.<p class="note">Product has one extra C-atom (from NaCN).</p>`,
+    "carboxylic_acid__priOH_2": `Lecture 8, page 3.`,
+    "acid_chloride__carboxylic_acid": `Lecture 8, page 3.<p class="note">H2O is a weak nucleophile.</p>`,
 
 };

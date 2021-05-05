@@ -74,6 +74,14 @@ export const deg = (): string => {
 
 
 /**
+ * Return the bullet symbol as an HTML unicode string.
+ */
+export const bull = (): string => {
+    return String.fromCharCode(8226);
+}
+
+
+/**
  * Given any number of reagents, return a formatted string with line breaks.
  *
  * @param args Reagents.
@@ -135,7 +143,7 @@ export const addInfoNode = (cy: any) => {
 
         cy.add({
             "data": {"id": "preset_information", "label": text},
-            "position": {"x": 0, "y": 0},
+            "position": {"x": 0, "y": -50},
             "group": "nodes",
             "removed": false,
             "selected": false,
