@@ -46,9 +46,9 @@ const REAGENTS = {
     "SOCl2": reagent(`SOCl${sub(2)}`, `- SO${sub(2)}`, "- HCl"),
 
     "alcohol/pyr": reagent("R-OH", "pyr.", "- HCl"),  // to esters
-    "NH3": reagent(`xs NH${sub(3)}`, '- HCl'),  // to pri-amides
-    "H3CNH2": reagent(`xs CH${sub(3)}NH${sub(2)}`, '- HCl'),  // to sec-amides
-    "(CH3)2NH": reagent(`xs (CH${sub(3)})${sub(2)}NH`, '- HCl'),  // to tert-amides
+    "NH3": reagent(`xs NH${sub(3)}`, "- HCl"),  // to pri-amides
+    "H3CNH2": reagent(`xs CH${sub(3)}NH${sub(2)}`, "- HCl"),  // to sec-amides
+    "(CH3)2NH": reagent(`xs (CH${sub(3)})${sub(2)}NH`, "- HCl"),  // to tert-amides
 
     // strong base - esters/amides -> carboxylic acids
     "NaOH": reagent("NaOH"),
@@ -207,7 +207,7 @@ export const add_reactions = (edges: Reaction[]) => {
         // -- CARBOXYLIC ACID --
         // ~ carboxylic acid synthesis
         {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"]},
-        {id: "toluene__benzoic_acid", source: "toluene", target: "benzoic_acid", label: REAGENTS["CrO3"]},
+        {id: "benzylic_carbon_chain__benzoic_acid", source: "benzylic_carbon_chain", target: "benzoic_acid", label: REAGENTS["CrO3"]},
         // grignard --[ CO2 ]--> carboxylic acid (w/ one extra c-atom)
         {id: "RMgBr__carboxylic_acid", source: "RMgBr", target: "carboxylic_acid", label: REAGENTS["CO2"]},
         {id: "priBr__carboxylic_acid", source: "priBr", target: "carboxylic_acid", label: REAGENTS["NaCN"]},  // nitrile hydrolysis (w/ one extra c-atom)

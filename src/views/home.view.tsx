@@ -19,7 +19,7 @@ import "./home.scss";
  */
 const setUp = (ref: HTMLDivElement | null, settings: any) => {
     const debug = settings.debug;
-    console.log(`debug=${debug ? 'true' : 'false'}`);
+    console.log(`debug=${debug ? "true" : "false"}`);
 
     const cy: any = cytoscape({
         container: ref,
@@ -136,6 +136,7 @@ const HomeView = () => {
 
         const url = parseUrl();
         const settings = url.query;
+        console.log(settings);
 
         let cy = setUp(cyRef.current, settings);
 

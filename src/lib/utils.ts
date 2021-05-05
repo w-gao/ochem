@@ -95,10 +95,10 @@ export const parseUrl = () => {
 
     const loc = window.location;
     url.root = loc.origin + loc.pathname;
-    const query: any[] = loc.search.substring(1).split('&');
+    const query: any[] = loc.search.substring(1).split("&");
     url.query = {};
     for (let i = 0; i < query.length; i++) {
-        const args = query[i].split('=');
+        const args = query[i].split("=");
         if (args[0]) {
             if (args[1] === undefined) {
                 args[1] = true;
