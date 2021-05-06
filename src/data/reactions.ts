@@ -31,6 +31,8 @@ const REAGENTS = {
     // reducing reagents
     "NaBH4": reagent(`1. NaBH${sub(4)}`, `2. H${sub(3)}O+`),
     "LiAlH4": reagent(`1. LiAlH${sub(4)}`, `2. H${sub(3)}O+`),
+    // LiAlH4 with H2O (for amide or nitrile reduction)
+    "LiAlH4;H2O": reagent(`1. LiAlH${sub(4)}`, `2. H${sub(2)}O`),
     "BH3 THF": reagent(`1. BH${sub(3)} ${bull()} THF`, `2. H${sub(3)}O+`),
 
     // ketone -> alkane
@@ -41,8 +43,11 @@ const REAGENTS = {
     "TsOH": reagent("TsOH"),
 
     // carboxylic acid / acid chloride reactions
-    "Mg/CO2": reagent("1. Mg", "(grignard)", `2. CO${sub(2)}`, `3. H${sub(3)}O+`),
-    "NaCN": reagent("1. NaCN", `2. H${sub(3)}O+ (2 equiv.)`, "", `- NH${4}OH`),
+    "Mg;CO2": reagent("1. Mg", "(grignard)", `2. CO${sub(2)}`, `3. H${sub(3)}O+`),
+    // nitrile hydrolysis (pri-Br --[ NaCN/H3O+ (2 equiv.) ]--> carboxylic acid)
+    "NaCN;H3O+": reagent("1. NaCN", `2. H${sub(3)}O+ (2 equiv.)`, "", `- NH${4}OH`),  // SN2
+    // for turning pri-Br -> nitrile
+    "NaCN": reagent("NaCN"),  // SN2
 
     // thionyl chloride - turns carboxylic acid into acid chloride
     "SOCl2": reagent(`SOCl${sub(2)}`, "", `- SO${sub(2)}`, "- HCl"),
@@ -51,6 +56,10 @@ const REAGENTS = {
     "NH3": reagent(`xs NH${sub(3)}`, "- HCl"),  // to pri-amides
     "H3CNH2": reagent(`xs CH${sub(3)}NH${sub(2)}`, "- HCl"),  // to sec-amides
     "(CH3)2NH": reagent(`xs (CH${sub(3)})${sub(2)}NH`, "- HCl"),  // to tert-amides
+
+    // strong acid - turns nitrile into carboxylic acid
+    // "HCl;H2O": reagent("HCl", `H${sub(2)}O`),
+    "xs H3O+": reagent(`xs H${sub(3)}O+`),
 
     // strong base - esters/amides -> carboxylic acids
     "NaOH": reagent("NaOH"),
@@ -154,6 +163,21 @@ const add_amide_compounds = (list: Compound[]) => {
     );
 };
 
+const add_amine_compounds = (list: Compound[]) => {
+    list.push(
+        {id: "amine", label: "Amines"},
+        {id: "priAmines", label: `1${deg()}-amine`, parent: "amine"},
+        {id: "secAmines", label: `2${deg()}-amine`, parent: "amine"},
+        {id: "tertAmines", label: `3${deg()}-amine`, parent: "amine"},
+    );
+};
+
+const add_nitrile_compounds = (list: Compound[]) => {
+    list.push(
+        {id: "nitrile", label: "Nitrile"},
+    );
+};
+
 
 export const add_reactions = (edges: Reaction[]) => {
     edges.push(
@@ -168,10 +192,10 @@ export const add_reactions = (edges: Reaction[]) => {
         // carbonyls --[ reduction ]--> alcohols
         {id: "aldehyde__priOH", source: "aldehyde", target: "priOH", label: REAGENTS["NaBH4"], cpw: "0.5"},
         {id: "ketone__secOH", source: "ketone", target: "secOH", label: REAGENTS["NaBH4"], cpw: "0.5"},
-        {id: "ester__priOH", source: "ester", target: "priOH", label: REAGENTS["LiAlH4"], tep: "-30% 50%"},  // strong hydride can also reduce esters
+        {id: "ester__priOH", source: "ester", target: "priOH", label: REAGENTS["LiAlH4"], },  // strong hydride can also reduce esters
 
         // grignard synthesis - very useful reagent, not just for alcohols
-        {id: "alcohol_nonaryl__bromide_nonaryl", source: "alcohol_nonaryl", target: "bromide_nonaryl", label: REAGENTS["PBr3"], cpd: "-3em", sep: "-50% -45%"},
+        {id: "alcohol_nonaryl__bromide_nonaryl", source: "alcohol_nonaryl", target: "bromide_nonaryl", label: REAGENTS["PBr3"], cpd: "4em", sep: "-30% -50%"},
         {id: "bromide__RMgBr", source: "bromide", target: "RMgBr", label: REAGENTS["Mg"]},
 
         // carbonyls + grignard => alcohols
@@ -211,8 +235,8 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"], cpd: "4em", sep: "-50% -30%", tep: "50% -30%"},
         {id: "benzylic_carbon_chain__benzoic_acid", source: "benzylic_carbon_chain", target: "benzoic_acid", label: REAGENTS["CrO3"], },
         // grignard --[ CO2 ]--> carboxylic acid (w/ one extra c-atom)
-        {id: "bromide__carboxylic_acid", source: "bromide", target: "carboxylic_acid", label: REAGENTS["Mg/CO2"], sep: "-10% 50%"},
-        {id: "priBr__carboxylic_acid", source: "priBr", target: "carboxylic_acid", label: REAGENTS["NaCN"]},  // nitrile hydrolysis (w/ one extra c-atom)
+        {id: "bromide__carboxylic_acid", source: "bromide", target: "carboxylic_acid", label: REAGENTS["Mg;CO2"], sep: "-10% 50%"},
+        {id: "priBr__carboxylic_acid", source: "priBr", target: "carboxylic_acid", label: REAGENTS["NaCN;H3O+"]},  // nitrile hydrolysis (w/ one extra c-atom)
 
         // ~ carboxylic acid reactions
         // carboxylic acid <--> acid chloride
@@ -228,7 +252,7 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // esters & amides --[ NaOH ]--> carboxylic acids
         {id: "ester__carboxylic_acid", source: "ester", target: "carboxylic_acid", label: REAGENTS["NaOH"]},
-        {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH"], sep: "40% -50%"},
+        {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH"], cpd: "-6em", sep: "-30% -50%", tep: "-30% 50%"},
 
         // ~~ acyl substitution reactions (Nuc attacks & kicks out LG)
         // strong Nuc adds twice; weak Nuc adds once
@@ -238,7 +262,16 @@ export const add_reactions = (edges: Reaction[]) => {
         // (more) acid chloride reactions
         // acid chloride --[ grignard ]--> tertiary alcohol (strong Nuc adds twice)
 
-        // acid chloride --[ cuparte ]--> ketone (weak Nuc adds once)
+        // acid chloride --[ cuperate ]--> ketone (weak Nuc adds once)
+
+        // amides --[ LiAlH4/H3O+/HCl ]--> amines
+        {id: "amide__amine", source: "amide", target: "amine", label: REAGENTS["LiAlH4;H2O"]},
+
+        {id: "priBr__nitrile", source: "priBr", target: "nitrile", label: REAGENTS["NaCN"], cpw: "0.4"},
+        {id: "priAmide__nitrile", source: "priAmide", target: "nitrile", label: REAGENTS["SOCl2"], cpw: "0.5"},
+        {id: "nitrile__priAmide", source: "nitrile", target: "priAmide", label: REAGENTS["LiAlH4;H2O"], cpw: "0.5"},
+        {id: "nitrile__carboxylic_acid", source: "nitrile", target: "carboxylic_acid", label: REAGENTS["xs H3O+"]},
+        {id: "nitrile__ketone", source: "nitrile", target: "ketone", label: "R-MgBr\n(grignard)"},
 
 
         // grignard as a starting material - too cluttered to put in main graph; create different nodes instead
@@ -265,7 +298,8 @@ const getReactions = () => {
     add_ester_compounds(nodes);
     add_amide_compounds(nodes);
 
-    // add_amine_compounds(nodes);
+    add_amine_compounds(nodes);
+    add_nitrile_compounds(nodes);
 
     add_reactions(edges);
 

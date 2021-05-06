@@ -629,8 +629,8 @@
         "label": "Amines"
       },
       "position": {
-        "x": -310,
-        "y": 1250
+        "x": -380,
+        "y": 1400
       },
       "group": "nodes",
       "removed": false,
@@ -648,8 +648,8 @@
         "parent": "amine"
       },
       "position": {
-        "x": -310,
-        "y": 1100
+        "x": -380,
+        "y": 1250
       },
       "group": "nodes",
       "removed": false,
@@ -667,8 +667,8 @@
         "parent": "amine"
       },
       "position": {
-        "x": -310,
-        "y": 1250
+        "x": -380,
+        "y": 1400
       },
       "group": "nodes",
       "removed": false,
@@ -686,8 +686,8 @@
         "parent": "amine"
       },
       "position": {
-        "x": -310,
-        "y": 1400
+        "x": -380,
+        "y": 1550
       },
       "group": "nodes",
       "removed": false,
@@ -704,8 +704,8 @@
         "label": "Nitrile"
       },
       "position": {
-        "x": 50,
-        "y": 1090
+        "x": -80,
+        "y": 1110
       },
       "group": "nodes",
       "removed": false,
@@ -1248,106 +1248,6 @@
         "source": "amide",
         "target": "amine",
         "label": "1. LiAlH₄\n2. H₂O"
-      },
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "group": "edges",
-      "removed": false,
-      "selected": false,
-      "selectable": true,
-      "locked": false,
-      "grabbable": true,
-      "pannable": true,
-      "classes": ""
-    },
-    {
-      "data": {
-        "id": "priBr__nitrile",
-        "source": "priBr",
-        "target": "nitrile",
-        "label": "NaCN"
-      },
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "group": "edges",
-      "removed": false,
-      "selected": false,
-      "selectable": true,
-      "locked": false,
-      "grabbable": true,
-      "pannable": true,
-      "classes": ""
-    },
-    {
-      "data": {
-        "id": "priAmide__nitrile",
-        "source": "priAmide",
-        "target": "nitrile",
-        "label": "SOCl₂\n\n- SO₂\n- HCl"
-      },
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "group": "edges",
-      "removed": false,
-      "selected": false,
-      "selectable": true,
-      "locked": false,
-      "grabbable": true,
-      "pannable": true,
-      "classes": ""
-    },
-    {
-      "data": {
-        "id": "nitrile__priAmide",
-        "source": "nitrile",
-        "target": "priAmide",
-        "label": "1. LiAlH₄\n2. H₂O"
-      },
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "group": "edges",
-      "removed": false,
-      "selected": false,
-      "selectable": true,
-      "locked": false,
-      "grabbable": true,
-      "pannable": true,
-      "classes": ""
-    },
-    {
-      "data": {
-        "id": "nitrile__carboxylic_acid",
-        "source": "nitrile",
-        "target": "carboxylic_acid",
-        "label": "xs H₃O+"
-      },
-      "position": {
-        "x": 0,
-        "y": 0
-      },
-      "group": "edges",
-      "removed": false,
-      "selected": false,
-      "selectable": true,
-      "locked": false,
-      "grabbable": true,
-      "pannable": true,
-      "classes": ""
-    },
-    {
-      "data": {
-        "id": "nitrile__ketone",
-        "source": "nitrile",
-        "target": "ketone",
-        "label": "R-MgBr\n(grignard)"
       },
       "position": {
         "x": 0,
