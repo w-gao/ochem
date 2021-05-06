@@ -6,7 +6,7 @@ import {useEffect, useRef, useState} from "react";
 import cytoscape from "cytoscape";
 import {Popup} from "../components/popup";
 import {descriptions} from "../data/descriptions";
-import {load, reload, save} from "../lib/devtools";
+import {load, reload, save, exportImg} from "../lib/devtools";
 import {parseUrl, addInfoNode} from "../lib/utils";
 import "./home.scss";
 
@@ -79,10 +79,10 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
                 selector: "edge",
                 css: {
                     "content": "data(label)",
-                    "curve-style": "bezier",
+                    "curve-style": "straight",
                     // "curve-style": "unbundled-bezier",
-                    "line-color": "#B2B2B2",
-                    "target-arrow-color": "#B2B2B2",
+                    "line-color": "#778eaa",
+                    "target-arrow-color": "#778eaa",
                     "text-wrap": "wrap",
                     "target-arrow-shape": "triangle",
                     "arrow-scale": 2.5,
@@ -124,6 +124,7 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
         win.cy = cy;
         win.reload = (lock: boolean = false) => reload(cy, lock);
         win.save = (lock: boolean = false) => save(cy, lock);
+        win.exportImg = () => exportImg(cy);
     }
 
     return cy;

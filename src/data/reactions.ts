@@ -94,8 +94,8 @@ const add_benzylic_compounds = (list: Compound[]) => {
         {id: "toluene", label: "Toluene", parent: "benzylic_carbon_chain", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Toluol.svg/800px-Toluol.svg.png"},
         {id: "propylbenzene", label: "_Propylbenzene", parent: "benzylic_carbon_chain", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/1/10/Structural_formula_of_n-propylbenzene.svg"},
         {id: "propiophenone", label: "_Propiophenone", parent: "benzylic", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Propiophenone.png"},
-        {id: "nitrobenzene", label: "Nitrobenzene", parent: "benzylic", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png"},
-        {id: "aminobenzene", label: "_Aminobenzene", parent: "benzylic", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png"},
+        // {id: "nitrobenzene", label: "Nitrobenzene", parent: "benzylic", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Nitrobenzol.svg/800px-Nitrobenzol.svg.png"},
+        // {id: "aminobenzene", label: "_Aminobenzene", parent: "benzylic", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Structural_formula_of_aniline.svg/800px-Structural_formula_of_aniline.svg.png"},
         // {id: "benzyl_alcohol", label: "Benzyl alcohol", parent: "benzylic", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Alkohol_benzylowy.svg/2560px-Alkohol_benzylowy.svg.png"},
     );
 };
@@ -106,15 +106,15 @@ const add_alcohol_compounds = (list: Compound[]) => {
         {id: "alcohol_nonaryl", label: "", parent: "alcohol"},
 
         {id: "priOH", label: `1${deg()}-OH`, parent: "alcohol_nonaryl", height: "150px"},
-        {id: "secOH", label: `2${deg()}-OH`, parent: "alcohol_nonaryl", height: "150px"},
-        {id: "tertOH", label: `3${deg()}-OH`, parent: "alcohol_nonaryl", height: "150px"},
+        {id: "secOH", label: `2${deg()}-OH`, parent: "alcohol_nonaryl"},
+        {id: "tertOH", label: `3${deg()}-OH`, parent: "alcohol_nonaryl"},
         {id: "arylOH", label: `Phenol`, parent: "alcohol"},
     );
 };
 
 const add_ether_compounds = (list: Compound[]) => {
     list.push(
-        {id: "ether", label: "Ethers"},
+        // {id: "ether", label: "Ethers"},
     );
 };
 
@@ -166,18 +166,19 @@ export const add_reactions = (edges: Reaction[]) => {
         // -- ALCOHOLS --
         // ~ alcohol synthesis
         // carbonyls --[ reduction ]--> alcohols
-        {id: "aldehyde__priOH", source: "aldehyde", target: "priOH", label: REAGENTS["NaBH4"], cpd: "3em"},
-        {id: "ketone__secOH", source: "ketone", target: "secOH", label: REAGENTS["NaBH4"], cpd: "3em"},
-        {id: "ester__priOH", source: "ester", target: "priOH", label: REAGENTS["LiAlH4"], tep: "-50% 50%"},  // strong hydride can also reduce esters
+        {id: "aldehyde__priOH", source: "aldehyde", target: "priOH", label: REAGENTS["NaBH4"], cpw: "0.5"},
+        {id: "ketone__secOH", source: "ketone", target: "secOH", label: REAGENTS["NaBH4"], cpw: "0.5"},
+        {id: "ester__priOH", source: "ester", target: "priOH", label: REAGENTS["LiAlH4"], tep: "-30% 50%"},  // strong hydride can also reduce esters
 
         // grignard synthesis - very useful reagent, not just for alcohols
         {id: "alcohol_nonaryl__bromide_nonaryl", source: "alcohol_nonaryl", target: "bromide_nonaryl", label: REAGENTS["PBr3"], cpd: "-3em", sep: "-50% -45%"},
         {id: "bromide__RMgBr", source: "bromide", target: "RMgBr", label: REAGENTS["Mg"]},
 
         // carbonyls + grignard => alcohols
-        {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"], cpd: "2em", tep: "50% -10%"},
-        {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"], sep: "-50% 30%", tep: "50% -10%"},
-        {id: "ketone__tertOH", source: "ketone", target: "tertOH", label: REAGENTS["grignard"], cpd: "-2em", sep: "-50% 30%", tep: "50% -10%"},
+        // {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"]},
+        // {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"]},
+        // {id: "ketone__tertOH", source: "ketone", target: "tertOH", label: REAGENTS["grignard"]},
+        {id: "carbonyl_noLG__alcohol_nonaryl", source: "carbonyl_noLG", target: "alcohol_nonaryl", label: REAGENTS["grignard"], cpd: "20em", sep: "-50% -40%", tep: "0 -50%"},
 
         // ~ alcohol reactions
         // 1/2-OH --[ POCl3 ]--> alkenes
@@ -196,8 +197,8 @@ export const add_reactions = (edges: Reaction[]) => {
         // -- ALDEHYDES and KETONES (carbonyls with no leaving group) --
         // ~ carbonyl synthesis
         // alcohols --[ oxidation ]--> carbonyls
-        {id: "priOH__aldehyde", source: "priOH", target: "aldehyde", label: REAGENTS["PCC"], cpd: "3em"},  // mild! CrO3 gives carboxylic acid below
-        {id: "secOH__ketone", source: "secOH", target: "ketone", label: REAGENTS["CrO3"], cpd: "3em"},
+        {id: "priOH__aldehyde", source: "priOH", target: "aldehyde", label: REAGENTS["PCC"], cpw: "0.5"},  // mild! CrO3 gives carboxylic acid below
+        {id: "secOH__ketone", source: "secOH", target: "ketone", label: REAGENTS["CrO3"], cpw: "0.5"},
 
         // alkenes => carbonyls (ozonolysis)
         //
@@ -207,7 +208,7 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // -- CARBOXYLIC ACID --
         // ~ carboxylic acid synthesis
-        {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"], cpd: "6em", sep: "-50% -20%", tep: "50% -20%"},
+        {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"], cpd: "4em", sep: "-50% -30%", tep: "50% -30%"},
         {id: "benzylic_carbon_chain__benzoic_acid", source: "benzylic_carbon_chain", target: "benzoic_acid", label: REAGENTS["CrO3"], sep: "0 50%", tep: "-50% 0", cpd: "6em"},
         // grignard --[ CO2 ]--> carboxylic acid (w/ one extra c-atom)
         {id: "bromide__carboxylic_acid", source: "bromide", target: "carboxylic_acid", label: REAGENTS["Mg/CO2"], sep: "-10% 50%"},
@@ -215,8 +216,8 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // ~ carboxylic acid reactions
         // carboxylic acid <--> acid chloride
-        {id: "carboxylic_acid__acid_chloride", source: "carboxylic_acid", target: "acid_chloride", label: REAGENTS["SOCl2"], cpd: "-6em", sep: "15% 50%", tep: "15% -50%"},
-        {id: "acid_chloride__carboxylic_acid", source: "acid_chloride", target: "carboxylic_acid", label: REAGENTS["H2O"], cpd: "-6em", sep: "-15% -50%", tep: "-15% 50%"},  // reverse
+        {id: "carboxylic_acid__acid_chloride", source: "carboxylic_acid", target: "acid_chloride", label: REAGENTS["SOCl2"], cpd: "-2em", sep: "15% 50%", tep: "15% -50%"},
+        {id: "acid_chloride__carboxylic_acid", source: "acid_chloride", target: "carboxylic_acid", label: REAGENTS["H2O"], cpd: "-2em", sep: "-15% -50%", tep: "-15% 50%"},  // reverse
 
         // acid --[ R-OH ]--> esters
         {id: "acid_chloride__ester", source: "acid_chloride", target: "ester", label: REAGENTS["alcohol/pyr"]},
@@ -231,8 +232,8 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // ~~ acyl substitution reactions (Nuc attacks & kicks out LG)
         // strong Nuc adds twice; weak Nuc adds once
-        {id: "carboxylic_acid__priOH", source: "carboxylic_acid", target: "priOH", label: REAGENTS["LiAlH4"], tep: "-50% -6%"},  // LiAlH4 -> strong hydride add twice
-        {id: "carboxylic_acid__priOH_2", source: "carboxylic_acid", target: "priOH", label: REAGENTS["BH3 THF"], cpd: "6em", sep: "50% 10%", tep: "-50% 20%"},
+        {id: "carboxylic_acid__priOH", source: "carboxylic_acid", target: "priOH", label: REAGENTS["LiAlH4"]},  // LiAlH4 -> strong hydride add twice
+        // {id: "carboxylic_acid__priOH_2", source: "carboxylic_acid", target: "priOH", label: REAGENTS["BH3 THF"], cpd: "3em", sep: "50% 12%", tep: "-50% 20%"},
 
         // (more) acid chloride reactions
         // acid chloride --[ grignard ]--> tertiary alcohol (strong Nuc adds twice)

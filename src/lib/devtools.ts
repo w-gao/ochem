@@ -64,8 +64,8 @@ const regenerate = (data: any, lock: boolean = false) => {
         element.data.parent = val.parent;
         // element.position.x = parseFloat((element.position.x).toFixed(2));
         // element.position.y = parseFloat((element.position.y).toFixed(2));
-        element.position.x = Math.floor(element.position.x);
-        element.position.y = Math.floor(element.position.y);
+        element.position.x = Math.floor(element.position.x / 10) * 10;
+        element.position.y = Math.floor(element.position.y / 10) * 10;
 
         element.data.height = val.height || undefined;
 
@@ -134,3 +134,13 @@ export const save = (cy: any, lock: boolean = false) => {
     reload(cy, lock);
     window.localStorage.setItem("elements", JSON.stringify(cy.json()["elements"]));
 };
+
+
+/**
+ * Given a cytoscape instance, export the current map as a PNG file.  Note that
+ * DOM-specific elements are not included (e.g.: the background set via CSS
+ * will not be included in the final output).
+ */
+export const exportImg = (cy: any): string => {
+    return cy.png({output: "base64", bg: "#FEFEFE", full: true, scale: 0.7})
+}
