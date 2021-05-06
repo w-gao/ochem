@@ -18,10 +18,10 @@ const REAGENTS = {
 
     "PBr3": reagent(`PBr${sub(3)}`),
     "Mg": reagent("Mg", "ether"),
-    "grignard": reagent("1. grignard", `2. H${sub(3)}O+`),
+    "grignard": reagent("1) grignard", `2) H${sub(3)}O+`),
 
     // alcohol -> alkenes
-    "POCl3": reagent(`1. POCl${sub(3)}`, "2. pyr."),
+    "POCl3": reagent(`1) POCl${sub(3)}`, "2) pyr."),
     "E1": reagent("E1"),  // tertiary -OH; E1 reaction
 
     // oxidizing reagents
@@ -29,8 +29,8 @@ const REAGENTS = {
     "CrO3": reagent(`CrO${sub(3)}/H${sub(3)}O+`, "[o]"),
 
     // reducing reagents
-    "NaBH4": reagent(`1. NaBH${sub(4)}`, `2. H${sub(3)}O+`),
-    "LiAlH4": reagent(`1. LiAlH${sub(4)}`, `2. H${sub(3)}O+`),
+    "NaBH4": reagent(`1) NaBH${sub(4)}`, `2) H${sub(3)}O+`),
+    "LiAlH4": reagent(`1) LiAlH${sub(4)}`, `2) H${sub(3)}O+`),
     "BH3 THF": reagent(`1) BH${sub(3)} ${bull()} THF`, `2) H${sub(3)}O+`),
 
     // ketone -> alkane
@@ -42,7 +42,7 @@ const REAGENTS = {
 
     // carboxylic acid / acid chloride reactions
     "Mg/CO2": reagent("1) Mg", "(grignard)", `2) CO${sub(2)}`, `3) H${sub(3)}O+`),
-    "NaCN": reagent("1) NaCN", `2) 2H${sub(3)}O+`, `- NH${4}OH`),
+    "NaCN": reagent("1) NaCN", `2) 2 equiv. H${sub(3)}O+`, `- NH${4}OH`),
 
     // thionyl chloride - turns carboxylic acid into acid chloride
     "SOCl2": reagent(`SOCl${sub(2)}`, `- SO${sub(2)}`, "- HCl"),
@@ -176,8 +176,8 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // carbonyls + grignard => alcohols
         {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"], cpd: "2em", tep: "50% -10%"},
-        {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"], tep: "50% -10%"},
-        {id: "ketone__tertOH", source: "ketone", target: "tertOH", label: REAGENTS["grignard"], cpd: "-2em", tep: "50% -10%"},
+        {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"], sep: "-50% 30%", tep: "50% -10%"},
+        {id: "ketone__tertOH", source: "ketone", target: "tertOH", label: REAGENTS["grignard"], cpd: "-2em", sep: "-50% 30%", tep: "50% -10%"},
 
         // ~ alcohol reactions
         // 1/2-OH --[ POCl3 ]--> alkenes
@@ -210,7 +210,7 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"], cpd: "6em", sep: "-50% -20%", tep: "50% -20%"},
         {id: "benzylic_carbon_chain__benzoic_acid", source: "benzylic_carbon_chain", target: "benzoic_acid", label: REAGENTS["CrO3"], sep: "0 50%", tep: "-50% 0", cpd: "6em"},
         // grignard --[ CO2 ]--> carboxylic acid (w/ one extra c-atom)
-        {id: "bromide__carboxylic_acid", source: "bromide", target: "carboxylic_acid", label: REAGENTS["Mg/CO2"]},
+        {id: "bromide__carboxylic_acid", source: "bromide", target: "carboxylic_acid", label: REAGENTS["Mg/CO2"], sep: "-10% 50%"},
         {id: "priBr__carboxylic_acid", source: "priBr", target: "carboxylic_acid", label: REAGENTS["NaCN"]},  // nitrile hydrolysis (w/ one extra c-atom)
 
         // ~ carboxylic acid reactions
