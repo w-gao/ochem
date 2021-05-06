@@ -62,6 +62,7 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
                     "background-fit": "contain",
                 }
             },
+            {selector: "node[height]", css: {"height": "data(height)"}},
             {
                 selector: ":parent",
                 css: {
@@ -78,8 +79,8 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
                 selector: "edge",
                 css: {
                     "content": "data(label)",
+                    "curve-style": "bezier",
                     // "curve-style": "unbundled-bezier",
-                    "curve-style": "straight",
                     "line-color": "#B2B2B2",
                     "target-arrow-color": "#B2B2B2",
                     "text-wrap": "wrap",

@@ -67,6 +67,8 @@ const regenerate = (data: any, lock: boolean = false) => {
         element.position.x = Math.floor(element.position.x);
         element.position.y = Math.floor(element.position.y);
 
+        element.data.height = val.height || undefined;
+
         element.selectable = !lock;
         element.grabbable = !lock;
         element.pannable = lock;  // allow pan if locked

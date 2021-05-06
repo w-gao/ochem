@@ -12,6 +12,7 @@ export interface Compound {
     parent?: string;
 
     imgUrl?: string;
+    height?: string;
 }
 
 
