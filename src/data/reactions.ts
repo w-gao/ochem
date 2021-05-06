@@ -18,10 +18,10 @@ const REAGENTS = {
 
     "PBr3": reagent(`PBr${sub(3)}`),
     "Mg": reagent("Mg", "ether"),
-    "grignard": reagent("1) grignard", `2) H${sub(3)}O+`),
+    "grignard": reagent("1. grignard", `2. H${sub(3)}O+`),
 
     // alcohol -> alkenes
-    "POCl3": reagent(`1) POCl${sub(3)}`, "2) pyr."),
+    "POCl3": reagent(`1. POCl${sub(3)}`, "2. pyr."),
     "E1": reagent("E1"),  // tertiary -OH; E1 reaction
 
     // oxidizing reagents
@@ -29,9 +29,9 @@ const REAGENTS = {
     "CrO3": reagent(`CrO${sub(3)}/H${sub(3)}O+`, "[o]"),
 
     // reducing reagents
-    "NaBH4": reagent(`1) NaBH${sub(4)}`, `2) H${sub(3)}O+`),
-    "LiAlH4": reagent(`1) LiAlH${sub(4)}`, `2) H${sub(3)}O+`),
-    "BH3 THF": reagent(`1) BH${sub(3)} ${bull()} THF`, `2) H${sub(3)}O+`),
+    "NaBH4": reagent(`1. NaBH${sub(4)}`, `2. H${sub(3)}O+`),
+    "LiAlH4": reagent(`1. LiAlH${sub(4)}`, `2. H${sub(3)}O+`),
+    "BH3 THF": reagent(`1. BH${sub(3)} ${bull()} THF`, `2. H${sub(3)}O+`),
 
     // ketone -> alkane
     "H2/Pd": reagent(`H${sub(2)}`, "Pd"),
@@ -41,11 +41,11 @@ const REAGENTS = {
     "TsOH": reagent("TsOH"),
 
     // carboxylic acid / acid chloride reactions
-    "Mg/CO2": reagent("1) Mg", "(grignard)", `2) CO${sub(2)}`, `3) H${sub(3)}O+`),
-    "NaCN": reagent("1) NaCN", `2) 2 equiv. H${sub(3)}O+`, `- NH${4}OH`),
+    "Mg/CO2": reagent("1. Mg", "(grignard)", `2. CO${sub(2)}`, `3. H${sub(3)}O+`),
+    "NaCN": reagent("1. NaCN", `2. H${sub(3)}O+ (2 equiv.)`, "", `- NH${4}OH`),
 
     // thionyl chloride - turns carboxylic acid into acid chloride
-    "SOCl2": reagent(`SOCl${sub(2)}`, `- SO${sub(2)}`, "- HCl"),
+    "SOCl2": reagent(`SOCl${sub(2)}`, "", `- SO${sub(2)}`, "- HCl"),
 
     "alcohol/pyr": reagent("R-OH", "pyr.", "- HCl"),  // to esters
     "NH3": reagent(`xs NH${sub(3)}`, "- HCl"),  // to pri-amides
@@ -178,7 +178,7 @@ export const add_reactions = (edges: Reaction[]) => {
         // {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"]},
         // {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"]},
         // {id: "ketone__tertOH", source: "ketone", target: "tertOH", label: REAGENTS["grignard"]},
-        {id: "carbonyl_noLG__alcohol_nonaryl", source: "carbonyl_noLG", target: "alcohol_nonaryl", label: REAGENTS["grignard"], cpd: "20em", sep: "-50% -40%", tep: "0 -50%"},
+        {id: "carbonyl_noLG__alcohol_nonaryl", source: "carbonyl_noLG", target: "alcohol_nonaryl", label: REAGENTS["grignard"], cpd: "18em", sep: "-50% -40%", tep: "50% -45%"},
 
         // ~ alcohol reactions
         // 1/2-OH --[ POCl3 ]--> alkenes
@@ -209,7 +209,7 @@ export const add_reactions = (edges: Reaction[]) => {
         // -- CARBOXYLIC ACID --
         // ~ carboxylic acid synthesis
         {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"], cpd: "4em", sep: "-50% -30%", tep: "50% -30%"},
-        {id: "benzylic_carbon_chain__benzoic_acid", source: "benzylic_carbon_chain", target: "benzoic_acid", label: REAGENTS["CrO3"], sep: "0 50%", tep: "-50% 0", cpd: "6em"},
+        {id: "benzylic_carbon_chain__benzoic_acid", source: "benzylic_carbon_chain", target: "benzoic_acid", label: REAGENTS["CrO3"], },
         // grignard --[ CO2 ]--> carboxylic acid (w/ one extra c-atom)
         {id: "bromide__carboxylic_acid", source: "bromide", target: "carboxylic_acid", label: REAGENTS["Mg/CO2"], sep: "-10% 50%"},
         {id: "priBr__carboxylic_acid", source: "priBr", target: "carboxylic_acid", label: REAGENTS["NaCN"]},  // nitrile hydrolysis (w/ one extra c-atom)
@@ -228,7 +228,7 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // esters & amides --[ NaOH ]--> carboxylic acids
         {id: "ester__carboxylic_acid", source: "ester", target: "carboxylic_acid", label: REAGENTS["NaOH"]},
-        {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH"], sep: "-45% 0", tep: "-50% 50%", cpd: "-10em"},
+        {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH"], sep: "40% -50%"},
 
         // ~~ acyl substitution reactions (Nuc attacks & kicks out LG)
         // strong Nuc adds twice; weak Nuc adds once

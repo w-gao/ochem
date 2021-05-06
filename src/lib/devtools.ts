@@ -8,6 +8,38 @@ import getReactions from "../data/reactions";
 
 
 /**
+ * Given an env object from env.json, return a new cytoscape node displaying
+ * this environment info.
+ */
+const getInfoNode = (env: any): any => {
+    const version = env["VERSION"] || "v0.1";
+    let gitInfo = "local";
+    if (env["BRANCH"] && env["COMMIT_REF"]) {
+        const branch = env["BRANCH"];
+        const ref = env["COMMIT_REF"].substr(0, 7);
+        gitInfo = `${branch}@${ref}`
+    }
+    const time = env["BUILD_TIME"] || "live";
+
+    let text = `~~ CHEM 8B Reactions Map ${version}~~\n\n`;
+    text += `Current build: ${gitInfo} (${time}).`;
+
+    return {
+        "data": {"id": "preset_information", "label": text},
+        "position": {"x": 0, "y": -50},
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": false,
+        "pannable": true,
+        "classes": "preset_information"
+    }
+};
+
+
+/**
  * Given a list of objects, return a key-value pair object where
  * the obj.id is the key.
  */
@@ -69,7 +101,7 @@ const regenerate = (data: any, lock: boolean = false) => {
 
         element.data.height = val.height || undefined;
 
-        element.selectable = !lock;
+        element.selectable = true;
         element.grabbable = !lock;
         element.pannable = lock;  // allow pan if locked
 
@@ -91,7 +123,7 @@ const regenerate = (data: any, lock: boolean = false) => {
         element.data.sep = val.sep || undefined;
         element.data.tep = val.tep || undefined;
 
-        element.selectable = !lock;
+        element.selectable = true;
         element.grabbable = !lock;
         element.pannable = true;  // allow pan for all
 
@@ -108,9 +140,13 @@ const regenerate = (data: any, lock: boolean = false) => {
  */
 export const load = async (lock: boolean = false, regen: boolean = false) => {
     let data = await fetch("generated_reactions.json").then(res => res.json());
+    let env = await fetch("env.json").then(res => res.json());
+
     if (regen) {
-        return regenerate(data, lock);
+        data = regenerate(data, lock);
     }
+
+    data.nodes.push(getInfoNode(env));
     return data;
 };
 
@@ -141,6 +177,10 @@ export const save = (cy: any, lock: boolean = false) => {
  * DOM-specific elements are not included (e.g.: the background set via CSS
  * will not be included in the final output).
  */
-export const exportImg = (cy: any): string => {
-    return cy.png({output: "base64", bg: "#FEFEFE", full: true, scale: 0.7})
+export const exportImg = (cy: any, scale: number = 0.7) => {
+    const base64 = cy.png({bg: "#FEFEFE", full: true, scale: scale})
+
+    const image = new Image();
+    image.src = base64;
+    window.open("")?.document.write(image.outerHTML);
 }

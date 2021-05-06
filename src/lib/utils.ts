@@ -122,37 +122,3 @@ export const parseUrl = () => {
 
     return url;
 };
-
-
-/**
- * Given a cytoscape instance, fetch environment information from env.json and
- * add a node displaying this info.
- */
-export const addInfoNode = (cy: any) => {
-    fetch("env.json").then(res => res.json()).then(res => {
-        let text = "~~ CHEM 8B Reactions Map ~~\n\n";
-
-        if (Object.keys(res).length === 0) {
-            text += "Current build: local";
-        } else {
-            const branch = res["BRANCH"];
-            const ref = res["COMMIT_REF"].substr(0, 7);
-            const time = res["BUILD_TIME"];
-
-            text += `Current build: ${branch}@${ref} (${time}).`;
-        }
-
-        cy.add({
-            "data": {"id": "preset_information", "label": text},
-            "position": {"x": 0, "y": -50},
-            "group": "nodes",
-            "removed": false,
-            "selected": false,
-            "selectable": true,
-            "locked": false,
-            "grabbable": false,
-            "pannable": true,
-            "classes": "preset_information"
-        });
-    });
-};

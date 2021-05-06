@@ -7,7 +7,7 @@ import cytoscape from "cytoscape";
 import {Popup} from "../components/popup";
 import {descriptions} from "../data/descriptions";
 import {load, reload, save, exportImg} from "../lib/devtools";
-import {parseUrl, addInfoNode} from "../lib/utils";
+import {parseUrl} from "../lib/utils";
 import "./home.scss";
 
 
@@ -124,7 +124,7 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
         win.cy = cy;
         win.reload = (lock: boolean = false) => reload(cy, lock);
         win.save = (lock: boolean = false) => save(cy, lock);
-        win.exportImg = () => exportImg(cy);
+        win.exportImg = (scale: number = 0.7) => exportImg(cy, scale);
     }
 
     return cy;
@@ -147,8 +147,6 @@ const HomeView = () => {
         let cy = setUp(cyRef.current, settings);
 
         // register events...
-        cy.on("layoutstop", () => addInfoNode(cy));
-
         cy.on("tap", "edge,node", (ev: any) => {
             const edge = ev.target;
             const description = descriptions[edge.id()];

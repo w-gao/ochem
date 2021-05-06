@@ -3,11 +3,13 @@
 console.log("Running post build...");
 
 const fs = require("fs");
+const pkgInfo = require("../package.json");
 const date = new Date();
 
 const path = "build/env.json";
 const data = JSON.stringify({
-    BUILD_TIME: date.toLocaleString('en-US', {timeZone: 'America/Los_Angeles'}),
+    VERSION: "v" + pkgInfo.version,
+    BUILD_TIME: date.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}),
     BRANCH: process.env.BRANCH,
     URL: process.env.URL,
     COMMIT_REF: process.env.COMMIT_REF,
