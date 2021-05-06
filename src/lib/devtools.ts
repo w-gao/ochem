@@ -21,7 +21,7 @@ const getInfoNode = (env: any): any => {
     }
     const time = env["BUILD_TIME"] || "live";
 
-    let text = `~~ CHEM 8B Reactions Map ${version}~~\n\n`;
+    let text = `~~ CHEM 8B Reactions Map ${version} ~~\n\n`;
     text += `Current build: ${gitInfo} (${time}).`;
 
     return {

@@ -157,7 +157,7 @@
       },
       "position": {
         "x": -20,
-        "y": 510
+        "y": 570
       },
       "group": "nodes",
       "removed": false,
@@ -175,8 +175,8 @@
         "parent": "benzylic"
       },
       "position": {
-        "x": 110,
-        "y": 620
+        "x": 100,
+        "y": 700
       },
       "group": "nodes",
       "removed": false,
@@ -195,8 +195,8 @@
         "parent": "benzylic"
       },
       "position": {
-        "x": 60,
-        "y": 310
+        "x": -70,
+        "y": 340
       },
       "group": "nodes",
       "removed": false,
@@ -215,8 +215,8 @@
         "parent": "benzylic_carbon_chain"
       },
       "position": {
-        "x": 110,
-        "y": 540
+        "x": 100,
+        "y": 620
       },
       "group": "nodes",
       "removed": false,
@@ -234,8 +234,8 @@
         "parent": "benzylic_carbon_chain"
       },
       "position": {
-        "x": 110,
-        "y": 700
+        "x": 100,
+        "y": 780
       },
       "group": "nodes",
       "removed": false,
@@ -253,8 +253,8 @@
         "parent": "benzylic"
       },
       "position": {
-        "x": -160,
-        "y": 540
+        "x": -170,
+        "y": 620
       },
       "group": "nodes",
       "removed": false,
@@ -691,8 +691,8 @@
         "source": "propiophenone",
         "target": "propylbenzene",
         "label": "H₂\nPd",
-        "cpd": "3em",
-        "tep": "-50% 0"
+        "tep": "-50% -10%",
+        "sep": "30% 50%"
       },
       "position": {
         "x": 0,

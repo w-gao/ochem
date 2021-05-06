@@ -161,7 +161,7 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "benzene__bromobenzene", source: "benzene", target: "bromobenzene", label: REAGENTS["Br2/FeBr3"]},
         {id: "benzene__toluene", source: "benzene", target: "toluene", label: REAGENTS["CH3Cl/AlCl3"]},  // FC-ALK
         {id: "benzene__propiophenone", source: "benzene", target: "propiophenone", label: REAGENTS["R-COCl/AlCl3"]},  // FC-ACYL
-        {id: "propiophenone__propylbenzene", source: "propiophenone", target: "propylbenzene", label: REAGENTS["H2/Pd"], tep: "-50% 0", cpd:"3em"},
+        {id: "propiophenone__propylbenzene", source: "propiophenone", target: "propylbenzene", label: REAGENTS["H2/Pd"], sep: "30% 50%", tep: "-50% -10%"},
 
         // -- ALCOHOLS --
         // ~ alcohol synthesis
