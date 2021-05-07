@@ -202,7 +202,7 @@ export const add_reactions = (edges: Reaction[]) => {
         // {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"]},
         // {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"]},
         // {id: "ketone__tertOH", source: "ketone", target: "tertOH", label: REAGENTS["grignard"]},
-        {id: "carbonyl_noLG__alcohol_nonaryl", source: "carbonyl_noLG", target: "alcohol_nonaryl", label: REAGENTS["grignard"], cpd: "15em", sep: "-50% -40%", tep: "50% -45%"},
+        {id: "carbonyl_noLG__alcohol_nonaryl", source: "carbonyl_noLG", target: "alcohol_nonaryl", label: REAGENTS["grignard"], cpd: "15em", sep: "-40% -50%", tep: "50% -45%"},
 
         // ~ alcohol reactions
         // 1/2-OH --[ POCl3 ]--> alkenes
@@ -240,8 +240,8 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // ~ carboxylic acid reactions
         // carboxylic acid <--> acid chloride
-        {id: "carboxylic_acid__acid_chloride", source: "carboxylic_acid", target: "acid_chloride", label: REAGENTS["SOCl2"], cpd: "-2em", sep: "15% 50%", tep: "0 -50%"},
-        {id: "acid_chloride__carboxylic_acid", source: "acid_chloride", target: "carboxylic_acid", label: REAGENTS["H2O"], cpd: "-2em", sep: "-15% -50%", tep: "-15% 50%"},  // reverse
+        {id: "carboxylic_acid__acid_chloride", source: "carboxylic_acid", target: "acid_chloride", label: REAGENTS["SOCl2"], cpd: "-5em", sep: "50% 40%", tep: "0 -50%"},
+        {id: "acid_chloride__carboxylic_acid", source: "acid_chloride", target: "carboxylic_acid", label: REAGENTS["H2O"], },  // reverse
 
         // acid --[ R-OH ]--> esters
         {id: "acid_chloride__ester", source: "acid_chloride", target: "ester", label: REAGENTS["alcohol/pyr"]},
@@ -252,7 +252,7 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // esters & amides --[ NaOH ]--> carboxylic acids
         {id: "ester__carboxylic_acid", source: "ester", target: "carboxylic_acid", label: REAGENTS["NaOH"]},
-        {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH"], cpd: "-6em", sep: "-35% -50%", tep: "-30% 50%"},
+        {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH"], cpd: "-10em", cpw: "0.8", sep: "-35% -50%", tep: "-10% 50%"},
 
         // ~~ acyl substitution reactions (Nuc attacks & kicks out LG)
         // strong Nuc adds twice; weak Nuc adds once
@@ -274,7 +274,7 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "priAmide__nitrile", source: "priAmide", target: "nitrile", label: REAGENTS["SOCl2"], cpw: "0.5"},
         {id: "nitrile__priAmide", source: "nitrile", target: "priAmide", label: REAGENTS["LiAlH4;H2O"], cpw: "0.5"},
         {id: "nitrile__carboxylic_acid", source: "nitrile", target: "carboxylic_acid", label: REAGENTS["xs H3O+"], tep: "-40% 50%"},
-        {id: "nitrile__ketone", source: "nitrile", target: "ketone", label: REAGENTS["R-MgBr"], cpw: "0.6", sep: "50% 0", tep: "-50% 25%"},
+        {id: "nitrile__ketone", source: "nitrile", target: "ketone", label: REAGENTS["R-MgBr"], sep: "50% 0", tep: "-50% 25%"},
 
 
         // grignard as a starting material - too cluttered to put in main graph; create different nodes instead
