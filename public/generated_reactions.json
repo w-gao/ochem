@@ -6,8 +6,8 @@
         "label": "Bromides"
       },
       "position": {
-        "x": 400,
-        "y": 450
+        "x": -860,
+        "y": 530
       },
       "group": "nodes",
       "removed": false,
@@ -25,8 +25,8 @@
         "parent": "bromide"
       },
       "position": {
-        "x": 400,
-        "y": 520
+        "x": -860,
+        "y": 600
       },
       "group": "nodes",
       "removed": false,
@@ -44,8 +44,8 @@
         "parent": "bromide_nonaryl"
       },
       "position": {
-        "x": 400,
-        "y": 420
+        "x": -860,
+        "y": 500
       },
       "group": "nodes",
       "removed": false,
@@ -63,8 +63,8 @@
         "parent": "bromide_nonaryl"
       },
       "position": {
-        "x": 400,
-        "y": 530
+        "x": -860,
+        "y": 610
       },
       "group": "nodes",
       "removed": false,
@@ -82,8 +82,8 @@
         "parent": "bromide_nonaryl"
       },
       "position": {
-        "x": 400,
-        "y": 630
+        "x": -860,
+        "y": 710
       },
       "group": "nodes",
       "removed": false,
@@ -102,8 +102,8 @@
         "parent": "bromide"
       },
       "position": {
-        "x": 400,
-        "y": 280
+        "x": -860,
+        "y": 360
       },
       "group": "nodes",
       "removed": false,
@@ -120,8 +120,8 @@
         "label": "RMgBr\n(grignard)"
       },
       "position": {
-        "x": -90,
-        "y": 450
+        "x": -1220,
+        "y": 540
       },
       "group": "nodes",
       "removed": false,
@@ -138,8 +138,8 @@
         "label": "Alkenes"
       },
       "position": {
-        "x": 1620,
-        "y": -50
+        "x": 340,
+        "y": 160
       },
       "group": "nodes",
       "removed": false,
@@ -156,8 +156,8 @@
         "label": "Benzylic compounds"
       },
       "position": {
-        "x": 670,
-        "y": -100
+        "x": -690,
+        "y": 20
       },
       "group": "nodes",
       "removed": false,
@@ -175,8 +175,8 @@
         "parent": "benzylic"
       },
       "position": {
-        "x": 840,
-        "y": -100
+        "x": -520,
+        "y": 0
       },
       "group": "nodes",
       "removed": false,
@@ -195,8 +195,8 @@
         "parent": "benzylic"
       },
       "position": {
-        "x": 490,
-        "y": 0
+        "x": -870,
+        "y": 120
       },
       "group": "nodes",
       "removed": false,
@@ -215,8 +215,8 @@
         "parent": "benzylic_carbon_chain"
       },
       "position": {
-        "x": 840,
-        "y": -30
+        "x": -520,
+        "y": 70
       },
       "group": "nodes",
       "removed": false,
@@ -234,8 +234,8 @@
         "parent": "benzylic_carbon_chain"
       },
       "position": {
-        "x": 840,
-        "y": -170
+        "x": -520,
+        "y": -70
       },
       "group": "nodes",
       "removed": false,
@@ -253,8 +253,8 @@
         "parent": "benzylic"
       },
       "position": {
-        "x": 490,
-        "y": -210
+        "x": -870,
+        "y": -70
       },
       "group": "nodes",
       "removed": false,
@@ -271,8 +271,8 @@
         "label": "Alcohols"
       },
       "position": {
-        "x": 1410,
-        "y": 450
+        "x": 150,
+        "y": 520
       },
       "group": "nodes",
       "removed": false,
@@ -291,8 +291,8 @@
         "height": "150px"
       },
       "position": {
-        "x": 1410,
-        "y": 330
+        "x": 150,
+        "y": 410
       },
       "group": "nodes",
       "removed": false,
@@ -310,8 +310,8 @@
         "parent": "alcohol_nonaryl"
       },
       "position": {
-        "x": 1410,
-        "y": 490
+        "x": 150,
+        "y": 570
       },
       "group": "nodes",
       "removed": false,
@@ -329,8 +329,8 @@
         "parent": "alcohol_nonaryl"
       },
       "position": {
-        "x": 1410,
-        "y": 600
+        "x": 150,
+        "y": 680
       },
       "group": "nodes",
       "removed": false,
@@ -347,8 +347,8 @@
         "label": "Carbonyls (w/ no LG)"
       },
       "position": {
-        "x": 1750,
-        "y": 570
+        "x": 490,
+        "y": 640
       },
       "group": "nodes",
       "removed": false,
@@ -366,8 +366,8 @@
         "parent": "carbonyl_noLG"
       },
       "position": {
-        "x": 1750,
-        "y": 410
+        "x": 490,
+        "y": 480
       },
       "group": "nodes",
       "removed": false,
@@ -385,8 +385,8 @@
         "parent": "carbonyl_noLG"
       },
       "position": {
-        "x": 1750,
-        "y": 530
+        "x": 490,
+        "y": 600
       },
       "group": "nodes",
       "removed": false,
@@ -405,8 +405,8 @@
         "height": "150px"
       },
       "position": {
-        "x": 1750,
-        "y": 690
+        "x": 490,
+        "y": 760
       },
       "group": "nodes",
       "removed": false,
@@ -423,8 +423,8 @@
         "label": "Carboxylic acids"
       },
       "position": {
-        "x": 830,
-        "y": 370
+        "x": -430,
+        "y": 460
       },
       "group": "nodes",
       "removed": false,
@@ -442,8 +442,8 @@
         "parent": "carboxylic_acid"
       },
       "position": {
-        "x": 830,
-        "y": 450
+        "x": -430,
+        "y": 540
       },
       "group": "nodes",
       "removed": false,
@@ -462,8 +462,8 @@
         "parent": "carboxylic_acid"
       },
       "position": {
-        "x": 830,
-        "y": 320
+        "x": -430,
+        "y": 400
       },
       "group": "nodes",
       "removed": false,
@@ -481,8 +481,8 @@
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/General_structural_formula_of_carboxylic_acid_chlorides.svg/1920px-General_structural_formula_of_carboxylic_acid_chlorides.svg.png"
       },
       "position": {
-        "x": 960,
-        "y": 690
+        "x": -290,
+        "y": 760
       },
       "group": "nodes",
       "removed": false,
@@ -499,8 +499,8 @@
         "label": "Esters"
       },
       "position": {
-        "x": 1120,
-        "y": 450
+        "x": -140,
+        "y": 520
       },
       "group": "nodes",
       "removed": false,
@@ -517,8 +517,8 @@
         "label": "Amides"
       },
       "position": {
-        "x": 1060,
-        "y": 970
+        "x": -200,
+        "y": 1060
       },
       "group": "nodes",
       "removed": false,
@@ -536,8 +536,8 @@
         "parent": "amide"
       },
       "position": {
-        "x": 890,
-        "y": 970
+        "x": -370,
+        "y": 1060
       },
       "group": "nodes",
       "removed": false,
@@ -555,8 +555,8 @@
         "parent": "amide"
       },
       "position": {
-        "x": 1060,
-        "y": 970
+        "x": -200,
+        "y": 1060
       },
       "group": "nodes",
       "removed": false,
@@ -574,8 +574,8 @@
         "parent": "amide"
       },
       "position": {
-        "x": 1240,
-        "y": 970
+        "x": -20,
+        "y": 1060
       },
       "group": "nodes",
       "removed": false,
@@ -592,8 +592,8 @@
         "label": "Amines"
       },
       "position": {
-        "x": 400,
-        "y": 960
+        "x": -840,
+        "y": 1070
       },
       "group": "nodes",
       "removed": false,
@@ -611,8 +611,8 @@
         "parent": "amine"
       },
       "position": {
-        "x": 400,
-        "y": 870
+        "x": -840,
+        "y": 980
       },
       "group": "nodes",
       "removed": false,
@@ -630,8 +630,8 @@
         "parent": "amine"
       },
       "position": {
-        "x": 400,
-        "y": 960
+        "x": -840,
+        "y": 1070
       },
       "group": "nodes",
       "removed": false,
@@ -649,8 +649,8 @@
         "parent": "amine"
       },
       "position": {
-        "x": 400,
-        "y": 1050
+        "x": -840,
+        "y": 1160
       },
       "group": "nodes",
       "removed": false,
@@ -667,8 +667,8 @@
         "label": "Nitrile"
       },
       "position": {
-        "x": 670,
-        "y": 780
+        "x": -600,
+        "y": 860
       },
       "group": "nodes",
       "removed": false,

@@ -20,7 +20,12 @@ export const descriptions: any = {
     "carboxylic_acid__priOH": `<p class="note">Can also use BH<sub>3</sub>&bull;THF. Lecture 8, page 3.</p>`,
     // "carboxylic_acid__priOH_2": `Lecture 8, page 3.`,
     "acid_chloride__carboxylic_acid": `Lecture 8, page 3.<p class="note">H2O is a weak nucleophile.</p>`,
+    "acid_chloride__tertOH": `<p class="note">Also works with a ester.</p>`,
+    "acid_chloride__ketone": `<p class="note">Also works with a ester.</p>`,
 
-    "amide__amine": `<p class="note">Use LiAlH4 followed by H3O+ to get an amine with a positive charge.</p>`,
-    "nitrile__carboxylic_acid": `<p class="note">Can also use HCl + xs H2O</p>`
+    "amide__amine": `<p>Lecture 9, page 2.</p><img src="https://user-images.githubusercontent.com/20177171/117494008-94818180-af28-11eb-9993-642476c6f262.png" alt="rxn" /><p class="note">Use LiAlH4 followed by H3O+ to get an amine with a positive charge.</p><img src="https://user-images.githubusercontent.com/20177171/117494368-14a7e700-af29-11eb-9846-08fa73575312.png" alt="rxn"/>`,
+    "priBr__nitrile": `Lecture 9, page 1.<p class="note">SN2 reaction. Product has one extra C-atom.</p><img src="https://user-images.githubusercontent.com/20177171/117493883-6c921e00-af28-11eb-8b94-60d5a7b8e6e1.png" alt="rxn"/>`,
+    "nitrile__carboxylic_acid": `Lecture 9, page 2.<p class="note">Can also use HCl + xs H2O</p><img src="https://user-images.githubusercontent.com/20177171/117494087-b2e77d00-af28-11eb-8c65-71a39ceda8c2.png" alt="rxn" />`,
+    "nitrile__ketone": `Lecture 9, page 3.<p class="note">The carbonyl c-atom in the ketone comes from the nitrile.</p>`,
+
 };
