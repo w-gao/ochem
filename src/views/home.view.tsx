@@ -142,7 +142,7 @@ const HomeView = () => {
 
         const url = parseUrl();
         const settings = url.query;
-        console.log(settings);
+        // console.log(settings);
 
         let cy = setUp(cyRef.current, settings);
 

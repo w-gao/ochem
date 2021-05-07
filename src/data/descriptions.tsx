@@ -21,4 +21,6 @@ export const descriptions: any = {
     // "carboxylic_acid__priOH_2": `Lecture 8, page 3.`,
     "acid_chloride__carboxylic_acid": `Lecture 8, page 3.<p class="note">H2O is a weak nucleophile.</p>`,
 
+    "amide__amine": `<p class="note">Use LiAlH4 followed by H3O+ to get an amine with a positive charge.</p>`,
+    "nitrile__carboxylic_acid": `<p class="note">Can also use HCl + xs H2O</p>`
 };
