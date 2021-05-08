@@ -13,8 +13,7 @@ const REAGENTS = {
     "R-COCl/AlCl3": reagent("R-COCl", `AlCl${sub(3)}`),  // FC-ACYL
 
     // alkenes -> R-OH
-    "OM/DM": reagent("OM/DM"),
-    "HB=": reagent("HB: / [o]"),  // hydroboration oxidation
+    "OM/DM or HB/[o]": reagent("OM/DM", "or HB=/[o]"),  // OM/DM or hydroboration oxidation
 
     "PBr3": reagent(`PBr${sub(3)}`),
     "Mg": reagent("Mg", "ether"),
@@ -60,7 +59,8 @@ const REAGENTS = {
     "NaOH": reagent("NaOH"),  // esters/amides -> carboxylic acids
 
     // strong Nuc
-    "R-MgBr": reagent("R-MgBr", "(grignard)"),  // same as grignard; written this way for better representation
+    "RMgBr": reagent("RMgBr", "(grignard)"),  // same as grignard; written this way for better representation
+    "xs RMgBr": reagent("xs RMgBr", "(grignard)"),
 
     // weak Nuc
     "cuprate": reagent(`R${sub(2)}CuLi`, "(cuprate)"),  // lithium dialkyl cuprate
@@ -166,9 +166,9 @@ const add_amide_compounds = (list: Compound[]) => {
 const add_amine_compounds = (list: Compound[]) => {
     list.push(
         {id: "amine", label: "Amines"},
-        {id: "priAmines", label: `1${deg()}-amine`, parent: "amine"},
-        {id: "secAmines", label: `2${deg()}-amine`, parent: "amine"},
-        {id: "tertAmines", label: `3${deg()}-amine`, parent: "amine"},
+        {id: "priAmine", label: `1${deg()}-amine`, parent: "amine"},
+        {id: "secAmine", label: `2${deg()}-amine`, parent: "amine"},
+        {id: "tertAmine", label: `3${deg()}-amine`, parent: "amine"},
     );
 };
 
@@ -189,13 +189,16 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // -- ALCOHOLS --
         // ~ alcohol synthesis
+        // alkenes --[ OM/DM or HB:/[o] ]--> alcohols
+        // {id: "alkene__alcohol_nonaryl", source: "alkene", target: "alcohol_nonaryl", label: REAGENTS["OM/DM or HB/[o]"], },
+
         // carbonyls --[ reduction ]--> alcohols
         {id: "aldehyde__priOH", source: "aldehyde", target: "priOH", label: REAGENTS["NaBH4"], cpw: "0.5"},
         {id: "ketone__secOH", source: "ketone", target: "secOH", label: REAGENTS["NaBH4"], cpw: "0.5"},
         {id: "ester__priOH", source: "ester", target: "priOH", label: REAGENTS["LiAlH4"], },  // strong hydride can also reduce esters
 
         // grignard synthesis - very useful reagent, not just for alcohols
-        {id: "alcohol_nonaryl__bromide_nonaryl", source: "alcohol_nonaryl", target: "bromide_nonaryl", label: REAGENTS["PBr3"], cpd: "30em", cpw: "0.2", sep: "-30% -50%", tep: "30% -50%"},
+        {id: "alcohol_nonaryl__bromide_nonaryl", source: "alcohol_nonaryl", target: "bromide_nonaryl", label: REAGENTS["PBr3"], cpd: "30em", cpw: "0.3", sep: "-30% -50%", tep: "30% -50%"},
         {id: "bromide__RMgBr", source: "bromide", target: "RMgBr", label: REAGENTS["Mg"]},
 
         // carbonyls + grignard => alcohols
@@ -206,9 +209,8 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // ~ alcohol reactions
         // 1/2-OH --[ POCl3 ]--> alkenes
-        //
         // 3-OH --[ E2 ]--> alkenes
-        //
+        // {id: "alcohol_nonaryl__alkene", source: "alcohol_nonaryl", target: "alkene", label: REAGENTS["POCl3"] + `\n\n or E2 (3${deg()})`, },
 
         // -- ETHERS --
         // ~ ether synthesis
@@ -264,8 +266,9 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "acid_chloride__priOH", source: "acid_chloride", target: "priOH", label: REAGENTS["NaBH4"]},
 
         // strong and weak Nuc attack
-        {id: "acid_chloride__tertOH", source: "acid_chloride", target: "tertOH", label: REAGENTS["R-MgBr"]},  // strong Nuc adds twice
+        {id: "acid_chloride__tertOH", source: "acid_chloride", target: "tertOH", label: REAGENTS["xs RMgBr"]},  // strong Nuc adds twice
         {id: "acid_chloride__ketone", source: "acid_chloride", target: "ketone", label: REAGENTS["cuprate"]},  // weak Nuc adds once
+        {id: "ester__tertOH", source: "ester", target: "tertOH", label: REAGENTS["xs RMgBr"], sep: "50% 30%"},  // strong Nuc also adds twice to esters
 
         // amides --[ LiAlH4/H3O+/HCl ]--> amines
         {id: "amide__amine", source: "amide", target: "amine", label: REAGENTS["LiAlH4;H2O"]},
@@ -274,7 +277,7 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "priAmide__nitrile", source: "priAmide", target: "nitrile", label: REAGENTS["SOCl2"], cpw: "0.5"},
         {id: "nitrile__priAmide", source: "nitrile", target: "priAmide", label: REAGENTS["LiAlH4;H2O"], cpw: "0.5"},
         {id: "nitrile__carboxylic_acid", source: "nitrile", target: "carboxylic_acid", label: REAGENTS["xs H3O+"], tep: "-40% 50%"},
-        {id: "nitrile__ketone", source: "nitrile", target: "ketone", label: REAGENTS["R-MgBr"], sep: "50% 0", tep: "-50% 25%"},
+        {id: "nitrile__ketone", source: "nitrile", target: "ketone", label: REAGENTS["RMgBr"], sep: "50% 0", tep: "-50% 25%"},
 
 
         // grignard as a starting material - too cluttered to put in main graph; create different nodes instead

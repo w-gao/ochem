@@ -147,13 +147,15 @@ const HomeView = () => {
         let cy = setUp(cyRef.current, settings);
 
         // register events...
-        cy.on("tap", "edge,node", (ev: any) => {
-            const edge = ev.target;
-            const description = descriptions[edge.id()];
-            // if (description) {
-            setPopup(description);
-            // }
-        });
+        if(settings.debug || settings.popup) {
+            cy.on("tap", "edge,node", (ev: any) => {
+                const edge = ev.target;
+                const description = descriptions[edge.id()];
+                // if (description) {
+                setPopup(description);
+                // }
+            });
+        }
 
         cy.on("zoom pan", () => {
             const element = document.getElementById("graph");
