@@ -6,8 +6,8 @@
         "label": "Bromides"
       },
       "position": {
-        "x": -860,
-        "y": 520
+        "x": -870,
+        "y": 530
       },
       "group": "nodes",
       "removed": false,
@@ -21,12 +21,31 @@
     {
       "data": {
         "id": "bromide_nonaryl",
-        "label": "",
+        "label": "Bromide (Nonaryl)",
         "parent": "bromide"
       },
       "position": {
-        "x": -860,
+        "x": -870,
         "y": 600
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "bromide_pri_or_sec",
+        "label": "",
+        "parent": "bromide_nonaryl"
+      },
+      "position": {
+        "x": -870,
+        "y": 570
       },
       "group": "nodes",
       "removed": false,
@@ -41,11 +60,11 @@
       "data": {
         "id": "priBr",
         "label": "1°-Br",
-        "parent": "bromide_nonaryl"
+        "parent": "bromide_pri_or_sec"
       },
       "position": {
-        "x": -860,
-        "y": 500
+        "x": -870,
+        "y": 520
       },
       "group": "nodes",
       "removed": false,
@@ -60,11 +79,11 @@
       "data": {
         "id": "secBr",
         "label": "2°-Br",
-        "parent": "bromide_nonaryl"
+        "parent": "bromide_pri_or_sec"
       },
       "position": {
-        "x": -860,
-        "y": 600
+        "x": -870,
+        "y": 620
       },
       "group": "nodes",
       "removed": false,
@@ -82,8 +101,8 @@
         "parent": "bromide_nonaryl"
       },
       "position": {
-        "x": -860,
-        "y": 700
+        "x": -870,
+        "y": 720
       },
       "group": "nodes",
       "removed": false,
@@ -103,7 +122,7 @@
       },
       "position": {
         "x": -860,
-        "y": 350
+        "y": 340
       },
       "group": "nodes",
       "removed": false,
@@ -121,7 +140,7 @@
       },
       "position": {
         "x": -1230,
-        "y": 520
+        "y": 530
       },
       "group": "nodes",
       "removed": false,
@@ -981,7 +1000,8 @@
         "source": "bromide",
         "target": "carboxylic_acid",
         "label": "1. Mg (grignard)\n2. CO₂\n3. H₃O+",
-        "tep": "-50% 30%"
+        "tep": "-50% 30%",
+        "sep": "50% 0"
       },
       "position": {
         "x": 0,
@@ -1001,7 +1021,7 @@
         "id": "priBr__carboxylic_acid",
         "source": "priBr",
         "target": "carboxylic_acid",
-        "label": "1. NaCN\n2. H₃O+ (2 equiv.)\n\n- NH4OH",
+        "label": "1. NaCN\n2. H₃O+ (2 equiv.)\n- NH4OH",
         "tep": "-50% -20%"
       },
       "position": {
@@ -1022,7 +1042,7 @@
         "id": "carboxylic_acid__acid_chloride",
         "source": "carboxylic_acid",
         "target": "acid_chloride",
-        "label": "SOCl₂\n\n- SO₂\n- HCl",
+        "label": "SOCl₂\n- SO₂\n- HCl",
         "cpd": "-5em",
         "sep": "50% 40%",
         "tep": "0 -50%"
@@ -1229,7 +1249,7 @@
         "id": "acid_chloride__tertOH",
         "source": "acid_chloride",
         "target": "tertOH",
-        "label": "xs RMgBr\n(grignard)"
+        "label": "2eq. RMgBr\n(grignard)"
       },
       "position": {
         "x": 0,
@@ -1269,7 +1289,7 @@
         "id": "ester__tertOH",
         "source": "ester",
         "target": "tertOH",
-        "label": "xs RMgBr\n(grignard)",
+        "label": "2eq. RMgBr\n(grignard)",
         "sep": "50% 30%"
       },
       "position": {
@@ -1307,11 +1327,11 @@
     },
     {
       "data": {
-        "id": "priBr__nitrile",
-        "source": "priBr",
+        "id": "bromide_pri_or_sec__nitrile",
+        "source": "bromide_pri_or_sec",
         "target": "nitrile",
         "label": "NaCN",
-        "sep": "50% 50%"
+        "sep": "50% 10%"
       },
       "position": {
         "x": 0,
@@ -1331,7 +1351,7 @@
         "id": "priAmide__nitrile",
         "source": "priAmide",
         "target": "nitrile",
-        "label": "SOCl₂\n\n- SO₂\n- HCl",
+        "label": "SOCl₂\n- SO₂\n- HCl",
         "cpw": "0.5"
       },
       "position": {

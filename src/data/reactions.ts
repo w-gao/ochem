@@ -37,12 +37,12 @@ const REAGENTS = {
     // carboxylic acid / acid chloride reactions
     "Mg;CO2": reagent("1. Mg (grignard)", `2. CO${sub(2)}`, `3. H${sub(3)}O+`),
     // nitrile hydrolysis (pri-Br --[ NaCN/H3O+ (2 equiv.) ]--> carboxylic acid)
-    "NaCN;H3O+": reagent("1. NaCN", `2. H${sub(3)}O+ (2 equiv.)`, "", `- NH${4}OH`),  // SN2
+    "NaCN;H3O+": reagent("1. NaCN", `2. H${sub(3)}O+ (2 equiv.)`, `- NH${4}OH`),  // SN2
     // for turning pri-Br -> nitrile
     "NaCN": reagent("NaCN"),  // SN2
 
     // thionyl chloride - turns carboxylic acid into acid chloride
-    "SOCl2": reagent(`SOCl${sub(2)}`, "", `- SO${sub(2)}`, "- HCl"),
+    "SOCl2": reagent(`SOCl${sub(2)}`, `- SO${sub(2)}`, "- HCl"),
 
     "alcohol/pyr": reagent("R-OH", "pyr.", "- HCl"),  // to esters
     "NH3": reagent(`xs NH${sub(3)}`, "- HCl"),  // to pri-amides
@@ -60,7 +60,7 @@ const REAGENTS = {
 
     // strong Nuc
     "RMgBr": reagent("RMgBr", "(grignard)"),  // same as grignard; written this way for better representation
-    "xs RMgBr": reagent("xs RMgBr", "(grignard)"),
+    "2 RMgBr": reagent("2eq. RMgBr", "(grignard)"),
 
     // weak Nuc
     "cuprate": reagent(`R${sub(2)}CuLi`, "(cuprate)"),  // lithium dialkyl cuprate
@@ -72,10 +72,11 @@ const REAGENTS = {
 const add_bromide_compounds = (list: Compound[]) => {
     list.push(
         {id: "bromide", label: "Bromides"},
-        {id: "bromide_nonaryl", label: "", parent: "bromide"},
+        {id: "bromide_nonaryl", label: "Bromide (Nonaryl)", parent: "bromide"},
+        {id: "bromide_pri_or_sec", label: "", parent: "bromide_nonaryl"},
 
-        {id: "priBr", label: `1${deg()}-Br`, parent: "bromide_nonaryl"},
-        {id: "secBr", label: `2${deg()}-Br`, parent: "bromide_nonaryl"},
+        {id: "priBr", label: `1${deg()}-Br`, parent: "bromide_pri_or_sec"},
+        {id: "secBr", label: `2${deg()}-Br`, parent: "bromide_pri_or_sec"},
         {id: "tertBr", label: `3${deg()}-Br`, parent: "bromide_nonaryl"},
         {id: "bromobenzene", label: "Bromobenzene", parent: "bromide", imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Brombenzol_-_Bromobenzene.svg/800px-Brombenzol_-_Bromobenzene.svg.png"},
 
@@ -237,7 +238,7 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "priOH__carboxylic_acid", source: "priOH", target: "carboxylic_acid", label: REAGENTS["CrO3"], cpd: "4em", sep: "-50% -30%", tep: "50% -30%"},
         {id: "benzylic_carbon_chain__benzoic_acid", source: "benzylic_carbon_chain", target: "benzoic_acid", label: REAGENTS["CrO3"], },
         // grignard --[ CO2 ]--> carboxylic acid (w/ one extra c-atom)
-        {id: "bromide__carboxylic_acid", source: "bromide", target: "carboxylic_acid", label: REAGENTS["Mg;CO2"], tep: "-50% 30%"},
+        {id: "bromide__carboxylic_acid", source: "bromide", target: "carboxylic_acid", label: REAGENTS["Mg;CO2"], sep: "50% 0", tep: "-50% 30%"},
         {id: "priBr__carboxylic_acid", source: "priBr", target: "carboxylic_acid", label: REAGENTS["NaCN;H3O+"], tep: "-50% -20%"},  // nitrile hydrolysis (w/ one extra c-atom)
 
         // ~ carboxylic acid reactions
@@ -266,14 +267,14 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "acid_chloride__priOH", source: "acid_chloride", target: "priOH", label: REAGENTS["NaBH4"]},
 
         // strong and weak Nuc attack
-        {id: "acid_chloride__tertOH", source: "acid_chloride", target: "tertOH", label: REAGENTS["xs RMgBr"]},  // strong Nuc adds twice
+        {id: "acid_chloride__tertOH", source: "acid_chloride", target: "tertOH", label: REAGENTS["2 RMgBr"]},  // strong Nuc adds twice
         {id: "acid_chloride__ketone", source: "acid_chloride", target: "ketone", label: REAGENTS["cuprate"]},  // weak Nuc adds once
-        {id: "ester__tertOH", source: "ester", target: "tertOH", label: REAGENTS["xs RMgBr"], sep: "50% 30%"},  // strong Nuc also adds twice to esters
+        {id: "ester__tertOH", source: "ester", target: "tertOH", label: REAGENTS["2 RMgBr"], sep: "50% 30%"},  // strong Nuc also adds twice to esters
 
         // amides --[ LiAlH4/H3O+/HCl ]--> amines
         {id: "amide__amine", source: "amide", target: "amine", label: REAGENTS["LiAlH4;H2O"]},
 
-        {id: "priBr__nitrile", source: "priBr", target: "nitrile", label: REAGENTS["NaCN"], sep: "50% 50%"},
+        {id: "bromide_pri_or_sec__nitrile", source: "bromide_pri_or_sec", target: "nitrile", label: REAGENTS["NaCN"], sep: "50% 10%"},
         {id: "priAmide__nitrile", source: "priAmide", target: "nitrile", label: REAGENTS["SOCl2"], cpw: "0.5"},
         {id: "nitrile__priAmide", source: "nitrile", target: "priAmide", label: REAGENTS["LiAlH4;H2O"], cpw: "0.5"},
         {id: "nitrile__carboxylic_acid", source: "nitrile", target: "carboxylic_acid", label: REAGENTS["xs H3O+"], tep: "-40% 50%"},
