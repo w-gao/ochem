@@ -92,6 +92,10 @@ const setUp = (ref: HTMLDivElement | null, settings: any) => {
             {selector: "edge[cpw]", css: {"curve-style": "unbundled-bezier", "control-point-weights": "data(cpw)"}},
             {selector: "edge[sep]", css: {"source-endpoint": "data(sep)"}},
             {selector: "edge[tep]", css: {"target-endpoint": "data(tep)"}},
+            // @ts-ignore
+            {selector: "edge[tt]", css: {"curve-style": "taxi", "taxi-turn": "data(tt)"}},
+            // @ts-ignore
+            {selector: "edge[td]", css: {"curve-style": "taxi", "taxi-direction": "data(td)"}},
             {
                 selector: ":selected",
                 css: {

@@ -157,8 +157,8 @@
         "label": "Alkenes"
       },
       "position": {
-        "x": 480,
-        "y": 170
+        "x": 550,
+        "y": 140
       },
       "group": "nodes",
       "removed": false,
@@ -362,6 +362,24 @@
     },
     {
       "data": {
+        "id": "ether",
+        "label": "Ethers"
+      },
+      "position": {
+        "x": 250,
+        "y": 140
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
         "id": "carbonyl_noLG",
         "label": "Carbonyls (w/ no LG)"
       },
@@ -500,8 +518,8 @@
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/General_structural_formula_of_carboxylic_acid_chlorides.svg/1920px-General_structural_formula_of_carboxylic_acid_chlorides.svg.png"
       },
       "position": {
-        "x": -320,
-        "y": 760
+        "x": -310,
+        "y": 730
       },
       "group": "nodes",
       "removed": false,
@@ -536,8 +554,8 @@
         "label": "Amides"
       },
       "position": {
-        "x": -200,
-        "y": 1060
+        "x": -190,
+        "y": 930
       },
       "group": "nodes",
       "removed": false,
@@ -555,8 +573,8 @@
         "parent": "amide"
       },
       "position": {
-        "x": -400,
-        "y": 1060
+        "x": -390,
+        "y": 930
       },
       "group": "nodes",
       "removed": false,
@@ -574,8 +592,8 @@
         "parent": "amide"
       },
       "position": {
-        "x": -200,
-        "y": 1060
+        "x": -190,
+        "y": 930
       },
       "group": "nodes",
       "removed": false,
@@ -593,8 +611,8 @@
         "parent": "amide"
       },
       "position": {
-        "x": 0,
-        "y": 1060
+        "x": 10,
+        "y": 930
       },
       "group": "nodes",
       "removed": false,
@@ -611,8 +629,8 @@
         "label": "Amines"
       },
       "position": {
-        "x": -840,
-        "y": 1060
+        "x": -1190,
+        "y": 930
       },
       "group": "nodes",
       "removed": false,
@@ -630,8 +648,8 @@
         "parent": "amine"
       },
       "position": {
-        "x": -840,
-        "y": 960
+        "x": -1190,
+        "y": 830
       },
       "group": "nodes",
       "removed": false,
@@ -649,8 +667,8 @@
         "parent": "amine"
       },
       "position": {
-        "x": -840,
-        "y": 1060
+        "x": -1190,
+        "y": 930
       },
       "group": "nodes",
       "removed": false,
@@ -668,8 +686,8 @@
         "parent": "amine"
       },
       "position": {
-        "x": -840,
-        "y": 1160
+        "x": -1190,
+        "y": 1030
       },
       "group": "nodes",
       "removed": false,
@@ -686,8 +704,8 @@
         "label": "Nitrile"
       },
       "position": {
-        "x": -610,
-        "y": 860
+        "x": -620,
+        "y": 1070
       },
       "group": "nodes",
       "removed": false,
@@ -766,6 +784,29 @@
         "source": "propiophenone",
         "target": "propylbenzene",
         "label": "H₂\nPd"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "alkene__alcohol_nonaryl",
+        "source": "alkene",
+        "target": "alcohol_nonaryl",
+        "label": "OM/DM\nor HB=/[o]",
+        "cpd": "8em",
+        "sep": "-50% 40%",
+        "tep": "40% -50%"
       },
       "position": {
         "x": 0,
@@ -894,7 +935,70 @@
         "label": "1. grignard\n2. H₃O+",
         "cpd": "15em",
         "sep": "-40% -50%",
-        "tep": "50% -45%"
+        "tep": "50% -40%"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "alcohol_nonaryl__alkene",
+        "source": "alcohol_nonaryl",
+        "target": "alkene",
+        "label": "1. POCl₃\n2. pyr.\n\n or E1 (3°)",
+        "cpw": "0.5",
+        "sep": "50% -45%",
+        "tep": "0 50%"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "alcohol_nonaryl__ether",
+        "source": "alcohol_nonaryl",
+        "target": "ether",
+        "label": "1. NaH\nR-X"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "alkene__ether",
+        "source": "alkene",
+        "target": "ether",
+        "label": "AM/DM"
       },
       "position": {
         "x": 0,
@@ -1018,8 +1122,8 @@
     },
     {
       "data": {
-        "id": "priBr__carboxylic_acid",
-        "source": "priBr",
+        "id": "bromide_pri_or_sec__carboxylic_acid",
+        "source": "bromide_pri_or_sec",
         "target": "carboxylic_acid",
         "label": "1. NaCN\n2. H₃O+ (2 equiv.)\n- NH4OH",
         "tep": "-50% -20%"
@@ -1165,7 +1269,7 @@
         "id": "ester__carboxylic_acid",
         "source": "ester",
         "target": "carboxylic_acid",
-        "label": "NaOH"
+        "label": "1. NaOH\n2. H₃O+"
       },
       "position": {
         "x": 0,
@@ -1185,7 +1289,7 @@
         "id": "amide__carboxylic_acid",
         "source": "amide",
         "target": "carboxylic_acid",
-        "label": "NaOH",
+        "label": "1. NaOH\n2. H₃O+",
         "cpd": "-10em",
         "sep": "-35% -50%",
         "tep": "-10% 50%",
@@ -1415,8 +1519,31 @@
         "source": "nitrile",
         "target": "ketone",
         "label": "RMgBr\n(grignard)",
-        "sep": "50% 0",
-        "tep": "-50% 25%"
+        "curve": "taxi",
+        "tt": "1em",
+        "td": "downward"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "aldehyde__nitrile",
+        "source": "aldehyde",
+        "target": "nitrile",
+        "label": "1. H₂\nPd\n2. H₃O+",
+        "tt": "5em",
+        "td": "rightward"
       },
       "position": {
         "x": 0,

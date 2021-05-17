@@ -33,6 +33,10 @@ export interface Reaction {
     // endpoints
     sep?: string;
     tep?: string;
+
+    // taxi turns
+    tt?: string;
+    td?: string;
 }
 
 

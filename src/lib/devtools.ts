@@ -123,6 +123,10 @@ const regenerate = (data: any, lock: boolean = false) => {
         element.data.sep = val.sep || undefined;
         element.data.tep = val.tep || undefined;
 
+        // taxi turn
+        element.data.tt = val.tt || undefined;
+        element.data.td = val.td || undefined;
+
         element.selectable = true;
         element.grabbable = !lock;
         element.pannable = true;  // allow pan for all

@@ -23,12 +23,18 @@ const REAGENTS = {
     "POCl3": reagent(`1. POCl${sub(3)}`, "2. pyr."),
     "E1": reagent("E1"),  // tertiary -OH; E1 reaction
 
+    // alcohol -> ether (Williamson ether synthesis)
+    "NaH;R-X": reagent("1. NaH", "R-X"),
+    // alkene -> ether
+    "AM/DM": reagent("AM/DM"),
+
     // oxidizing reagents
     "PCC": reagent("PCC", "[o]"),
     "CrO3": reagent(`CrO${sub(3)}/H${sub(3)}O+`, "[o]"),
 
     // reducing reagents
     "H2/Pd": reagent(`H${sub(2)}`, "Pd"),  // ketone -> alkane
+    "H2/Pd;H3O+": reagent(`1. H${sub(2)}`, "Pd", `2. H${sub(3)}O+`),  // nitrile -> aldehyde
     "NaBH4": reagent(`1. NaBH${sub(4)}`, `2. H${sub(3)}O+`),
     "LiAlH4": reagent(`1. LiAlH${sub(4)}`, `2. H${sub(3)}O+`),
     "LiAlH4;H2O": reagent(`1. LiAlH${sub(4)}`, `2. H${sub(2)}O`),  // LiAlH4 with H2O (for amide or nitrile reduction)
@@ -56,7 +62,7 @@ const REAGENTS = {
     "xs H3O+": reagent(`xs H${sub(3)}O+`),  // turns nitrile into carboxylic acid
 
     // bases
-    "NaOH": reagent("NaOH"),  // esters/amides -> carboxylic acids
+    "NaOH;H3O+": reagent("1. NaOH", `2. H${sub(3)}O+`),  // esters/amides -> carboxylic acids
 
     // strong Nuc
     "RMgBr": reagent("RMgBr", "(grignard)"),  // same as grignard; written this way for better representation
@@ -89,9 +95,6 @@ const add_bromide_compounds = (list: Compound[]) => {
 const add_alkene_compounds = (list: Compound[]) => {
     list.push(
         {id: "alkene", label: "Alkenes"},
-        // {id: "monoAlkene", label: "Mono-sub'd \nalkene", parent: "alkene"},
-        // {id: "diAlkene", label: "Di-sub'd \nalkene", parent: "alkene"},
-        // {id: "triAlkene", label: "Tri-sub'd \nalkene", parent: "alkene"},
     );
 };
 
@@ -124,7 +127,8 @@ const add_alcohol_compounds = (list: Compound[]) => {
 
 const add_ether_compounds = (list: Compound[]) => {
     list.push(
-        // {id: "ether", label: "Ethers"},
+        {id: "ether", label: "Ethers"},
+        // {id: "epoxide", label: "Epoxide"},
     );
 };
 
@@ -190,8 +194,8 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // -- ALCOHOLS --
         // ~ alcohol synthesis
-        // alkenes --[ OM/DM or HB:/[o] ]--> alcohols
-        // {id: "alkene__alcohol_nonaryl", source: "alkene", target: "alcohol_nonaryl", label: REAGENTS["OM/DM or HB/[o]"], },
+        // alkenes -> alcohols
+        {id: "alkene__alcohol_nonaryl", source: "alkene", target: "alcohol_nonaryl", label: REAGENTS["OM/DM or HB/[o]"], cpd: "8em", sep: "-50% 40%", tep: "40% -50%"},
 
         // carbonyls --[ reduction ]--> alcohols
         {id: "aldehyde__priOH", source: "aldehyde", target: "priOH", label: REAGENTS["NaBH4"], cpw: "0.5"},
@@ -206,17 +210,19 @@ export const add_reactions = (edges: Reaction[]) => {
         // {id: "formaldehyde__priOH", source: "formaldehyde", target: "priOH", label: REAGENTS["grignard"]},
         // {id: "aldehyde__secOH", source: "aldehyde", target: "secOH", label: REAGENTS["grignard"]},
         // {id: "ketone__tertOH", source: "ketone", target: "tertOH", label: REAGENTS["grignard"]},
-        {id: "carbonyl_noLG__alcohol_nonaryl", source: "carbonyl_noLG", target: "alcohol_nonaryl", label: REAGENTS["grignard"], cpd: "15em", sep: "-40% -50%", tep: "50% -45%"},
+        {id: "carbonyl_noLG__alcohol_nonaryl", source: "carbonyl_noLG", target: "alcohol_nonaryl", label: REAGENTS["grignard"], cpd: "15em", sep: "-40% -50%", tep: "50% -40%"},
 
         // ~ alcohol reactions
         // 1/2-OH --[ POCl3 ]--> alkenes
         // 3-OH --[ E2 ]--> alkenes
-        // {id: "alcohol_nonaryl__alkene", source: "alcohol_nonaryl", target: "alkene", label: REAGENTS["POCl3"] + `\n\n or E2 (3${deg()})`, },
+        {id: "alcohol_nonaryl__alkene", source: "alcohol_nonaryl", target: "alkene", label: REAGENTS["POCl3"] + `\n\n or E1 (3${deg()})`, cpw: "0.5", sep: "50% -45%", tep: "0 50%"},
 
         // -- ETHERS --
         // ~ ether synthesis
-        // alkyl bromide (1/2) w/ R-OH => ether (Williamson)
-        // alcohol => ether (AM/DM)
+        // alkyl bromide + R-OH -> ether (Williamson ether synthesis)
+        {id: "alcohol_nonaryl__ether", source: "alcohol_nonaryl", target: "ether", label: REAGENTS["NaH;R-X"]},
+        // alkene -> ether (AM/DM)
+        {id: "alkene__ether", source: "alkene", target: "ether", label: REAGENTS["AM/DM"]},
 
         // ~ ether reactions
         // grignard --[ epoxide ]--> 1-OH w/ 2 c-atom
@@ -228,7 +234,6 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "secOH__ketone", source: "secOH", target: "ketone", label: REAGENTS["CrO3"], cpw: "0.5"},
 
         // alkenes => carbonyls (ozonolysis)
-        //
 
         // ~carbonyl reactions
         // carbonyls => alkenes (wittig)
@@ -239,7 +244,7 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "benzylic_carbon_chain__benzoic_acid", source: "benzylic_carbon_chain", target: "benzoic_acid", label: REAGENTS["CrO3"], },
         // grignard --[ CO2 ]--> carboxylic acid (w/ one extra c-atom)
         {id: "bromide__carboxylic_acid", source: "bromide", target: "carboxylic_acid", label: REAGENTS["Mg;CO2"], sep: "50% 0", tep: "-50% 30%"},
-        {id: "priBr__carboxylic_acid", source: "priBr", target: "carboxylic_acid", label: REAGENTS["NaCN;H3O+"], tep: "-50% -20%"},  // nitrile hydrolysis (w/ one extra c-atom)
+        {id: "bromide_pri_or_sec__carboxylic_acid", source: "bromide_pri_or_sec", target: "carboxylic_acid", label: REAGENTS["NaCN;H3O+"], tep: "-50% -20%"},  // nitrile hydrolysis (w/ one extra c-atom)
 
         // ~ carboxylic acid reactions
         // carboxylic acid <--> acid chloride
@@ -254,8 +259,8 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "acid_chloride__tertAmide", source: "acid_chloride", target: "tertAmide", label: REAGENTS["(CH3)2NH"]},
 
         // esters & amides --[ NaOH ]--> carboxylic acids
-        {id: "ester__carboxylic_acid", source: "ester", target: "carboxylic_acid", label: REAGENTS["NaOH"]},
-        {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH"], cpd: "-10em", cpw: "0.8", sep: "-35% -50%", tep: "-10% 50%"},
+        {id: "ester__carboxylic_acid", source: "ester", target: "carboxylic_acid", label: REAGENTS["NaOH;H3O+"]},
+        {id: "amide__carboxylic_acid", source: "amide", target: "carboxylic_acid", label: REAGENTS["NaOH;H3O+"], cpd: "-10em", cpw: "0.8", sep: "-35% -50%", tep: "-10% 50%"},
 
         // ~~ acyl substitution reactions (Nuc attacks & kicks out LG)
         // strong Nuc adds twice; weak Nuc adds once
@@ -278,12 +283,11 @@ export const add_reactions = (edges: Reaction[]) => {
         {id: "priAmide__nitrile", source: "priAmide", target: "nitrile", label: REAGENTS["SOCl2"], cpw: "0.5"},
         {id: "nitrile__priAmide", source: "nitrile", target: "priAmide", label: REAGENTS["LiAlH4;H2O"], cpw: "0.5"},
         {id: "nitrile__carboxylic_acid", source: "nitrile", target: "carboxylic_acid", label: REAGENTS["xs H3O+"], tep: "-40% 50%"},
-        {id: "nitrile__ketone", source: "nitrile", target: "ketone", label: REAGENTS["RMgBr"], sep: "50% 0", tep: "-50% 25%"},
+        {id: "nitrile__ketone", source: "nitrile", target: "ketone", label: REAGENTS["RMgBr"], tt: "1em", td: "downward"},
 
-
-        // grignard as a starting material - too cluttered to put in main graph; create different nodes instead
-        // {id: "RMgBr__carboxylic_acid", source: "RMgBr", target: "carboxylic_acid", label: REAGENTS["CO2"]},
-        // {id: "RMgBr__alcohol_nonaryl", source: "RMgBr", target: "alcohol", label: "Carbonyls (w/ no LG)"},
+        // -- CARBOHYDRATES --
+        {id: "aldehyde__nitrile", source: "aldehyde", target: "nitrile", label: REAGENTS["H2/Pd;H3O+"], tt: "5em", td: "rightward"},
+        // {id: "", source: "", target: "", label: ""},
 
     );
 };
