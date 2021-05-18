@@ -24,7 +24,7 @@ const REAGENTS = {
     "E1": reagent("E1"),  // tertiary -OH; E1 reaction
 
     // alcohol -> ether (Williamson ether synthesis)
-    "NaH;R-X": reagent("1. NaH", "R-X"),
+    "NaH;R-X": reagent("1. NaH", "2. R-X"),
     // alkene -> ether
     "AM/DM": reagent("AM/DM"),
 
@@ -34,7 +34,7 @@ const REAGENTS = {
 
     // reducing reagents
     "H2/Pd": reagent(`H${sub(2)}`, "Pd"),  // ketone -> alkane
-    "H2/Pd;H3O+": reagent(`1. H${sub(2)}`, "Pd", `2. H${sub(3)}O+`),  // nitrile -> aldehyde
+    "H2/Pd;H3O+": reagent(`1. H${sub(2)}/Pd`, `2. H${sub(3)}O+`),  // nitrile -> aldehyde
     "NaBH4": reagent(`1. NaBH${sub(4)}`, `2. H${sub(3)}O+`),
     "LiAlH4": reagent(`1. LiAlH${sub(4)}`, `2. H${sub(3)}O+`),
     "LiAlH4;H2O": reagent(`1. LiAlH${sub(4)}`, `2. H${sub(2)}O`),  // LiAlH4 with H2O (for amide or nitrile reduction)
@@ -127,8 +127,9 @@ const add_alcohol_compounds = (list: Compound[]) => {
 
 const add_ether_compounds = (list: Compound[]) => {
     list.push(
-        {id: "ether", label: "Ethers"},
-        // {id: "epoxide", label: "Epoxide"},
+        {id: "ether_base", label: "_Ethers"},
+        {id: "ether", label: "Ethers", parent: "ether_base"},
+        {id: "epoxide", label: "Epoxide", parent: "ether_base"},
     );
 };
 
@@ -226,6 +227,7 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // ~ ether reactions
         // grignard --[ epoxide ]--> 1-OH w/ 2 c-atom
+        {id: "epoxide__priOH", source: "epoxide", target: "priOH", label: REAGENTS["grignard"]},
 
         // -- ALDEHYDES and KETONES (carbonyls with no leaving group) --
         // ~ carbonyl synthesis
@@ -269,7 +271,7 @@ export const add_reactions = (edges: Reaction[]) => {
 
         // (more) acid chloride reactions
         // reduction of acid chloride
-        {id: "acid_chloride__priOH", source: "acid_chloride", target: "priOH", label: REAGENTS["NaBH4"]},
+        {id: "acid_chloride__priOH", source: "acid_chloride", target: "priOH", label: REAGENTS["NaBH4"], sep: "50% -40%"},
 
         // strong and weak Nuc attack
         {id: "acid_chloride__tertOH", source: "acid_chloride", target: "tertOH", label: REAGENTS["2 RMgBr"]},  // strong Nuc adds twice

@@ -362,11 +362,48 @@
     },
     {
       "data": {
+        "id": "ether_base"
+      },
+      "position": {
+        "x": 160,
+        "y": 140
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
         "id": "ether",
-        "label": "Ethers"
+        "label": "Ethers",
+        "parent": "ether_base"
       },
       "position": {
         "x": 250,
+        "y": 140
+      },
+      "group": "nodes",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": false,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "epoxide",
+        "label": "Epoxide",
+        "parent": "ether_base"
+      },
+      "position": {
+        "x": 80,
         "y": 140
       },
       "group": "nodes",
@@ -978,7 +1015,7 @@
         "id": "alcohol_nonaryl__ether",
         "source": "alcohol_nonaryl",
         "target": "ether",
-        "label": "1. NaH\nR-X"
+        "label": "1. NaH\n2. R-X"
       },
       "position": {
         "x": 0,
@@ -999,6 +1036,26 @@
         "source": "alkene",
         "target": "ether",
         "label": "AM/DM"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "group": "edges",
+      "removed": false,
+      "selected": false,
+      "selectable": true,
+      "locked": false,
+      "grabbable": true,
+      "pannable": true,
+      "classes": ""
+    },
+    {
+      "data": {
+        "id": "epoxide__priOH",
+        "source": "epoxide",
+        "target": "priOH",
+        "label": "1. grignard\n2. H₃O+"
       },
       "position": {
         "x": 0,
@@ -1333,7 +1390,8 @@
         "id": "acid_chloride__priOH",
         "source": "acid_chloride",
         "target": "priOH",
-        "label": "1. NaBH₄\n2. H₃O+"
+        "label": "1. NaBH₄\n2. H₃O+",
+        "sep": "50% -40%"
       },
       "position": {
         "x": 0,
@@ -1541,7 +1599,7 @@
         "id": "aldehyde__nitrile",
         "source": "aldehyde",
         "target": "nitrile",
-        "label": "1. H₂\nPd\n2. H₃O+",
+        "label": "1. H₂/Pd\n2. H₃O+",
         "tt": "5em",
         "td": "rightward"
       },

@@ -14,6 +14,7 @@ export const descriptions: any = {
 
     "alcohol_nonaryl__ether": `<p>Lecture 4, page 6.</p><img src="https://user-images.githubusercontent.com/20177171/118429961-cd87c780-b687-11eb-8d72-8568895c603a.png" alt="rxn"/>`,
     "alkene__ether": `<p>Lecture 4, page 7.</p><img src="https://user-images.githubusercontent.com/20177171/118429793-54887000-b687-11eb-84cb-e723f30da12f.png" alt="rxn"/>`,
+    "epoxide__priOH": `<p class="note">Good way to synthesize primary alcohol with two extra c-atoms from primary bromide.</p><img src="https://user-images.githubusercontent.com/20177171/118573250-059a1380-b737-11eb-89df-aa9835b8bf06.png" alt="rxn"/>`,
     // "formaldehyde__priOH": `<h1>Synthesis of 1&deg;-OH from formaldehyde w/ grignard</h1><p class="note">Product has one extra C-atom.</p>`,
     "carbonyl_noLG__alcohol_nonaryl": `<p class="note">Formaldehyde, aldehyde, and ketone react with grignard to give primary, secondary, and tertiary alcohols, respectively.</p><img src="https://user-images.githubusercontent.com/20177171/117243252-b9240f00-adeb-11eb-86a1-af8deff60a70.png" alt="rxn"/>`,
     // "RMgBr__alcohol_nonaryl": `<p class="note">Formaldehyde, aldehyde, and ketone react with grignard to give primary, secondary, and tertiary alcohols, respectively.</p><p>Phenol not included.</p>`,
