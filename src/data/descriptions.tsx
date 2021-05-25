@@ -39,4 +39,7 @@ export const descriptions: any = {
     "nitrile__ketone": `Lecture 9, page 3.<p class="note">The carbonyl c-atom in the ketone comes from the nitrile.</p><img src="https://user-images.githubusercontent.com/20177171/117521145-23aa8b80-af61-11eb-89ed-f20c4eb1d794.png" alt="rxn"/>`,
 
     "aldehyde__nitrile": `<p>Lecture 13, page 3.</p><img src="https://user-images.githubusercontent.com/20177171/118412039-a95ac500-b64c-11eb-84ca-ae141ebf77b7.png" alt="rxn"/><p>Use H2/Pd (or dibah) followed by H3O+.</p><p class="note">Opposite reaction:</p><img src="https://user-images.githubusercontent.com/20177171/118412147-3e5dbe00-b64d-11eb-9b94-8b21b61df71a.png" alt="rxn"/>`,
+    "priBr__priAmine": `<p>Lecture 14, page 5.</p><p class="note">SN2 reaction. Gives primary amine only. Same number of C-atoms.</p><img src="https://user-images.githubusercontent.com/20177171/119580161-bf673480-bd74-11eb-820e-5786db8ef325.png" alt="rxn" /><p class="note">Do NaCN method to get 1 extra c-atom.</p><img src="https://user-images.githubusercontent.com/20177171/119580366-1967fa00-bd75-11eb-9edd-25f88ef0280c.png" alt="rxn" />`,
+    "nitrile__priAmine": `<p>Lecture 9, page 2.</p><img src="https://user-images.githubusercontent.com/20177171/119580484-559b5a80-bd75-11eb-8771-9d4bcf3ad39e.png" alt="rxn"/>`,
+
 };

@@ -72,6 +72,8 @@ const REAGENTS = {
     "cuprate": reagent(`R${sub(2)}CuLi`, "(cuprate)"),  // lithium dialkyl cuprate
     "H2O": reagent(`H${sub(2)}O`),
 
+    // amine reactions
+    "N3": reagent(`1. NaN${sub(3)}`, `2. LiAlH${sub(4)}`, `3. H${sub(2)}O`),
 };
 
 
@@ -283,12 +285,15 @@ export const add_reactions = (edges: Reaction[]) => {
 
         {id: "bromide_pri_or_sec__nitrile", source: "bromide_pri_or_sec", target: "nitrile", label: REAGENTS["NaCN"], sep: "50% 10%"},
         {id: "priAmide__nitrile", source: "priAmide", target: "nitrile", label: REAGENTS["SOCl2"], cpw: "0.5"},
-        {id: "nitrile__priAmide", source: "nitrile", target: "priAmide", label: REAGENTS["LiAlH4;H2O"], cpw: "0.5"},
+        {id: "nitrile__priAmine", source: "nitrile", target: "priAmine", label: REAGENTS["LiAlH4;H2O"], cpd: "-8em"},
         {id: "nitrile__carboxylic_acid", source: "nitrile", target: "carboxylic_acid", label: REAGENTS["xs H3O+"], tep: "-40% 50%"},
         {id: "nitrile__ketone", source: "nitrile", target: "ketone", label: REAGENTS["RMgBr"], tt: "1em", td: "downward"},
 
         // -- CARBOHYDRATES --
         {id: "aldehyde__nitrile", source: "aldehyde", target: "nitrile", label: REAGENTS["H2/Pd;H3O+"], tt: "5em", td: "rightward"},
+
+        // -- AMINES --
+        {id: "priBr__priAmine", source: "priBr", target: "priAmine", label: REAGENTS["N3"], cpd: "5em"},
         // {id: "", source: "", target: "", label: ""},
 
     );
